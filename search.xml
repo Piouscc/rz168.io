@@ -47,10 +47,7 @@
 <p>1、9 测试，查看自身为什么身份</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./redis-cli -h 127.0.0.1 -p 6379 INFO|grep role</span><br><span class="line">role:master</span><br><span class="line">./redis-cli -h 127.0.0.1 -p 6380 INFO|grep role</span><br><span class="line">role:slave</span><br><span class="line">./redis-cli -h 127.0.0.1 -p 6381 INFO|grep role</span><br><span class="line">role:slave</span><br></pre></td></tr></table></figure>
 <p>1、10 登陆到master进行写入数据，看slave是否有同步(分别在三个介面操作，方便分别),因我这边已经测试主从切换，master现在为6380</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./redis-cli -h 127.0.0.1 -p 6379 </span><br><span class="line">./redis-cli -h 127.0.0.1 -p 6380 </span><br><span class="line">./redis-cli -h 127.0.0.1 -p 6381</span><br></pre></td></tr></table></figure>
-<p><img src="/images/redis_1.png" alt><br><img src="/images/redis_2.png" alt><br><img src="/images/redis_3.png" alt><br><img src="/images/redis_4.png" alt></p>
-<p>1、11 上面测试同步，是可以正常同步的，下面则测试主从切换在master上执行shutdown,由下图可以得出是可以正常切换的，<br>现在有个问题就是如果6380突然起来了，会不会抢占master,答案是不会的<br><img src="/images/redis_5.png" alt><br><img src="/images/redis_6.png" alt></p>
-]]></content>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./redis-cli -h 127.0.0.1 -p 6379 </span><br><span class="line">./redis-cli -h 127.0.0.1 -p 6380 </span><br><span class="line">./redis-cli -h 127.0.0.1 -p 6381</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>linux</tag>
       </tags>
