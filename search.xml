@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>docker-ce-安装</title>
-    <url>/jk.io/2020/05/15/docker-ce-%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<p>1、卸载docker旧版本相关<br> <a id="more"></a><br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum remove docker docker-client  docker-client-latest docker-common docker-latest \</span><br><span class="line">docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux  docker-engine</span><br></pre></td></tr></table></figure><br>2、安装新版docker源<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y yum-utils            device-mapper-persistent-data            lvm2</span><br><span class="line">yum-config-manager     --add-repo     https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure><br> 3、直接yum安装docker<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install docker-ce</span><br></pre></td></tr></table></figure><br> 启动docker<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start docker</span><br><span class="line">systemctl <span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure><br> 配置下载镜像加速，编辑<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/docker/daemon.json</span><br><span class="line">&#123;</span><br><span class="line"> <span class="string">"registry-mirrors"</span>: [</span><br><span class="line">   <span class="string">"https://dockerhub.azk8s.cn"</span>,</span><br><span class="line">   <span class="string">"https://reg-mirror.qiniu.com"</span></span><br><span class="line"> ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br> 刷新配置重启docker<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <tags>
-        <tag>linux</tag>
-        <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>redis-6.0部署</title>
-    <url>/jk.io/2020/05/15/redis-6-0-%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</url>
+    <url>/rz168.io/2020/05/15/redis-6-0-%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</url>
     <content><![CDATA[<p>1、redis简介，这边省略，若有需要直接查看上一篇redis哨兵配置<br>2、redis6.0更新最大特性：Redis 6.0将在今年年底发布，其中引入的最重大的改变就是多线程IO</p>
 <a id="more"></a>
 <p>下面进入正题，安装部署流程<br>#安装依赖</p>
@@ -35,8 +25,18 @@
       </tags>
   </entry>
   <entry>
+    <title>docker-ce-安装</title>
+    <url>/rz168.io/2020/05/15/docker-ce-%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<p>1、卸载docker旧版本相关<br> <a id="more"></a><br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum remove docker docker-client  docker-client-latest docker-common docker-latest \</span><br><span class="line">docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux  docker-engine</span><br></pre></td></tr></table></figure><br>2、安装新版docker源<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y yum-utils            device-mapper-persistent-data            lvm2</span><br><span class="line">yum-config-manager     --add-repo     https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure><br> 3、直接yum安装docker<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install docker-ce</span><br></pre></td></tr></table></figure><br> 启动docker<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start docker</span><br><span class="line">systemctl <span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure><br> 配置下载镜像加速，编辑<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/docker/daemon.json</span><br><span class="line">&#123;</span><br><span class="line"> <span class="string">"registry-mirrors"</span>: [</span><br><span class="line">   <span class="string">"https://dockerhub.azk8s.cn"</span>,</span><br><span class="line">   <span class="string">"https://reg-mirror.qiniu.com"</span></span><br><span class="line"> ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br> 刷新配置重启docker<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <tags>
+        <tag>linux</tag>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>redis-主从-哨兵配置</title>
-    <url>/jk.io/2020/05/15/redis-%E4%B8%BB%E4%BB%8E-%E5%93%A8%E5%85%B5/</url>
+    <url>/rz168.io/2020/05/15/redis-%E4%B8%BB%E4%BB%8E-%E5%93%A8%E5%85%B5/</url>
     <content><![CDATA[<p>1、1 Redis官网简介<br>Redis是一个开源（BSD许可），内存存储的数据结构服务器，可用作数据库，高速缓存和消息队列代理。它支持字符串、哈希表、列表、集合、有序集合，位图，hyperloglogs等数据类型。内置复制、Lua脚本、LRU收回、事务以及不同级别磁盘持久化功能，同时通过Redis Sentinel提供高可用，通过Redis Cluster提供自动分区。官网链接：<a href="https://www.redis.net.cn/" target="_blank" rel="noopener">https://www.redis.net.cn/</a></p>
 <a id="more"></a>
 <p>1、2 Redis作用<br>相信redis这个名称大家都不陌生，为什么？<br>因为redis可以用来做中间插件缓存</p>
