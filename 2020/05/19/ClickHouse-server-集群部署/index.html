@@ -88,14 +88,14 @@
 
 
 
-<meta name="description" content="引入一个问题：什么是Clickhouse？ClickHouse是一个用于联机分析(OLAP)的列式数据库管理系统(DBMS)。">
+<meta name="description" content="引入一个问题：什么是Clickhouse？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ClickHouse-server-集群部署">
 <meta property="og:url" content="https://github.com/Piouscc/rz168.io.git/2020/05/19/ClickHouse-server-%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="Sky、初心">
-<meta property="og:description" content="引入一个问题：什么是Clickhouse？ClickHouse是一个用于联机分析(OLAP)的列式数据库管理系统(DBMS)。">
+<meta property="og:description" content="引入一个问题：什么是Clickhouse？">
 <meta property="article:published_time" content="2020-05-19T03:20:58.000Z">
-<meta property="article:modified_time" content="2020-05-19T03:23:08.291Z">
+<meta property="article:modified_time" content="2020-05-20T13:28:55.038Z">
 <meta property="article:author" content="Sky、初心">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="DB">
@@ -400,9 +400,9 @@
       
 
       
-        <p>引入一个问题：什么是Clickhouse？<br>ClickHouse是一个用于联机分析(OLAP)的列式数据库管理系统(DBMS)。</p>
+        <p>引入一个问题：什么是Clickhouse？</p>
 <a id="more"></a>
-<p>常见的行式数据库系统有：MySQL、Postgres和MS SQL Server。<br>常见的列式数据库有： Vertica、 Paraccel (Actian Matrix，Amazon Redshift)、 Sybase IQ、 Exasol、 Infobright、 InfiniDB、 MonetDB (VectorWise， Actian Vector)、 LucidDB、 SAP HANA、 Google Dremel、 Google PowerDrill、 Druid、 kdb+。<br>关于Clickhouse性能，可以参考官网（有中文版的）：<a href="https://clickhouse.tech/docs/zh/introduction/performance/" target="_blank" rel="noopener">https://clickhouse.tech/docs/zh/introduction/performance/</a></p>
+<p>ClickHouse是一个用于联机分析(OLAP)的列式数据库管理系统(DBMS)。<br>常见的行式数据库系统有：MySQL、Postgres和MS SQL Server。<br>常见的列式数据库有： Vertica、 Paraccel (Actian Matrix，Amazon Redshift)、 Sybase IQ、 Exasol、 Infobright、 InfiniDB、 MonetDB (VectorWise， Actian Vector)、 LucidDB、 SAP HANA、 Google Dremel、 Google PowerDrill、 Druid、 kdb+。<br>关于Clickhouse性能，可以参考官网（有中文版的）：<a href="https://clickhouse.tech/docs/zh/introduction/performance/" target="_blank" rel="noopener">https://clickhouse.tech/docs/zh/introduction/performance/</a></p>
 <p>主要特性：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">真正的面向列的DBMS</span><br><span class="line">实时数据更新</span><br><span class="line">SQL语法支持</span><br><span class="line">多核并行处理</span><br><span class="line">数据高效压缩</span><br><span class="line">分布式处理</span><br><span class="line">数据复制完整性</span><br><span class="line">丰富的索引</span><br><span class="line">集群式管理</span><br><span class="line">可直接读取MySQL数据</span><br><span class="line">适合于在线实时查询</span><br><span class="line">支持近似预估计算</span><br></pre></td></tr></table></figure>
 <p>目前缺点：</p>
@@ -477,7 +477,7 @@
   <p><span>本文标题:</span><a href="/rz168.io/2020/05/19/ClickHouse-server-%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/">ClickHouse-server-集群部署</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Sky、初心 的个人博客">Sky、初心</a></p>
   <p><span>发布时间:</span>2020年05月19日 - 11:05</p>
-  <p><span>最后更新:</span>2020年05月19日 - 11:05</p>
+  <p><span>最后更新:</span>2020年05月20日 - 21:05</p>
   <p><span>原始链接:</span><a href="/rz168.io/2020/05/19/ClickHouse-server-%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/" title="ClickHouse-server-集群部署">https://github.com/Piouscc/rz168.io.git/2020/05/19/ClickHouse-server-%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2020/05/19/ClickHouse-server-%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/"  aria-label="复制成功！"></i></span>
   </p>
