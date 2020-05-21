@@ -6,7 +6,7 @@
   <link href="/rz168.io/atom.xml" rel="self"/>
   
   <link href="https://github.com/Piouscc/rz168.io.git/"/>
-  <updated>2020-05-20T13:28:39.700Z</updated>
+  <updated>2020-05-21T08:33:46.827Z</updated>
   <id>https://github.com/Piouscc/rz168.io.git/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Dnsmasq-简单搭建</title>
+    <link href="https://github.com/Piouscc/rz168.io.git/2020/05/21/Dnsmasq-%E7%AE%80%E5%8D%95%E6%90%AD%E5%BB%BA/"/>
+    <id>https://github.com/Piouscc/rz168.io.git/2020/05/21/Dnsmasq-%E7%AE%80%E5%8D%95%E6%90%AD%E5%BB%BA/</id>
+    <published>2020-05-21T08:32:15.000Z</published>
+    <updated>2020-05-21T08:33:46.827Z</updated>
+    
+    <content type="html"><![CDATA[<p>Dnsmasq-简单安装<br> <a id="more"></a><br>最近同事工作中遇到要使用不同的DNS来解析不同域名的情况，<br>想了想就造反Dnsmasq最合适。<br>下面简单搭建记录</p><p>编辑配置文件:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#dnsmasq config, for a complete example, see:</span></span><br><span class="line"><span class="comment">#  http://oss.segetech.com/intra/srv/dnsmasq.conf</span></span><br><span class="line"><span class="comment">#log all dns queries</span></span><br><span class="line"><span class="built_in">log</span>-queries</span><br><span class="line"><span class="comment">#dont use hosts nameservers</span></span><br><span class="line">no-resolv</span><br><span class="line"><span class="comment">#use cloudflare as default nameservers, prefer 1^4</span></span><br><span class="line">server=1.1.1.1</span><br><span class="line">server=233.5.5.5</span><br><span class="line"><span class="comment">#strict-order</span></span><br><span class="line"><span class="comment">#serve all .company queries using a specific nameserver</span></span><br><span class="line"><span class="comment">#server=/company/10.0.0.1</span></span><br><span class="line"><span class="comment">#explicitly define host-ip mappings（自定义域名IP配置）</span></span><br><span class="line"><span class="comment">#address=/a1.aa.com/192.168.1.168</span></span><br><span class="line">address=/a3.aa.com/192.168.1.111</span><br></pre></td></tr></table></figure><p>启动docker容器</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">docker run \</span><br><span class="line">    --name dnsmasq \</span><br><span class="line">    -d \</span><br><span class="line">    -p 53:53/udp \</span><br><span class="line">    -p 8088:8080 \</span><br><span class="line">    -v /opt/dns/dnsmasq.conf:/etc/dnsmasq.conf \</span><br><span class="line">    -v /etc/localtime:/etc/localtime:ro \</span><br><span class="line">    -e <span class="string">"HTTP_USER=admin"</span> \</span><br><span class="line">    -e <span class="string">"HTTP_PASS=admin"</span> \</span><br><span class="line">    --restart always \</span><br><span class="line">    jpillora/dnsmasq</span><br></pre></td></tr></table></figure><p>访问Dnsmasq网站</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://IP:8088</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Dnsmasq-简单安装&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="linux" scheme="https://github.com/Piouscc/rz168.io.git/tags/linux/"/>
+    
+      <category term="docker" scheme="https://github.com/Piouscc/rz168.io.git/tags/docker/"/>
+    
+  </entry>
   
   <entry>
     <title>zabbix-4.2.3-安装</title>
