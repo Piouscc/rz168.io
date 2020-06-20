@@ -137,7 +137,12 @@
 <p>测试</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">create database ontime;</span><br><span class="line">use ontime;</span><br><span class="line"></span><br><span class="line">CREATE TABLE ontime (FlightDate Date,Year UInt16) ENGINE = ReplicatedMergeTree(<span class="string">'/clickhouse/tables/01-01/ontime'</span>,<span class="string">'cluster01-01-1'</span>,FlightDate,(Year, FlightDate),8192); <span class="comment">#cdh01的实例1，分片01，副本1</span></span><br><span class="line">CREATE TABLE ontime (FlightDate Date,Year UInt16) ENGINE = ReplicatedMergeTree(<span class="string">'/clickhouse/tables/01-02/ontime'</span>,<span class="string">'cluster01-01-2'</span>,FlightDate,(Year, FlightDate),8192); <span class="comment">#cdh01的实例2，分片01，副本2</span></span><br><span class="line">CREATE TABLE ontime_all (FlightDate Date,Year UInt16) ENGINE= Distributed(perftest_3shards_2replicas, ontime, ontime, rand());  <span class="comment">#每个实例都执行</span></span><br></pre></td></tr></table></figure>
 <p>当我们从某个节点的_all表插入相应数据，然后ch01,02的数据都是相等的，如果不相等请查看对应日志文件错误，类似以下错误可以通过重启zk再重启clickhouse解决</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">e.displayText() = DB::Exception: No interserver IO endpoint named DataPartsExchange:/clickhouse/tables/01-01/ontime</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">e.displayText() = DB::Exception: No interserver IO endpoint named DataPartsExchange:/clickhouse/tables/01-01/ontime</span><br></pre></td></tr></table></figure>
+
+<p>遇到问题补充：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Error&gt; default.my_table (StorageReplicatedMergeTree): DB::StorageReplicatedMergeTree::queueTask()::&lt;lambda(DB::StorageReplicatedMergeTree::LogEntryPtr&amp;)&gt;: Poco::Exception. Code: 1000, e.code() = 0, e.displayText() = Host not found: clickhouse-01-0.clickhouses.default.svc.cluster.local</span><br></pre></td></tr></table></figure>
+<p>只需要看主机名，并设置即可</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hostname -f </span><br><span class="line">hostnamectl <span class="built_in">set</span>-hostname ****</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>linux</tag>
         <tag>DB</tag>
