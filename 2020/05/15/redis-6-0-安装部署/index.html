@@ -88,14 +88,14 @@
 
 
 
-<meta name="description" content="1、redis简介，这边省略，若有需要直接查看上一篇redis哨兵配置">
+<meta name="description" content="Redis-6.0安装">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redis-6.0部署">
 <meta property="og:url" content="https://github.com/Piouscc/rz168.io.git/2020/05/15/redis-6-0-%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="Lucky、boy">
-<meta property="og:description" content="1、redis简介，这边省略，若有需要直接查看上一篇redis哨兵配置">
+<meta property="og:description" content="Redis-6.0安装">
 <meta property="article:published_time" content="2020-05-15T07:56:35.000Z">
-<meta property="article:modified_time" content="2020-05-20T13:28:29.169Z">
+<meta property="article:modified_time" content="2020-06-22T09:27:58.265Z">
 <meta property="article:author" content="Lucky、boy">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="DB">
@@ -363,7 +363,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  482
+                  486
                 </span>
               
 
@@ -400,9 +400,9 @@
       
 
       
-        <p>1、redis简介，这边省略，若有需要直接查看上一篇redis哨兵配置</p>
+        <p>Redis-6.0安装</p>
 <a id="more"></a>
-<p>2、redis6.0更新最大特性：Redis 6.0将在今年年底发布，其中引入的最重大的改变就是多线程IO<br>下面进入正题，安装部署流程<br>#安装依赖</p>
+<p>1、redis简介，这边省略，若有需要直接查看上一篇redis哨兵配置<br>2、redis6.0更新最大特性：Redis 6.0将在今年年底发布，其中引入的最重大的改变就是多线程IO<br>下面进入正题，安装部署流程<br>#安装依赖</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install epel-release</span><br><span class="line">yum -y install wget nc telnet gcc gcc-c++ autoconf cmake bison libevent libevent-devel libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libxml2 libxml2-devel zlib zlib-devel glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel ncurses ncurses-devel curl curl-devel libcurl libcurl-devel e2fsprogs e2fsprogs-devel krb5 krb5-devel libidn libidn-devel openssl openssl-devel openldap openldap-devel nss_ldap openldap-clients openldap-servers libpcap libpcap-devel libtool iptables iptables-services rsync file perl perl-DBD-MySQL perl-devel sysstat mailx ntpdate vim jwhois <span class="built_in">bind</span>-utils git ipset ipset-service tcpdump iftop inotify-tools gcc-g77 vsftpd subversion strace java python-pip net-tools mtr gettext gettext-devel</span><br></pre></td></tr></table></figure>
 
 <p>#由于redis6.0需要安装gcc_9.0</p>
@@ -448,7 +448,7 @@
   <p><span>本文标题:</span><a href="/rz168.io/2020/05/15/redis-6-0-%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/">redis-6.0部署</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Lucky、boy 的个人博客">Lucky、boy</a></p>
   <p><span>发布时间:</span>2020年05月15日 - 15:05</p>
-  <p><span>最后更新:</span>2020年05月20日 - 21:05</p>
+  <p><span>最后更新:</span>2020年06月22日 - 17:06</p>
   <p><span>原始链接:</span><a href="/rz168.io/2020/05/15/redis-6-0-%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/" title="redis-6.0部署">https://github.com/Piouscc/rz168.io.git/2020/05/15/redis-6-0-%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2020/05/15/redis-6-0-%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/"  aria-label="复制成功！"></i></span>
   </p>
@@ -609,7 +609,7 @@ var jiathis_config={
               
                 <a href="/rz168.io/archives/%7C%7C%20%E5%BD%92%E6%A1%A3">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -690,7 +690,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">6.9k</span>
+    <span title="Site words total count">7.1k</span>
   
 </div>
 
@@ -710,7 +710,7 @@ var jiathis_config={
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共6.9k字</span>
+  <span class="post-count">博客全站共7.1k字</span>
 </div>
         
 <div class="busuanzi-count">

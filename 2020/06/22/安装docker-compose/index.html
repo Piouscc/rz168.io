@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="linux," />
+  <meta name="keywords" content="docker," />
 
 
 
@@ -88,16 +88,16 @@
 
 
 
-<meta name="description" content="Zookeeper-集群搭建">
+<meta name="description" content="Docker-compose环境安装">
 <meta property="og:type" content="article">
-<meta property="og:title" content="zookeeper-集群搭建">
-<meta property="og:url" content="https://github.com/Piouscc/rz168.io.git/2020/06/22/zookeeper-%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:title" content="安装docker-compose">
+<meta property="og:url" content="https://github.com/Piouscc/rz168.io.git/2020/06/22/%E5%AE%89%E8%A3%85docker-compose/index.html">
 <meta property="og:site_name" content="Lucky、boy">
-<meta property="og:description" content="Zookeeper-集群搭建">
-<meta property="article:published_time" content="2020-06-22T08:09:49.000Z">
-<meta property="article:modified_time" content="2020-06-22T08:12:43.285Z">
+<meta property="og:description" content="Docker-compose环境安装">
+<meta property="article:published_time" content="2020-06-22T09:23:10.000Z">
+<meta property="article:modified_time" content="2020-06-22T09:27:43.640Z">
 <meta property="article:author" content="Lucky、boy">
-<meta property="article:tag" content="linux">
+<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
 
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/Piouscc/rz168.io.git/2020/06/22/zookeeper-集群搭建/"/>
+  <link rel="canonical" href="https://github.com/Piouscc/rz168.io.git/2020/06/22/安装docker-compose/"/>
 
 
 
 
 
-  <title>zookeeper-集群搭建 | Lucky、boy</title>
+  <title>安装docker-compose | Lucky、boy</title>
   
 
 
@@ -296,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/Piouscc/rz168.io.git/rz168.io/2020/06/22/zookeeper-%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Piouscc/rz168.io.git/rz168.io/2020/06/22/%E5%AE%89%E8%A3%85docker-compose/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lucky、boy">
@@ -313,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">zookeeper-集群搭建</h1>
+          <h1 class="post-title" itemprop="name headline">安装docker-compose</h1>
         
 
         <div class="post-meta">
@@ -325,7 +325,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-22T16:09:49+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-22T17:23:10+08:00">
                 2020-06-22
               </time>
             
@@ -362,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.1k
+                  190
                 </span>
               
 
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  1
                 </span>
               
             </div>
@@ -399,26 +399,14 @@
       
 
       
-        <p>Zookeeper-集群搭建</p>
+        <p>Docker-compose环境安装</p>
 <a id="more"></a>
-<p>服务器信息如下(注：以下信息需要配置在/etc/hosts里面):</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.2      ch02    zk01</span><br><span class="line">192.168.1.3      ch03    zk02</span><br><span class="line">192.168.1.4      ch04    zk03</span><br></pre></td></tr></table></figure>
-<p>###1、为什么zookeeper节点数为奇数？<br>容错率<br>　　首先从容错率来说明：（需要保证集群能够有半数进行投票）<br>　　2台服务器，至少2台正常运行才行（2的半数为1，半数以上最少为2），正常运行1台服务器都不允许挂掉，但是相对于 单节点服务器，2台服务器还有两个单点故障，所以直接排除了。<br>　　3台服务器，至少2台正常运行才行（3的半数为1.5，半数以上最少为2），正常运行可以允许1台服务器挂掉<br>　　4台服务器，至少3台正常运行才行（4的半数为2，半数以上最少为3），正常运行可以允许1台服务器挂掉<br>　　5台服务器，至少3台正常运行才行（5的半数为2.5，半数以上最少为3），正常运行可以允许2台服务器挂掉<br>防脑裂<br>    脑裂集群的脑裂通常是发生在节点之间通信不可达的情况下，集群会分裂成不同的小集群，小集群各自选出自己的leader节点，导致原有的集群出现多个leader节点的情况，这就是脑裂。<br>　　3台服务器，投票选举半数为1.5，一台服务裂开，和另外两台服务器无法通行，这时候2台服务器的集群（2票大于半数1.5票），所以可以选举出leader，而 1 台服务器的集群无法选举。<br>　　4台服务器，投票选举半数为2，可以分成 1,3两个集群或者2,2两个集群，对于 1,3集群，3集群可以选举；对于2,2集群，则不能选择，造成没有leader节点。<br>　　5台服务器，投票选举半数为2.5，可以分成1,4两个集群，或者2,3两集群，这两个集群分别都只能选举一个集群，满足zookeeper集群搭建数目。<br>　　以上分析，我们从容错率以及防止脑裂两方面说明了3台服务器是搭建集群的最少数目，4台发生脑裂时会造成没有leader节点的错误。<br>###2、下载zookeeper</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">官网下载地址：http://mirror.bit.edu.cn/apache/zookeeper/</span><br></pre></td></tr></table></figure>
-<p>###3、安装jdk<br>略<br>对应版本为以下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@ch03 ~]<span class="comment"># java -version</span></span><br><span class="line">openjdk version <span class="string">"1.8.0_252"</span></span><br><span class="line">OpenJDK Runtime Environment (build 1.8.0_252-b09)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 25.252-b09, mixed mode)</span><br></pre></td></tr></table></figure>
-<p>###4、解压及初始化zookeeper数据目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf zookeeper-3.6.1-bin.tar.gz</span><br><span class="line">mv zookeeper-3.6.1-bin /usr/<span class="built_in">local</span>/zookeeper</span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/zookeeper/conf</span><br><span class="line">cp zoo_sample.cfg zoo.cfg</span><br><span class="line">mkdir /data/zookeeper  <span class="comment">#之后修改配置文件时会用到</span></span><br><span class="line"><span class="built_in">echo</span> 1 &gt; /data/zookeeper/myid <span class="comment">#每台服务器都要执行，但id要不一样，如：1 2 3</span></span><br></pre></td></tr></table></figure>
-<p>###5、修改配置zookeeper配置文件zoo.cfg</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The number of milliseconds of each tick</span></span><br><span class="line">tickTime=2000</span><br><span class="line"><span class="comment"># The number of ticks that the initial </span></span><br><span class="line"><span class="comment"># synchronization phase can take</span></span><br><span class="line">initLimit=10</span><br><span class="line"><span class="comment"># The number of ticks that can pass between </span></span><br><span class="line"><span class="comment"># sending a request and getting an acknowledgement</span></span><br><span class="line">syncLimit=5</span><br><span class="line"><span class="comment"># the directory where the snapshot is stored.</span></span><br><span class="line"><span class="comment"># do not use /tmp for storage, /tmp here is just </span></span><br><span class="line"><span class="comment"># example sakes.</span></span><br><span class="line">dataDir=/data/zookeeper</span><br><span class="line"><span class="comment"># the port at which the clients will connect</span></span><br><span class="line">clientPort=2181</span><br><span class="line"><span class="comment"># the maximum number of client connections.</span></span><br><span class="line"><span class="comment"># increase this if you need to handle more clients</span></span><br><span class="line"><span class="comment">#maxClientCnxns=60</span></span><br><span class="line"><span class="comment"># Be sure to read the maintenance section of the </span></span><br><span class="line"><span class="comment"># administrator guide before turning on autopurge.</span></span><br><span class="line"><span class="comment"># http://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_maintenance</span></span><br><span class="line"><span class="comment"># The number of snapshots to retain in dataDir</span></span><br><span class="line"><span class="comment">#autopurge.snapRetainCount=3</span></span><br><span class="line"><span class="comment"># Purge task interval in hours</span></span><br><span class="line"><span class="comment"># Set to "0" to disable auto purge feature</span></span><br><span class="line"><span class="comment">#autopurge.purgeInterval=1</span></span><br><span class="line"><span class="comment">## Metrics Providers</span></span><br><span class="line"><span class="comment"># https://prometheus.io Metrics Exporter</span></span><br><span class="line"><span class="comment">#metricsProvider.className=org.apache.zookeeper.metrics.prometheus.PrometheusMetricsProvider</span></span><br><span class="line"><span class="comment">#metricsProvider.httpPort=7000</span></span><br><span class="line"><span class="comment">#metricsProvider.exportJvmInfo=true</span></span><br><span class="line">server.1=zk01:2888:3888</span><br><span class="line">server.2=zk02:2888:3888</span><br><span class="line">server.3=zk03:2888:3888</span><br></pre></td></tr></table></figure>
-<p>###6、现在已经配置好一台，其它两台可以直接复制过去（注：事先要做好免密登陆）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scp -r /usr/<span class="built_in">local</span>/zookeeper zk02:/usr/<span class="built_in">local</span>/</span><br><span class="line">scp -r /usr/<span class="built_in">local</span>/zookeeper zk03:/usr/<span class="built_in">local</span>/</span><br></pre></td></tr></table></figure>
-<p>###7、启动zookeeper服务（每台服务器都要执行）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/zookeeper/bin/zkServer.sh start</span><br><span class="line">出现以下代表为启动成功</span><br><span class="line">[root@ch03 ~]<span class="comment"># /usr/local/zookeeper/bin/zkServer.sh stop</span></span><br><span class="line">/usr/bin/java</span><br><span class="line">ZooKeeper JMX enabled by default</span><br><span class="line">Using config: /usr/<span class="built_in">local</span>/zookeeper/bin/../conf/zoo.cfg</span><br><span class="line">Stopping zookeeper ... STOPPED</span><br></pre></td></tr></table></figure>
-<p>###8、查看zookeeper自身的身份可用以下命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@ch03 ~]<span class="comment"># /usr/local/zookeeper/bin/zkServer.sh status</span></span><br><span class="line">/usr/bin/java</span><br><span class="line">ZooKeeper JMX enabled by default</span><br><span class="line">Using config: /usr/<span class="built_in">local</span>/zookeeper/bin/../conf/zoo.cfg</span><br><span class="line">Client port found: 2181. Client address: localhost.</span><br><span class="line">Mode: follower</span><br></pre></td></tr></table></figure>
-<p>###9、登陆到zookeeper</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/zookeeper/bin/zkCli.sh -server</span><br></pre></td></tr></table></figure>
+<p>###1、docker-compose简介<br>Compose是用于定义和运行多容器Docker应用程序的工具。通过Compose，您可以使用YAML文件来配置应用程序的服务。然后，使用一个命令，就可以从配置中创建并启动所有服务。<br>###2、docker-compose三步过程<br>1.定义应用环境<br>2.定义应用程序服务<br>3.Run docker-compose up and compose启动运行整个应用程序<br>###3、docker-compose安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L <span class="string">"https://github.com/docker/compose/releases/download/1.26.0/docker-compose-<span class="variable">$(uname -s)</span>-<span class="variable">$(uname -m)</span>"</span> -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<p>###4、增加执行权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line">sudo ln -s /usr/<span class="built_in">local</span>/bin/docker-compose /usr/<span class="built_in">local</span>/docker-compose</span><br></pre></td></tr></table></figure>
+<p>###5、查看docker-compose版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@<span class="built_in">test</span> ~]<span class="comment"># docker-compose --version</span></span><br><span class="line">docker-compose version 1.26.0-rc3, build 46118bc5</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -450,7 +438,7 @@
       
         <div class="post-tags">
           
-            <a href="/rz168.io/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+            <a href="/rz168.io/tags/docker/" rel="tag"><i class="fa fa-tag"></i> docker</a>
           
         </div>
       
@@ -463,8 +451,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/rz168.io/2020/05/21/Dnsmasq-%E7%AE%80%E5%8D%95%E6%90%AD%E5%BB%BA/" rel="next" title="Dnsmasq-简单搭建">
-                <i class="fa fa-chevron-left"></i> Dnsmasq-简单搭建
+              <a href="/rz168.io/2020/06/22/zookeeper-%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" rel="next" title="zookeeper-集群搭建">
+                <i class="fa fa-chevron-left"></i> zookeeper-集群搭建
               </a>
             
           </div>
@@ -472,10 +460,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/rz168.io/2020/06/22/%E5%AE%89%E8%A3%85docker-compose/" rel="prev" title="安装docker-compose">
-                安装docker-compose <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
