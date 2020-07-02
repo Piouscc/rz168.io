@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>修改docker默认存储目录</title>
+      <link href="/rz168.io/2020/07/02/%E4%BF%AE%E6%94%B9docker%E9%BB%98%E8%AE%A4%E5%AD%98%E5%82%A8%E7%9B%AE%E5%BD%95/"/>
+      <url>/rz168.io/2020/07/02/%E4%BF%AE%E6%94%B9docker%E9%BB%98%E8%AE%A4%E5%AD%98%E5%82%A8%E7%9B%AE%E5%BD%95/</url>
+      
+        <content type="html"><![CDATA[<p>修改docker默认存储目录</p><a id="more"></a><p>修改原docker存储目录/var/lib/docker<br>1.先停止在运行的容器，停docker服务</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker stop $(docker ps | awk &#39;&#123;print $1&#125;&#39; |sed &#39;1d&#39;)</span><br><span class="line">systemctl stop docker</span><br><span class="line">&#96;&#96;&#96;bash</span><br><span class="line">2.移动docker原文件到新目录,一定要保留原权限</span><br></pre></td></tr></table></figure><p>mv /var/lib/docker /data/<br>或者<br>rsync -a /var/lib/docker /data/</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3.编辑docker配置文件</span><br></pre></td></tr></table></figure><p>vi /etc/docker/daemon.json<br>{<br>  “graph”:”/data/docker”,<br>  “registry-mirrors”: [“<a href="http://hub-mirror.c.163.com&quot;]">http://hub-mirror.c.163.com&quot;]</a><br>}</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4.重启docker服务</span><br></pre></td></tr></table></figure><p>systemctl daemon-reload<br>systemctl start docker.service</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5.启动容器</span><br></pre></td></tr></table></figure><p>docker start $(docker ps -a| awk ‘{print $1}’ |sed ‘1d’)<br>docker ps<br>```bash</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>安装docker-compose</title>
       <link href="/rz168.io/2020/06/22/%E5%AE%89%E8%A3%85docker-compose/"/>
       <url>/rz168.io/2020/06/22/%E5%AE%89%E8%A3%85docker-compose/</url>
