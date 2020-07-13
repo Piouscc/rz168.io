@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="linux,zabbix," />
+  <meta name="keywords" content="linux,shell," />
 
 
 
@@ -88,17 +88,17 @@
 
 
 
-<meta name="description" content="Zabbix安装篇">
+<meta name="description" content="openssh-7.4脚本安装">
 <meta property="og:type" content="article">
-<meta property="og:title" content="zabbix-4.2.3-安装">
-<meta property="og:url" content="https://github.com/Piouscc/rz168.io.git/2020/05/20/zabbix-4-2-3-%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:title" content="openssh-7.4脚本安装">
+<meta property="og:url" content="https://github.com/Piouscc/rz168.io.git/2020/07/13/openssh-7-4%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/index.html">
 <meta property="og:site_name" content="Lucky、boy">
-<meta property="og:description" content="Zabbix安装篇">
-<meta property="article:published_time" content="2020-05-20T06:02:09.000Z">
-<meta property="article:modified_time" content="2020-05-20T13:28:39.700Z">
+<meta property="og:description" content="openssh-7.4脚本安装">
+<meta property="article:published_time" content="2020-07-13T08:05:59.000Z">
+<meta property="article:modified_time" content="2020-07-13T08:10:44.259Z">
 <meta property="article:author" content="Lucky、boy">
 <meta property="article:tag" content="linux">
-<meta property="article:tag" content="zabbix">
+<meta property="article:tag" content="shell">
 <meta name="twitter:card" content="summary">
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/Piouscc/rz168.io.git/2020/05/20/zabbix-4-2-3-安装/"/>
+  <link rel="canonical" href="https://github.com/Piouscc/rz168.io.git/2020/07/13/openssh-7-4脚本安装/"/>
 
 
 
 
 
-  <title>zabbix-4.2.3-安装 | Lucky、boy</title>
+  <title>openssh-7.4脚本安装 | Lucky、boy</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/Piouscc/rz168.io.git/rz168.io/2020/05/20/zabbix-4-2-3-%E5%AE%89%E8%A3%85/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Piouscc/rz168.io.git/rz168.io/2020/07/13/openssh-7-4%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lucky、boy">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">zabbix-4.2.3-安装</h1>
+          <h1 class="post-title" itemprop="name headline">openssh-7.4脚本安装</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-20T14:02:09+08:00">
-                2020-05-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-13T16:05:59+08:00">
+                2020-07-13
               </time>
             
 
@@ -363,7 +363,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  869
+                  207
                 </span>
               
 
@@ -379,7 +379,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  1
                 </span>
               
             </div>
@@ -400,28 +400,10 @@
       
 
       
-        <p>Zabbix安装篇</p>
+        <p>openssh-7.4脚本安装</p>
 <a id="more"></a>
-<p>1.1 背景：<br>    线上业务至关重要，为了保证业务正常运行及遇到突然情况得以告知运维人员，下面将进行简单的监控软件zabix安装，当然除了还有其它的监控软件。<br>1.2 监控软件的介绍：<br>    cacti、nagios、zabbix、smokeping、open-falcon等等<br>    cacti、smokeping偏向于基础监控，成图非常漂亮<br>    cacti、nagios、zabbix服务端监控中心，需要php环境支持，其中zabbix和cacti都需要mysql作为数据存储，            nagios不用存储历史数据，注重服务或者监控项的状态，zabbix会获取服务或者监控项目的数据，会把数据记录到数据库里，从而可以成图<br>       open-falcon为小米公司开发，开源后受到诸多大公司和运维工程师的追捧，适合大企业，滴滴、360、新浪微博、京东等大公司在使用这款监控软件,但后续以介绍zabbix为主<br>1.3 zabbix的安装<br>    现在我服务器上已经编译安装好了LNMP环境，如果没有可以执行下面的命令进行安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y make mariadb-server mariadb httpd php mysql-devel gcc net-snmp-devel curl-devel perl-DBI php-gd php-mysql php-bcmath php-mbstring php-xml unixODBC-devel OpenIPMI-devel libxml2-devel libevent-devel libevent  php-gd php-LDAP php-ldap php-xmlreader php-xmlwriter mysql-devel net-snmp-devel</span><br></pre></td></tr></table></figure>
-<p> 1.4 新建一个zabbix账户并创建数据库赋予zabbix权限（下面命令为免登陆远程创建，可以对应修改）<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  useradd zabbix -s /sbin/nologin</span><br><span class="line">	mysql -e <span class="string">"create database zabbix character set utf8 collate utf8_bin;"</span></span><br><span class="line">mysql -e <span class="string">"grant all on zabbix.* to zabbix@localhost identified by 'zabbix';"</span></span><br><span class="line">mysql -e <span class="string">"flush privileges;"</span></span><br></pre></td></tr></table></figure><br> 1.5 下载zabbix，并且导入数据库，我这原有最新版zabbix4.2.3所以还是直接使用，若有需要可以到官网下载其它版本也可。<br>(下载URL:<a href="https://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/4.2.3/zabbix-4.2.3.tar.gz" target="_blank" rel="noopener">https://sourceforge.net/projects/zabbix/files/ZABBIX%20Latest%20Stable/4.2.3/zabbix-4.2.3.tar.gz</a>)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src</span><br><span class="line"> 	tar -xvf zabbix-4.2.3.tar.gz</span><br><span class="line"> 	<span class="built_in">cd</span> zabbix-4.2.3/database/mysql</span><br><span class="line">	 mysql -uzabbix -pzabbix zabbix &lt; schema.sql</span><br><span class="line"> 	mysql -uzabbix -pzabbix zabbix &lt; images.sql</span><br><span class="line"> 	mysql -uzabbix -pzabbix zabbix &lt; data.sql</span><br></pre></td></tr></table></figure>
-<p>1.6 编译安装zabbix_server，如果提示错误，就对应yum安装插件包再重新编译</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./configure --<span class="built_in">enable</span>-server --<span class="built_in">enable</span>-agent --with-gettext --with-mysql --with-net-snmp --with-libcurl --with-libxml2 --with-openipmi --with-unixodbc --prefix=/usr/<span class="built_in">local</span>/zabbix</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-<p>1.7 编辑httpd.conf文件，使其支持php</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DirectoryIndex index.html index.php</span><br></pre></td></tr></table></figure>
-<p>1.8 修改zabbix_server的配置文件，对应的数据库账号密码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  DBName=zabbix</span><br><span class="line">DBUser=zabbix</span><br><span class="line">DBPassword=zabbix</span><br></pre></td></tr></table></figure>
-<p>1.9 复制启动脚本，并进行对应修改加上执行权限</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  cp misc/init.d/fedora/core5/zabbix_server /etc/init.d/</span><br><span class="line">  cp misc/init.d/fedora/core5/zabbix_agentd /etc/init.d/</span><br><span class="line">vim /etc/init.d/zabbix_server</span><br><span class="line">  ZABBIX_BIN=<span class="string">"/usr/local/sbin/zabbix_server"</span>--&gt;ZABBIX_BIN=<span class="string">"/usr/local/zabbix/sbin/zabbix_server"</span></span><br><span class="line">  vim /etc/init.d/zabbix_agentd</span><br><span class="line">  ZABBIX_BIN=<span class="string">"/usr/local/sbin/zabbix_agentd"</span>--&gt;ZABBIX_BIN=<span class="string">"/usr/local/zabbix/sbin/zabbix_agentd"</span></span><br><span class="line">  chmod +x /etc/init.d/zabbix*</span><br></pre></td></tr></table></figure>
-<p>1.10 启动服务端和客户端</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/zabbix_server</span><br><span class="line">/etc/init.d/zabbix_agentd</span><br></pre></td></tr></table></figure>
-<p>1.11 修改php.ini文件支持大小，不然web会容易报错</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/php.ini </span><br><span class="line">max_execution_time = 300</span><br><span class="line">max_input_time = 300</span><br><span class="line">date.timezone =Asia/Shanghai</span><br><span class="line">post_max_size = 32M</span><br></pre></td></tr></table></figure>
-<p>1.12 复制zabbix的php项目到web的目录下，并且赋予用户权限</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp -rf php /var/www/html/zabbix</span><br><span class="line">chown zabbix:zabbix -R /var/www/html/zabbix</span><br></pre></td></tr></table></figure>
-<p>1.13 访问web页面在浏览器上输入：<a href="http://IP/zabbix" target="_blank" rel="noopener">http://IP/zabbix</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> 	--&gt;默认下一步</span><br><span class="line">--&gt;插件检测页面，若有不通过的，直接yum，或者百度，下一步</span><br><span class="line">--&gt;配置数据库，按照实际修改</span><br><span class="line">--&gt;配置zabbix_server，默认或者实际修改</span><br><span class="line">--&gt;install完，默认的账号密码为Admin/zabbix</span><br></pre></td></tr></table></figure>
+<p>在centos-6.x系统版本下在openssh都是5.3，所以在安装在其它软件或者执行一些命令的时候，<br>都会显示不支持或者其它错误，那么下面就是升级openssh脚本。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">yum -y install gcc gcc-c++ telnet-server* pam-devel zlib-devel openssl openssl-devel</span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src</span><br><span class="line">wget http://down.i.my71.com/openssh-7.4p1.tar.gz</span><br><span class="line"></span><br><span class="line">tar -xvf openssh-7.4p1.tar.gz &amp;&amp; <span class="built_in">cd</span> openssh-7.4p1</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/openssh --sysconfdir=/etc/ssh --with-pam --with-md5-passwords --mandir=/usr/share/man</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">/etc/init.d/sshd stop</span><br><span class="line">\cp -f /usr/<span class="built_in">local</span>/src/openssh-7.4p1/contrib/redhat/sshd.init /etc/init.d/sshd</span><br><span class="line">chmod u+x /etc/init.d/sshd</span><br><span class="line">\cp -f /usr/<span class="built_in">local</span>/openssh/sbin/sshd /usr/sbin/sshd</span><br><span class="line">\cp -f /usr/<span class="built_in">local</span>/openssh/bin/ssh-keygen /usr/bin/ssh-keygen</span><br><span class="line">sed -i <span class="string">'s/GSSAPIAuthentication yes/#GSSAPIAuthentication yes/g'</span> /etc/ssh/sshd_config</span><br><span class="line">sed -i <span class="string">'s/GSSAPICleanupCredentials yes/#GSSAPICleanupCredentials yes/g'</span> /etc/ssh/sshd_config</span><br><span class="line">sed -i <span class="string">'s/UsePAM yes/#UsePAM yes/g'</span> /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -455,7 +437,7 @@
           
             <a href="/rz168.io/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
           
-            <a href="/rz168.io/tags/zabbix/" rel="tag"><i class="fa fa-tag"></i> zabbix</a>
+            <a href="/rz168.io/tags/shell/" rel="tag"><i class="fa fa-tag"></i> shell</a>
           
         </div>
       
@@ -468,8 +450,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/rz168.io/2020/05/19/ClickHouse-server-%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2/" rel="next" title="ClickHouse-server-集群部署">
-                <i class="fa fa-chevron-left"></i> ClickHouse-server-集群部署
+              <a href="/rz168.io/2020/07/09/Docker-compose%E4%B9%8BJenkins%E5%AE%89%E8%A3%85/" rel="next" title="Docker-compose之Jenkins安装">
+                <i class="fa fa-chevron-left"></i> Docker-compose之Jenkins安装
               </a>
             
           </div>
@@ -477,10 +459,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/rz168.io/2020/05/21/Dnsmasq-%E7%AE%80%E5%8D%95%E6%90%AD%E5%BB%BA/" rel="prev" title="Dnsmasq-简单搭建">
-                Dnsmasq-简单搭建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

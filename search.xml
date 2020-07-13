@@ -290,4 +290,16 @@
         <tag>docker</tag>
       </tags>
   </entry>
+  <entry>
+    <title>openssh-7.4脚本安装</title>
+    <url>/rz168.io/2020/07/13/openssh-7-4%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<p>openssh-7.4脚本安装</p>
+<a id="more"></a>
+<p>在centos-6.x系统版本下在openssh都是5.3，所以在安装在其它软件或者执行一些命令的时候，<br>都会显示不支持或者其它错误，那么下面就是升级openssh脚本。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">yum -y install gcc gcc-c++ telnet-server* pam-devel zlib-devel openssl openssl-devel</span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src</span><br><span class="line">wget http://down.i.my71.com/openssh-7.4p1.tar.gz</span><br><span class="line"></span><br><span class="line">tar -xvf openssh-7.4p1.tar.gz &amp;&amp; <span class="built_in">cd</span> openssh-7.4p1</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/openssh --sysconfdir=/etc/ssh --with-pam --with-md5-passwords --mandir=/usr/share/man</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">/etc/init.d/sshd stop</span><br><span class="line">\cp -f /usr/<span class="built_in">local</span>/src/openssh-7.4p1/contrib/redhat/sshd.init /etc/init.d/sshd</span><br><span class="line">chmod u+x /etc/init.d/sshd</span><br><span class="line">\cp -f /usr/<span class="built_in">local</span>/openssh/sbin/sshd /usr/sbin/sshd</span><br><span class="line">\cp -f /usr/<span class="built_in">local</span>/openssh/bin/ssh-keygen /usr/bin/ssh-keygen</span><br><span class="line">sed -i <span class="string">'s/GSSAPIAuthentication yes/#GSSAPIAuthentication yes/g'</span> /etc/ssh/sshd_config</span><br><span class="line">sed -i <span class="string">'s/GSSAPICleanupCredentials yes/#GSSAPICleanupCredentials yes/g'</span> /etc/ssh/sshd_config</span><br><span class="line">sed -i <span class="string">'s/UsePAM yes/#UsePAM yes/g'</span> /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>linux</tag>
+        <tag>shell</tag>
+      </tags>
+  </entry>
 </search>

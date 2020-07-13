@@ -6,7 +6,7 @@
   <link href="/rz168.io/atom.xml" rel="self"/>
   
   <link href="https://github.com/Piouscc/rz168.io.git/"/>
-  <updated>2020-07-10T07:07:44.735Z</updated>
+  <updated>2020-07-13T08:10:44.259Z</updated>
   <id>https://github.com/Piouscc/rz168.io.git/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>openssh-7.4脚本安装</title>
+    <link href="https://github.com/Piouscc/rz168.io.git/2020/07/13/openssh-7-4%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/"/>
+    <id>https://github.com/Piouscc/rz168.io.git/2020/07/13/openssh-7-4%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/</id>
+    <published>2020-07-13T08:05:59.000Z</published>
+    <updated>2020-07-13T08:10:44.259Z</updated>
+    
+    <content type="html"><![CDATA[<p>openssh-7.4脚本安装</p><a id="more"></a><p>在centos-6.x系统版本下在openssh都是5.3，所以在安装在其它软件或者执行一些命令的时候，<br>都会显示不支持或者其它错误，那么下面就是升级openssh脚本。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">yum -y install gcc gcc-c++ telnet-server* pam-devel zlib-devel openssl openssl-devel</span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src</span><br><span class="line">wget http://down.i.my71.com/openssh-7.4p1.tar.gz</span><br><span class="line"></span><br><span class="line">tar -xvf openssh-7.4p1.tar.gz &amp;&amp; <span class="built_in">cd</span> openssh-7.4p1</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/openssh --sysconfdir=/etc/ssh --with-pam --with-md5-passwords --mandir=/usr/share/man</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">/etc/init.d/sshd stop</span><br><span class="line">\cp -f /usr/<span class="built_in">local</span>/src/openssh-7.4p1/contrib/redhat/sshd.init /etc/init.d/sshd</span><br><span class="line">chmod u+x /etc/init.d/sshd</span><br><span class="line">\cp -f /usr/<span class="built_in">local</span>/openssh/sbin/sshd /usr/sbin/sshd</span><br><span class="line">\cp -f /usr/<span class="built_in">local</span>/openssh/bin/ssh-keygen /usr/bin/ssh-keygen</span><br><span class="line">sed -i <span class="string">'s/GSSAPIAuthentication yes/#GSSAPIAuthentication yes/g'</span> /etc/ssh/sshd_config</span><br><span class="line">sed -i <span class="string">'s/GSSAPICleanupCredentials yes/#GSSAPICleanupCredentials yes/g'</span> /etc/ssh/sshd_config</span><br><span class="line">sed -i <span class="string">'s/UsePAM yes/#UsePAM yes/g'</span> /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;openssh-7.4脚本安装&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="linux" scheme="https://github.com/Piouscc/rz168.io.git/tags/linux/"/>
+    
+      <category term="shell" scheme="https://github.com/Piouscc/rz168.io.git/tags/shell/"/>
+    
+  </entry>
   
   <entry>
     <title>Docker-compose之Jenkins安装</title>
