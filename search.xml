@@ -138,7 +138,7 @@
     <url>/rz168.io/2020/07/14/showdoc-%E5%AE%89%E8%A3%85%E7%AF%87/</url>
     <content><![CDATA[<p>Showdoc-技术文档安装，备份，迁移</p>
 <a id="more"></a>
-<p>记录一下Showdoc的迁移部署~<br>1、Showdoc是何物？<br>引用官网：<br>    每当接手一个他人开发好的模块或者项目，看着那些没有写注释的代码，我们都无比抓狂。文档呢？！文档呢？！<br>    Show me the doc ！！</p>
+<p>记录一下Showdoc的安装迁移部署，注：showdoc使用的是Markdown语法~<br>1、Showdoc是何物？<br>引用官网：<br>    每当接手一个他人开发好的模块或者项目，看着那些没有写注释的代码，我们都无比抓狂。文档呢？！文档呢？！<br>    Show me the doc ！！</p>
 <p>2、Showdoc安装方式</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker安装</span><br><span class="line">php安装，注这里的php版本需要5.3及以上，同时需要开启php-gd php-sqlite扩展</span><br></pre></td></tr></table></figure>
 
