@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="linux,DB," />
+  <meta name="keywords" content="docker," />
 
 
 
@@ -88,17 +88,16 @@
 
 
 
-<meta name="description" content="MongoDB-入门篇">
+<meta name="description" content="记一次Docker-network问题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MongoDB-入门篇">
-<meta property="og:url" content="https://github.com/Piouscc/rz168.io.git/2020/07/23/MongoDB-%E5%85%A5%E9%97%A8%E7%AF%87/index.html">
+<meta property="og:title" content="Docker-network问题">
+<meta property="og:url" content="https://github.com/Piouscc/rz168.io.git/2020/07/29/Docker-network%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Lucky、boy">
-<meta property="og:description" content="MongoDB-入门篇">
-<meta property="article:published_time" content="2020-07-23T12:44:14.000Z">
-<meta property="article:modified_time" content="2020-07-23T13:03:24.513Z">
+<meta property="og:description" content="记一次Docker-network问题">
+<meta property="article:published_time" content="2020-07-29T10:16:24.000Z">
+<meta property="article:modified_time" content="2020-07-29T10:33:06.599Z">
 <meta property="article:author" content="Lucky、boy">
-<meta property="article:tag" content="linux">
-<meta property="article:tag" content="DB">
+<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
 
 
@@ -129,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/Piouscc/rz168.io.git/2020/07/23/MongoDB-入门篇/"/>
+  <link rel="canonical" href="https://github.com/Piouscc/rz168.io.git/2020/07/29/Docker-network问题/"/>
 
 
 
 
 
-  <title>MongoDB-入门篇 | Lucky、boy</title>
+  <title>Docker-network问题 | Lucky、boy</title>
   
 
 
@@ -297,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/Piouscc/rz168.io.git/rz168.io/2020/07/23/MongoDB-%E5%85%A5%E9%97%A8%E7%AF%87/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Piouscc/rz168.io.git/rz168.io/2020/07/29/Docker-network%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lucky、boy">
@@ -314,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MongoDB-入门篇</h1>
+          <h1 class="post-title" itemprop="name headline">Docker-network问题</h1>
         
 
         <div class="post-meta">
@@ -326,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-23T20:44:14+08:00">
-                2020-07-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-29T18:16:24+08:00">
+                2020-07-29
               </time>
             
 
@@ -363,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  803
+                  303
                 </span>
               
 
@@ -379,7 +378,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  1
                 </span>
               
             </div>
@@ -400,18 +399,15 @@
       
 
       
-        <p>MongoDB-入门篇<br> <a id="more"></a><br>由于最近得出空闲时间，整理一下笔记……</p>
-<p>1、Mongodb简介<br>MongoDB 是一个基于分布式文件存储的数据库。由 C++ 语言编写。旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。<br>MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的分布式文件存储的开源数据库系统。</p>
-<p>2、Mongodb安装<br>由于把安装步骤写成了shell脚本，这就直接略过，若有需要的直接访问下面的链接进行了解，安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>3、启动与关闭Mongodb</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongod -f /usr/<span class="built_in">local</span>/mongodb-4.2.8/bin/mongodb.conf</span><br><span class="line">mongod --shutdown --dbpath=/data/mongodb/Data/  <span class="comment">#这里指定目录的原因是因为配置文件里有写，所以指定会比较好</span></span><br></pre></td></tr></table></figure>
-<p>4、当我们启动了MongoDB,尝试链接</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]</span><br><span class="line">参数介绍：</span><br><span class="line">    mongodb:// 这是固定的格式，必须要指定。</span><br><span class="line">    username:password@ 可选项，如果设置，在连接数据库服务器之后，驱动都会尝试登陆这个数据库</span><br><span class="line">    host1 必须的指定至少一个host, host1 是这个URI唯一要填写的。它指定了要连接服务器的地址。如果要连接复制集，请指定多个主机地址。</span><br><span class="line">    portX 可选的指定端口，如果不填，默认为27017</span><br><span class="line">    /database 如果指定username:password@，连接并验证登陆指定数据库。若不指定，默认打开 <span class="built_in">test</span> 数据库。</span><br><span class="line">    ?options 是连接选项。如果不使用/database，则前面需要加上/。所有连接选项都是键值对name=value，键值对之间通过&amp;或;（分号）隔开</span><br></pre></td></tr></table></figure>
-<p>5、我们知道数据都是很重要的，接下来我们就会说到备份与恢复</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#备份</span></span><br><span class="line">mongodump -h dbhost -d dbname -o bak_path</span><br><span class="line"></span><br><span class="line">    -h:表示登陆ip，如：127.0.0.1，加端口的方式为：127.0.0.1:27017</span><br><span class="line">    -d:需要备份的数据库</span><br><span class="line">    -o:备份的路径</span><br><span class="line"></span><br><span class="line">若不指定数据库，则命令如下：</span><br><span class="line">mongodump -h dbhost -o bak_path</span><br><span class="line"></span><br><span class="line"><span class="comment">#恢复</span></span><br><span class="line">mongodb恢复数据也比较简单，命令如下：</span><br><span class="line"><span class="comment">#指定恢复某个库</span></span><br><span class="line">mongorestore -h &lt;hostname&gt;&lt;:port&gt; -d dbname &lt;path&gt;</span><br><span class="line"><span class="comment">#恢复所有库</span></span><br><span class="line">mongorestore -h &lt;hostname&gt;&lt;:port&gt; &lt;path&gt;</span><br></pre></td></tr></table></figure>
-<p>6、对于一名运维同事来说，监控也是很重要的，因此MongoDB也自带了一定的监控</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">MongoDB中提供了mongostat 和 mongotop 两个命令来监控MongoDB的运行情况</span><br><span class="line">直接进行安装目录运行相应命令即可</span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/mongodb…/bin</span><br><span class="line">mongotop</span><br><span class="line">mongostat</span><br><span class="line">其中还能通此命令（mongotop --locks）得出每个数据库的锁的情况</span><br><span class="line">图略</span><br><span class="line">字段解释如下：</span><br><span class="line">    ns：</span><br><span class="line">        包含数据库命名空间，后者结合了数据库名称和集合。</span><br><span class="line">    db：</span><br><span class="line">        包含数据库的名称。名为 . 的数据库针对全局锁定，而非特定数据库。</span><br><span class="line">    total：</span><br><span class="line">        mongod花费的时间工作在这个命名空间提供总额。</span><br><span class="line">    <span class="built_in">read</span>：</span><br><span class="line">        提供了大量的时间，这mongod花费在执行读操作，在此命名空间。</span><br><span class="line">    write：</span><br><span class="line">        提供这个命名空间进行写操作，这mongod花了大量的时间。</span><br></pre></td></tr></table></figure>
+        <p>记一次Docker-network问题<br> <a id="more"></a><br>由于测试环境是用docker-compose，yml如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">version: <span class="string">"3"</span></span><br><span class="line">services:</span><br><span class="line">    mariadb:</span><br><span class="line">        image: mariadb</span><br><span class="line">        ports:</span><br><span class="line">          - xxxx:3306</span><br><span class="line">        volumes:</span><br><span class="line">            - ./conf/db/utf8.cnf:/etc/mysql/conf.d/utf8.cnf</span><br><span class="line">            - ./conf/db/sql:/docker-entrypoint-initdb.d</span><br><span class="line">            - ./data/db/:/var/lib/mysql/*</span><br><span class="line">        networks:</span><br><span class="line">         - brenk</span><br><span class="line">        environment:</span><br><span class="line">          MYSQL_ROOT_PASSWORD: <span class="string">"123456"</span></span><br><span class="line">        container_name: xxxx_db</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">    brenk:</span><br></pre></td></tr></table></figure>
+<p>每跑一次发现都会生成一个自定义网络，由于Docker 默认支持 30 个不同的自定义 bridge 网络<br>如果超过这个限制，就会提示下面的错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR: could not find an available, non-overlapping IPv4 address pool among the defaults to assign to the network</span><br></pre></td></tr></table></figure>
+<p>可以使用命令docker network ls来查看你创建的网络，然后通过命令docker network prune来移除没有使用的网络。<br>但是这样问题很快就会重复出现，所以更倾向用下面这个方法处理这个问题<br>将所有的项目加入到同一个自定义网络当中以节省自定义网络的数量<br>在对应服务器上创建docker自定义网络</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create db-network --driver bridge</span><br></pre></td></tr></table></figure>
+<p>同时修改一下docker-compose.yml</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">version: <span class="string">"3"</span></span><br><span class="line">services:</span><br><span class="line">    mariadb:</span><br><span class="line">        image: mariadb</span><br><span class="line">        ports:</span><br><span class="line">          - xxxx:3306</span><br><span class="line">        volumes:</span><br><span class="line">            - ./conf/db/utf8.cnf:/etc/mysql/conf.d/utf8.cnf</span><br><span class="line">            - ./conf/db/sql:/docker-entrypoint-initdb.d</span><br><span class="line">            - ./data/db/:/var/lib/mysql/*</span><br><span class="line">        environment:</span><br><span class="line">          MYSQL_ROOT_PASSWORD: <span class="string">"123456"</span></span><br><span class="line">        container_name: xxxx_db</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line"> default:</span><br><span class="line">  external:</span><br><span class="line">   name: db-network</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -436,12 +432,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/rz168.io/2020/07/23/MongoDB-%E5%85%A5%E9%97%A8%E7%AF%87/">MongoDB-入门篇</a></p>
+  <p><span>本文标题:</span><a href="/rz168.io/2020/07/29/Docker-network%E9%97%AE%E9%A2%98/">Docker-network问题</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Lucky、boy 的个人博客">Lucky、boy</a></p>
-  <p><span>发布时间:</span>2020年07月23日 - 20:07</p>
-  <p><span>最后更新:</span>2020年07月23日 - 21:07</p>
-  <p><span>原始链接:</span><a href="/rz168.io/2020/07/23/MongoDB-%E5%85%A5%E9%97%A8%E7%AF%87/" title="MongoDB-入门篇">https://github.com/Piouscc/rz168.io.git/2020/07/23/MongoDB-%E5%85%A5%E9%97%A8%E7%AF%87/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2020/07/23/MongoDB-%E5%85%A5%E9%97%A8%E7%AF%87/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2020年07月29日 - 18:07</p>
+  <p><span>最后更新:</span>2020年07月29日 - 18:07</p>
+  <p><span>原始链接:</span><a href="/rz168.io/2020/07/29/Docker-network%E9%97%AE%E9%A2%98/" title="Docker-network问题">https://github.com/Piouscc/rz168.io.git/2020/07/29/Docker-network%E9%97%AE%E9%A2%98/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2020/07/29/Docker-network%E9%97%AE%E9%A2%98/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -472,9 +468,7 @@
       
         <div class="post-tags">
           
-            <a href="/rz168.io/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
-          
-            <a href="/rz168.io/tags/DB/" rel="tag"><i class="fa fa-tag"></i> DB</a>
+            <a href="/rz168.io/tags/docker/" rel="tag"><i class="fa fa-tag"></i> docker</a>
           
         </div>
       
@@ -487,8 +481,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/rz168.io/2020/07/23/MongoDB-install/" rel="next" title="MongoDB-4.2.8安装脚本">
-                <i class="fa fa-chevron-left"></i> MongoDB-4.2.8安装脚本
+              <a href="/rz168.io/2020/07/27/mongodb%E5%89%AF%E6%9C%AC%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" rel="next" title="mongodb副本集群搭建">
+                <i class="fa fa-chevron-left"></i> mongodb副本集群搭建
               </a>
             
           </div>
@@ -496,10 +490,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/rz168.io/2020/07/27/mongodb%E5%89%AF%E6%9C%AC%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" rel="prev" title="mongodb副本集群搭建">
-                mongodb副本集群搭建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

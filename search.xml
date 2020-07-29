@@ -392,4 +392,20 @@
         <tag>DB</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Docker-network问题</title>
+    <url>/rz168.io/2020/07/29/Docker-network%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>记一次Docker-network问题<br> <a id="more"></a><br>由于测试环境是用docker-compose，yml如下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">version: <span class="string">"3"</span></span><br><span class="line">services:</span><br><span class="line">    mariadb:</span><br><span class="line">        image: mariadb</span><br><span class="line">        ports:</span><br><span class="line">          - xxxx:3306</span><br><span class="line">        volumes:</span><br><span class="line">            - ./conf/db/utf8.cnf:/etc/mysql/conf.d/utf8.cnf</span><br><span class="line">            - ./conf/db/sql:/docker-entrypoint-initdb.d</span><br><span class="line">            - ./data/db/:/var/lib/mysql/*</span><br><span class="line">        networks:</span><br><span class="line">         - brenk</span><br><span class="line">        environment:</span><br><span class="line">          MYSQL_ROOT_PASSWORD: <span class="string">"123456"</span></span><br><span class="line">        container_name: xxxx_db</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">    brenk:</span><br></pre></td></tr></table></figure>
+<p>每跑一次发现都会生成一个自定义网络，由于Docker 默认支持 30 个不同的自定义 bridge 网络<br>如果超过这个限制，就会提示下面的错误</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ERROR: could not find an available, non-overlapping IPv4 address pool among the defaults to assign to the network</span><br></pre></td></tr></table></figure>
+<p>可以使用命令docker network ls来查看你创建的网络，然后通过命令docker network prune来移除没有使用的网络。<br>但是这样问题很快就会重复出现，所以更倾向用下面这个方法处理这个问题<br>将所有的项目加入到同一个自定义网络当中以节省自定义网络的数量<br>在对应服务器上创建docker自定义网络</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker network create db-network --driver bridge</span><br></pre></td></tr></table></figure>
+<p>同时修改一下docker-compose.yml</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">version: <span class="string">"3"</span></span><br><span class="line">services:</span><br><span class="line">    mariadb:</span><br><span class="line">        image: mariadb</span><br><span class="line">        ports:</span><br><span class="line">          - xxxx:3306</span><br><span class="line">        volumes:</span><br><span class="line">            - ./conf/db/utf8.cnf:/etc/mysql/conf.d/utf8.cnf</span><br><span class="line">            - ./conf/db/sql:/docker-entrypoint-initdb.d</span><br><span class="line">            - ./data/db/:/var/lib/mysql/*</span><br><span class="line">        environment:</span><br><span class="line">          MYSQL_ROOT_PASSWORD: <span class="string">"123456"</span></span><br><span class="line">        container_name: xxxx_db</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line"> default:</span><br><span class="line">  external:</span><br><span class="line">   name: db-network</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
 </search>
