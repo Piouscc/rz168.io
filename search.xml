@@ -421,4 +421,25 @@
         <tag>DB</tag>
       </tags>
   </entry>
+  <entry>
+    <title>svn迁移</title>
+    <url>/rz168.io/2020/08/11/svn%E8%BF%81%E7%A7%BB/</url>
+    <content><![CDATA[<p>记——&gt;svn迁移</p>
+<a id="more"></a>
+<p>由于把主要项目从svn迁移到git，现在需要把剩一些次要的项目迁移到其它服务器上，则记之<br>迁移流程：<br>    1）临时免密（因为需要传输文件）<br>    2）新服务器需要提前安装svn，建议直接yum<br>1、新服务器安装svn</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y subversion</span><br></pre></td></tr></table></figure>
+<p>2、创建相关目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir -p /data/svn_dir</span><br></pre></td></tr></table></figure>
+<p>3、原服务器svn导出</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /data/svn_dir/</span><br><span class="line">svnadmin dump sdksvn/ &gt;sdksvn.dump</span><br></pre></td></tr></table></figure>
+<p>4、把导出来的文件传输到新服务器对应目录下（需要提前做好免密登陆）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">scp sdksvn.dump xxx.xxx.xxx.xxx:/data/svn_dir   <span class="comment">#此处xxx代表IP地址</span></span><br></pre></td></tr></table></figure>
+<p>5、恢复svn数据</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /data/svn_dir</span><br><span class="line">svnadmin load /data/svn_dir/sdksvn &lt; sdksvn.dump</span><br></pre></td></tr></table></figure>
+<p>6、启动svn服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">su svn -c <span class="string">"svnserve -d --listen-port 1167 -r /data/svn_dir/sdksvn/"</span>   <span class="comment">#指定端口的方式</span></span><br><span class="line">su svn -c <span class="string">"svnserve -d -r /data/svn_dir/sdksvn/"</span></span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
 </search>
