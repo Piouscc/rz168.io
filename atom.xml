@@ -209,9 +209,9 @@
     
     
     
-      <category term="docker" scheme="https://github.com/Piouscc/rz168.io.git/tags/docker/"/>
-    
       <category term="linux" scheme="https://github.com/Piouscc/rz168.io.git/tags/linux/"/>
+    
+      <category term="docker" scheme="https://github.com/Piouscc/rz168.io.git/tags/docker/"/>
     
   </entry>
   
@@ -295,9 +295,9 @@
     
     
     
-      <category term="docker" scheme="https://github.com/Piouscc/rz168.io.git/tags/docker/"/>
-    
       <category term="linux" scheme="https://github.com/Piouscc/rz168.io.git/tags/linux/"/>
+    
+      <category term="docker" scheme="https://github.com/Piouscc/rz168.io.git/tags/docker/"/>
     
   </entry>
   
@@ -410,9 +410,9 @@
     
     
     
-      <category term="docker" scheme="https://github.com/Piouscc/rz168.io.git/tags/docker/"/>
-    
       <category term="linux" scheme="https://github.com/Piouscc/rz168.io.git/tags/linux/"/>
+    
+      <category term="docker" scheme="https://github.com/Piouscc/rz168.io.git/tags/docker/"/>
     
   </entry>
   
