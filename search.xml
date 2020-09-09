@@ -162,7 +162,7 @@
   <entry>
     <title>docker-ce-安装</title>
     <url>/rz168.io/2020/05/15/docker-ce-%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<p>Docker-ce安装<br> <a id="more"></a><br>1、卸载docker旧版本相关<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum remove docker docker-client  docker-client-latest docker-common docker-latest \</span><br><span class="line">docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux  docker-engine</span><br></pre></td></tr></table></figure><br>2、安装新版docker源<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y yum-utils            device-mapper-persistent-data            lvm2</span><br><span class="line">yum-config-manager     --add-repo     https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure><br> 3、直接yum安装docker<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install docker-ce</span><br></pre></td></tr></table></figure><br> 启动docker<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start docker</span><br><span class="line">systemctl <span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure><br> 配置下载镜像加速registry-mirrors，为了避免硬盘被log占用log-driver、log-opts，导致空间不足，则加上log配置，更改docker存储位置graph编辑<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> vim /etc/docker/daemon.json</span><br><span class="line"> &#123;</span><br><span class="line">  <span class="string">"graph"</span>:<span class="string">"/data/docker"</span>,</span><br><span class="line">  <span class="string">"registry-mirrors"</span>: [<span class="string">"https://l6f3pp3g.mirror.aliyuncs.com"</span>],</span><br><span class="line">  <span class="string">"log-driver"</span>:<span class="string">"json-file"</span>,</span><br><span class="line">  <span class="string">"log-opts"</span>:&#123; <span class="string">"max-size"</span> :<span class="string">"100m"</span>,<span class="string">"max-file"</span>:<span class="string">"10"</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br> 刷新配置重启docker<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure></p>
+    <content><![CDATA[<p>Docker-ce安装<br> <a id="more"></a><br>1、卸载docker旧版本相关<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum remove docker docker-client  docker-client-latest docker-common docker-latest \</span><br><span class="line">docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux  docker-engine</span><br></pre></td></tr></table></figure><br>2、安装新版docker源<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y yum-utils            device-mapper-persistent-data            lvm2</span><br><span class="line">yum-config-manager     --add-repo     https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line"><span class="comment">#更改国内源</span></span><br><span class="line">sudo sed -i <span class="string">'s/download.docker.com/mirrors.ustc.edu.cn\/docker-ce/g'</span> /etc/yum.repos.d/docker-ce.repo</span><br></pre></td></tr></table></figure><br> 3、直接yum安装docker<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install docker-ce</span><br></pre></td></tr></table></figure><br> 启动docker<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start docker</span><br><span class="line">systemctl <span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure><br> 配置下载镜像加速registry-mirrors，为了避免硬盘被log占用log-driver、log-opts，导致空间不足，则加上log配置，更改docker存储位置graph编辑<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> vim /etc/docker/daemon.json</span><br><span class="line"> &#123;</span><br><span class="line">  <span class="string">"graph"</span>:<span class="string">"/data/docker"</span>,</span><br><span class="line">  <span class="string">"registry-mirrors"</span>: [<span class="string">"https://l6f3pp3g.mirror.aliyuncs.com"</span>],</span><br><span class="line">  <span class="string">"log-driver"</span>:<span class="string">"json-file"</span>,</span><br><span class="line">  <span class="string">"log-opts"</span>:&#123; <span class="string">"max-size"</span> :<span class="string">"100m"</span>,<span class="string">"max-file"</span>:<span class="string">"10"</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br> 刷新配置重启docker<br> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <tags>
         <tag>linux</tag>
@@ -440,6 +440,95 @@
 <p>5.启动容器</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker start $(docker ps -a| awk <span class="string">'&#123;print $1&#125;'</span> |sed <span class="string">'1d'</span>)</span><br><span class="line">docker ps</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Jumpserver安装</title>
+    <url>/rz168.io/2020/08/21/Jumpserver%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<p>Jumpserver安装<br> <a id="more"></a><br>1、Jumpserver总体介绍<br>JumpServer 是全球首款完全开源的堡垒机, 使用 GNU GPL v2.0 开源协议, 是符合 4A 的专业运维审计系统。<br>JumpServer 使用 Python / Django 进行开发, 遵循 Web 2.0 规范, 配备了业界领先的 Web Terminal 解决方案, 交互界面美观、用户体验好。<br>JumpServer 采纳分布式架构, 支持多机房跨区域部署, 中心节点提供 API, 各机房部署登录节点, 可横向扩展、无并发访问限制。<br>JumpServer 现已支持管理 SSH、 Telnet、 RDP、 VNC 协议资产。<br>2、引入<br>为了保证服务器安全，加个堡垒机，所有ssh连接都通过堡垒机来完成，堡垒机也需要有身份认证，授权，访问控制，审计等功能。<br>3、优点</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">开源: 零门槛，线上快速获取和安装；</span><br><span class="line">分布式: 轻松支持大规模并发访问；</span><br><span class="line">无插件: 仅需浏览器，极致的 Web Terminal 使用体验；</span><br><span class="line">多云支持: 一套系统，同时管理不同云上面的资产；</span><br><span class="line">云端存储: 审计录像云端存储，永不丢失；</span><br><span class="line">多租户: 一套系统，多个子公司和部门同时使用。</span><br></pre></td></tr></table></figure>
+<p>4、服务器配置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">硬件配置: 2个CPU核心, 4G 内存, 50G 硬盘（最低）</span><br><span class="line">操作系统: Linux 发行版 x86_64</span><br></pre></td></tr></table></figure>
+<p>5、部署，为了方便以及避免烦锁步骤，这里才用docker-compose的方式安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/jumpserver/Dockerfile.git</span><br><span class="line"><span class="built_in">cd</span> Dockerfile</span><br><span class="line">cat .env</span><br><span class="line">docker-compose up</span><br></pre></td></tr></table></figure>
+<p>6、更改对应密码以及端口等,根据自己实际更改即可</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@vm01 jump_dockerfile]<span class="comment"># vi  .env </span></span><br><span class="line"><span class="comment"># 版本号可以自己根据项目的版本修改</span></span><br><span class="line">Version=2.1.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># MySQL</span></span><br><span class="line">DB_HOST=mysql</span><br><span class="line">DB_PORT=3367</span><br><span class="line">DB_USER=jumpserver</span><br><span class="line">DB_PASSWORD=jumserver528</span><br><span class="line">DB_NAME=jumpserver</span><br><span class="line"></span><br><span class="line"><span class="comment"># Redis</span></span><br><span class="line">REDIS_HOST=redis</span><br><span class="line">REDIS_PORT=6379</span><br><span class="line">REDIS_PASSWORD=jumserver528</span><br><span class="line"></span><br><span class="line"><span class="comment"># Core</span></span><br><span class="line">SECRET_KEY=B3f2w8P2PfxIAS7s4UdffdYmSbtqX4vXdPUL217kL9XPUOWrmy</span><br><span class="line">BOOTSTRAP_TOKEN=7Q11Vz6RsdsBLAdO</span><br><span class="line"></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment"># SECRET_KEY 保护签名数据的密匙, 首次安装请一定要修改并牢记, 后续升级和迁移不可更改, 否则将导致加密的数据不可解密。</span></span><br><span class="line"><span class="comment"># BOOTSTRAP_TOKEN 为组件认证使用的密钥, 仅组件注册时使用。组件指 koko、guacamole</span></span><br></pre></td></tr></table></figure>
+<p>7、部署jumpserver,前提需要先安装docker-compose</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose -f docker-compose.yml up -d</span><br></pre></td></tr></table></figure>
+<p>8、查看容器</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@vm01 jump_dockerfile]<span class="comment"># docker ps</span></span><br><span class="line">CONTAINER ID        IMAGE                            COMMAND                  CREATED             STATUS              PORTS                     NAMES</span><br><span class="line">28de4d1c451b        jumpserver/jms_nginx:2.1.0       <span class="string">"nginx -g 'daemon of…"</span>   3 weeks ago         Up 3 weeks          0.0.0.0:80-&gt;80/tcp      jms_nginx</span><br><span class="line">aaf5d8c881f6        jumpserver/jms_guacamole:2.1.0   <span class="string">"./entrypoint.sh"</span>        3 weeks ago         Up 3 weeks                                    jms_guacamole</span><br><span class="line">071c62d5ff2b        jumpserver/jms_koko:2.1.0        <span class="string">"./entrypoint.sh"</span>        3 weeks ago         Up 3 weeks          0.0.0.0:2222-&gt;2222/tcp   jms_koko</span><br><span class="line">a5709a44b1d3        jumpserver/jms_core:2.1.0        <span class="string">"./entrypoint.sh"</span>        3 weeks ago         Up 3 weeks                                    jms_core</span><br><span class="line">85ad0f1d4ad1        jumpserver/jms_redis:2.1.0       <span class="string">"./entrypoint.sh"</span>        3 weeks ago         Up 3 weeks                                    jms_redis</span><br><span class="line">c83069aa41a9        jumpserver/jms_mysql:2.1.0       <span class="string">"./entrypoint.sh"</span>        3 weeks ago         Up 3 weeks                                    jms_mysql</span><br></pre></td></tr></table></figure>
+<p>9、进入jumpserver  web界面在浏览器上输入<a href="http://localhost,默认管理员账户" target="_blank" rel="noopener">http://localhost,默认管理员账户</a> admin 密码 admin</p>
+<img src="/rz168.io/2020/08/21/Jumpserver%E5%AE%89%E8%A3%85/jumpserver_01.png" class title="This is an jenkins image">
+<p>10、登陆成功后的界面</p>
+<img src="/rz168.io/2020/08/21/Jumpserver%E5%AE%89%E8%A3%85/jumpserver_02.png" class title="This is an jenkins image">
+<p>11、到此jumpserver的初始安装就完成了，下一篇将进入jumpserver的使用</p>
+]]></content>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Jumpserver日常使用</title>
+    <url>/rz168.io/2020/08/21/Jumpserver%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>Jumpserver日常使用</p>
+<a id="more"></a>
+<p>上一篇已经为大家简单介绍了Jumpserver的安装部署，下面就继续为大家介绍Jumpserver的日常使用<br>1、浏览器上输入Jumpserver对应的IP或域名，这边直接IP访问：<a href="http://192.168.0.32:8080,显示下面图片">http://192.168.0.32:8080,显示下面图片</a></p>
+<img src="/rz168.io/2020/08/21/Jumpserver%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/Jumpserver_01.png" class title="This is an jenkins image">
+<p>2、键入账号密码，因为是测试所以使用默认的admin，登陆成功的界面如下</p>
+<img src="/rz168.io/2020/08/21/Jumpserver%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/Jumpserver_02.png" class title="This is an jenkins image">
+<p>3、配置系统设置，如：基本设置、邮件设置以及安全设置，这里主要配置邮件设置，因为在创建用户的时候，会发邮件给用户去对应设置账号密码</p>
+<img src="/rz168.io/2020/08/21/Jumpserver%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/Jumpserver_03.png" class title="This is an jenkins image">
+<p>4、创建用户组及用户</p>
+<img src="/rz168.io/2020/08/21/Jumpserver%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/Jumpserver_04.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/08/21/Jumpserver%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/Jumpserver_05.png" class title="This is an jenkins image">
+<p>5、创建成功后，如果邮件及邮箱正确会收到如下邮件信息</p>
+<img src="/rz168.io/2020/08/21/Jumpserver%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/Jumpserver_06.png" class title="This is an jenkins image">
+<p>6、创建管理用户（资产管理————&gt;管理用户）</p>
+<img src="/rz168.io/2020/08/21/Jumpserver%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/Jumpserver_07.png" class title="This is an jenkins image">
+<p>7、创建系统用户（资产管理————&gt;系统用户），这里为了安全自动生成密钥</p>
+<img src="/rz168.io/2020/08/21/Jumpserver%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/Jumpserver_08.png" class title="This is an jenkins image">
+<p>8、添加资产即服务器（资产管理————&gt;资产列表）</p>
+<img src="/rz168.io/2020/08/21/Jumpserver%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/Jumpserver_09.png" class title="This is an jenkins image">
+<p>9、正常添加资产（服务器），会显示类似下面图，显示对应服务器配置</p>
+<img src="/rz168.io/2020/08/21/Jumpserver%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/Jumpserver_10.png" class title="This is an jenkins image">
+<p>10、同时可以在（作业中心————&gt;任务列表)看到对就操作记录</p>
+<img src="/rz168.io/2020/08/21/Jumpserver%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/Jumpserver_11.png" class title="This is an jenkins image">
+<p>11、对应用户资产授权（权限管理————&gt;资产授权），对应按需选择</p>
+<img src="/rz168.io/2020/08/21/Jumpserver%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/Jumpserver_12.png" class title="This is an jenkins image">
+<p>12、测试连接（会话管理————&gt;web终端），配置正确正常显示下方图，如果不是则看看授权管理是否配置正确</p>
+<img src="/rz168.io/2020/08/21/Jumpserver%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/Jumpserver_13.png" class title="This is an jenkins image">
+<p>13、到这里Jumpserver资产配置流程已经完成，日常使用也差不多如此，剩下的慢慢摸索吧！</p>
+]]></content>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker-swarm集群创建及简单部署服务</title>
+    <url>/rz168.io/2020/09/08/docker-swarm%E9%9B%86%E7%BE%A4%E5%88%9B%E5%BB%BA%E5%8F%8A%E7%AE%80%E5%8D%95%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1/</url>
+    <content><![CDATA[<p>Docker-swarm集群创建及简单部署服务<br> <a id="more"></a><br>1、基本概念<br>Docker Swarm 是 Docker 的集群管理工具。它将 Docker 主机池转变为单个虚拟 Docker 主机。 Docker Swarm 提供了标准的 Docker API，所有任何已经与 Docker 守护程序通信的工具都可以使用 Swarm 轻松地扩展到多个主机。<br>2、原理<br>如下图所示，swarm 集群由管理节点（manager）和工作节点（work node）构成。<br>swarm mananger：负责整个集群的管理工作包括集群配置、服务管理等所有跟集群有关的工作。<br>work node：即图中的 available node，主要负责运行相应的服务来执行任务（task）。</p>
+<img src="/rz168.io/2020/09/08/docker-swarm%E9%9B%86%E7%BE%A4%E5%88%9B%E5%BB%BA%E5%8F%8A%E7%AE%80%E5%8D%95%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1/docker_swarm.png" class title="This is an jenkins image">
+<p>3、服务器信息</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">| 配置信息 | hostname | IP |</span><br><span class="line">| 4C8G | vm01 | 192.168.0.32 |</span><br><span class="line">| 4C8G | vm02 | 192.168.0.16 |</span><br></pre></td></tr></table></figure>
+<p>4、初始化集群,注意初始化的前提是需要安装docker服务，提示下面内容，则证明集群初始化成功</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@vm01 ~]<span class="comment"># docker swarm init --advertise-addr 192.168.0.32</span></span><br><span class="line">Swarm initialized: current node (ohrz9nw5t5v1y1y7j765x1poj) is now a manager.</span><br><span class="line"></span><br><span class="line">To add a worker to this swarm, run the following <span class="built_in">command</span>:</span><br><span class="line"></span><br><span class="line">    docker swarm join --token SWMTKN-1-47cqr2h4jksb1ww877fjd5wohi5qoylftw3wc72rtuhp0az8sl-f087ypkdubuiad5ewlstubaaz 192.168.0.32:2377</span><br><span class="line"></span><br><span class="line">To add a manager to this swarm, run <span class="string">'docker swarm join-token manager'</span> and follow the instructions.</span><br></pre></td></tr></table></figure>
+<p>5、根据上面初始化集群得出的信息，增加工作节点</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@vm02 ~]<span class="comment"># docker swarm join --token SWMTKN-1-47cqr2h4jksb1ww877fjd5wohi5qoylftw3wc72rtuhp0az8sl-f087ypkdubuiad5ewlstubaaz 192.168.0.32:2377</span></span><br><span class="line">This node joined a swarm as a worker.</span><br></pre></td></tr></table></figure>
+<p>6、在管理节点上查看集群</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@vm01 ~]<span class="comment"># docker node ls</span></span><br><span class="line">ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS      ENGINE VERSION</span><br><span class="line">ohrz9nw5t5v1y1y7j765x1poj *   vm01                Ready               Active              Leader              19.03.12</span><br><span class="line">vuyrpzemdlmxt4jhe8fe1ocvb     vm02                Ready               Active                                  19.03.12</span><br></pre></td></tr></table></figure>
+<p>7、部署3个nginx服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@vm01 ~]<span class="comment"># docker service create --replicas 3 -p 80:80 --name nginx nginx:1.13.7-alpine</span></span><br><span class="line">ok1g9lldpsrtfbozt64xb1j0w</span><br><span class="line">overall progress: 3 out of 3 tasks </span><br><span class="line">1/3: running   [==================================================&gt;] </span><br><span class="line">2/3: running   [==================================================&gt;] </span><br><span class="line">3/3: running   [==================================================&gt;] </span><br><span class="line">verify: Service converged</span><br></pre></td></tr></table></figure>
+<p>8、使用 docker service ls 来查看当前 Swarm 集群运行的服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@vm01 ~]<span class="comment"># docker service ls</span></span><br><span class="line">ID                  NAME                MODE                REPLICAS            IMAGE                 PORTS</span><br><span class="line">ok1g9lldpsrt        nginx               replicated          3/3                 nginx:1.13.7-alpine   *:80-&gt;80/tcp</span><br></pre></td></tr></table></figure>
+<p>9、使用 docker service ps 来查看某个服务的详情</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@vm01 ~]<span class="comment"># docker service ps nginx</span></span><br><span class="line">ID                  NAME                IMAGE                 NODE                DESIRED STATE       CURRENT STATE                ERROR               PORTS</span><br><span class="line">qi4xswuy6td3        nginx.1             nginx:1.13.7-alpine   vm02                Running             Running about a minute ago                       </span><br><span class="line">z9fhx7rsesbt        nginx.2             nginx:1.13.7-alpine   vm01                Running             Running about a minute ago                       </span><br><span class="line">s7dscxvta7cf        nginx.3             nginx:1.13.7-alpine   vm02                Running             Running about a minute ago</span><br></pre></td></tr></table></figure>
+<p>10、当我们的业务处于高峰期时，我们可以使用（docker service scale nginx=x）扩展服务运行的容器数量。<br>当业务平稳时可以适当减少服务容量数量x</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@vm01 ~]<span class="comment"># docker service scale nginx=5</span></span><br><span class="line">nginx scaled to 5</span><br><span class="line">overall progress: 5 out of 5 tasks </span><br><span class="line">1/5: running   [==================================================&gt;] </span><br><span class="line">2/5: running   [==================================================&gt;] </span><br><span class="line">3/5: running   [==================================================&gt;] </span><br><span class="line">4/5: running   [==================================================&gt;] </span><br><span class="line">5/5: running   [==================================================&gt;] </span><br><span class="line">verify: Service converged</span><br></pre></td></tr></table></figure>
+<p>11、删除服务-使用 docker service rm 来从 Swarm 集群移除某个服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@vm01 ~]<span class="comment">#  docker service rm nginx</span></span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>linux</tag>
         <tag>docker</tag>
       </tags>
   </entry>
