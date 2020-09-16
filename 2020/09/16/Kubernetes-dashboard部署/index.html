@@ -94,14 +94,15 @@
 <meta property="og:url" content="https://github.com/Piouscc/rz168.io.git/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="Lucky、boy">
 <meta property="og:description" content="Kubernetes-dashboard部署">
+<meta property="og:image" content="https://github.com/rz168.io/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/dashboard_02.png">
 <meta property="og:image" content="https://github.com/rz168.io/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/dashboard.png">
 <meta property="og:image" content="https://github.com/rz168.io/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/dashboard_01.png">
 <meta property="article:published_time" content="2020-09-16T09:25:32.000Z">
-<meta property="article:modified_time" content="2020-09-16T09:47:40.272Z">
+<meta property="article:modified_time" content="2020-09-16T13:26:13.265Z">
 <meta property="article:author" content="Lucky、boy">
 <meta property="article:tag" content="K8s">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/rz168.io/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/dashboard.png">
+<meta name="twitter:image" content="https://github.com/rz168.io/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/dashboard_02.png">
 
 
 
@@ -365,7 +366,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  518
+                  450
                 </span>
               
 
@@ -416,7 +417,7 @@
 <p>6、查看外网访问映射对应端口</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@master ~]<span class="comment"># kubectl -n kubernetes-dashboard get svc</span></span><br><span class="line">NAME                        TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)         AGE</span><br><span class="line">dashboard-metrics-scraper   ClusterIP   10.99.247.200   &lt;none&gt;        8000/TCP        112m</span><br><span class="line">kubernetes-dashboard        NodePort    10.109.33.119   &lt;none&gt;        443:30356/TCP   112m</span><br></pre></td></tr></table></figure>
 <p>7、获取secret中的token</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@master ~]<span class="comment"># kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '&#123;print $1&#125;')</span></span><br><span class="line">Name:         admin-user-token-x5jsh</span><br><span class="line">Namespace:    kubernetes-dashboard</span><br><span class="line">Labels:       &lt;none&gt;</span><br><span class="line">Annotations:  kubernetes.io/service-account.name: admin-user</span><br><span class="line">              kubernetes.io/service-account.uid: 9de11dd5-bebe-4165-9426-78444dceadad</span><br><span class="line"></span><br><span class="line">Type:  kubernetes.io/service-account-token</span><br><span class="line"></span><br><span class="line">Data</span><br><span class="line">====</span><br><span class="line">namespace:  20 bytes</span><br><span class="line">token:      eyJhbGciOiJSUzI1NiIsImtpZCI6InBmZFdyQWpYeDV4RjR4eGV2U1pQN1pLcVA5b2hwWi1OaUxRNlRWcTJoTmcifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi11c2VyLXRva2VuLXg1anNoIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImFkbWluLXVzZXIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiI5ZGUxMWRkNS1iZWJlLTQxNjUtOTQyNi03ODQ0NGRjZWFkYWQiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZXJuZXRlcy1kYXNoYm9hcmQ6YWRtaW4tdXNlciJ9.cnro0Qks4nHdn31ZdAIuYNW9X8LxNHK_pGNAx56yWjFEoHZLIigk9rUo4xg8kLWE__82HUgLxbC_R725Fu276KYZ6NBhvIz3D1HWqn7K3n1iUnXzM-GInRw3F5SwUO9dgGsUJ5rEz4szaJxAX45ziaVbGf216E18d89qYGEgCzXtSQnOfwzgVmzAgm0o2bd7roi0i1kRBEC0OsUcdLg9a7HCEui1gSNiVBdAo5gKtCQhaK17kAW8F6xO5zdlbto4m-7spuQLtvWiT64txfFT72RenW8DZcDMI-XcQDOZBQ2IvXpWgHzUOIxhDz0Q0J03MdpevnohCWEe4ECeCG1Z6w</span><br><span class="line">ca.crt:     1029 bytes</span><br></pre></td></tr></table></figure>
+<img src="/rz168.io/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/dashboard_02.png" class title="This is an jenkins image">
 <p>8、访问dashboard，浏览器输入<a href="https://masterIP:30356，这里建议使用火狐浏览器，">https://masterIP:30356，这里建议使用火狐浏览器，</a><br>同时首次访问时，会阻拦你，所以你需要继续访问，然后选择验证方式时，会有kubeconfig和令牌两种方式</p>
 <img src="/rz168.io/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/dashboard.png" class title="This is an jenkins image">
 <p>9、然后我们选择令牌（第6步获取到的token）,点击登陆，成功后的界面如下：</p>
@@ -448,7 +449,7 @@
   <p><span>本文标题:</span><a href="/rz168.io/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/">Kubernetes-dashboard部署</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Lucky、boy 的个人博客">Lucky、boy</a></p>
   <p><span>发布时间:</span>2020年09月16日 - 17:09</p>
-  <p><span>最后更新:</span>2020年09月16日 - 17:09</p>
+  <p><span>最后更新:</span>2020年09月16日 - 21:09</p>
   <p><span>原始链接:</span><a href="/rz168.io/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/" title="Kubernetes-dashboard部署">https://github.com/Piouscc/rz168.io.git/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/"  aria-label="复制成功！"></i></span>
   </p>
@@ -690,7 +691,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">17.3k</span>
+    <span title="Site words total count">17.2k</span>
   
 </div>
 
@@ -710,7 +711,7 @@ var jiathis_config={
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共17.3k字</span>
+  <span class="post-count">博客全站共17.2k字</span>
 </div>
         
 <div class="busuanzi-count">
