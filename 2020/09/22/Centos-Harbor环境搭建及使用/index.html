@@ -98,7 +98,7 @@
 <meta property="og:image" content="https://github.com/rz168.io/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/harbor02.png">
 <meta property="og:image" content="https://github.com/rz168.io/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/harbor03.png">
 <meta property="article:published_time" content="2020-09-22T08:39:54.000Z">
-<meta property="article:modified_time" content="2020-09-23T09:21:00.375Z">
+<meta property="article:modified_time" content="2020-09-25T02:53:25.136Z">
 <meta property="article:author" content="Lucky、boy">
 <meta property="article:tag" content="docker">
 <meta property="article:tag" content="Linux">
@@ -367,7 +367,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.2k
+                  1.3k
                 </span>
               
 
@@ -435,7 +435,9 @@
 <img src="/rz168.io/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/harbor03.png" class title="This is an jenkins image">
 <p>15、配置Harbor开机自启动</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/rc.local</span><br><span class="line"><span class="comment">#harbor start</span></span><br><span class="line"><span class="built_in">cd</span> /root/harbor &amp;&amp; docker-compose up -d</span><br></pre></td></tr></table></figure>
-<p>16、注意事项<br>公开的项目，推送镜像时，docker必须要登录。</p>
+<p>16、备份与恢复<br>由于上面所说到data_volume: /data，也就说明Harbor镜像存放在/data目录如下可以看到上面所上传的镜像名称alpine：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@system ~]<span class="comment"># ls /data/registry/docker/registry/v2/repositories/library/</span></span><br><span class="line">alpine</span><br><span class="line"></span><br><span class="line">也就说明若要备份可以直接备份此目录/data/registry即可</span><br><span class="line">当需要恢复时，把配置文件data_volume配置到对应目录即可</span><br></pre></td></tr></table></figure>
+<p>17、注意事项<br>公开的项目，推送镜像时，docker必须要登录。</p>
 <p>下载镜像时，无须登录。</p>
 <p>非公开项目，下载和推送，必须docker登录才行。</p>
 
@@ -466,7 +468,7 @@
   <p><span>本文标题:</span><a href="/rz168.io/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/">Centos_Harbor环境搭建及使用</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Lucky、boy 的个人博客">Lucky、boy</a></p>
   <p><span>发布时间:</span>2020年09月22日 - 16:09</p>
-  <p><span>最后更新:</span>2020年09月23日 - 17:09</p>
+  <p><span>最后更新:</span>2020年09月25日 - 10:09</p>
   <p><span>原始链接:</span><a href="/rz168.io/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/" title="Centos_Harbor环境搭建及使用">https://github.com/Piouscc/rz168.io.git/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/"  aria-label="复制成功！"></i></span>
   </p>
@@ -627,7 +629,7 @@ var jiathis_config={
               
                 <a href="/rz168.io/archives/%7C%7C%20%E5%BD%92%E6%A1%A3">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -640,7 +642,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/rz168.io/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -714,7 +716,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">19.9k</span>
+    <span title="Site words total count">20.7k</span>
   
 </div>
 
@@ -734,7 +736,7 @@ var jiathis_config={
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共19.9k字</span>
+  <span class="post-count">博客全站共20.7k字</span>
 </div>
         
 <div class="busuanzi-count">
