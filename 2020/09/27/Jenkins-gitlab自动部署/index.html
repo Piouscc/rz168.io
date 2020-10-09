@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Linux,Jenkins," />
+  <meta name="keywords" content="linux,jenkins," />
 
 
 
@@ -88,22 +88,29 @@
 
 
 
-<meta name="description" content="Jenkins版本升级">
+<meta name="description" content="Jenkins+gitlab自动部署">
 <meta property="og:type" content="article">
-<meta property="og:title" content="记一次Jenkins版本升级">
-<meta property="og:url" content="https://github.com/Piouscc/rz168.io.git/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/index.html">
+<meta property="og:title" content="Jenkins+gitlab自动部署">
+<meta property="og:url" content="https://github.com/Piouscc/rz168.io.git/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="Lucky、boy">
-<meta property="og:description" content="Jenkins版本升级">
-<meta property="og:image" content="https://github.com/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/jenkins01.png">
-<meta property="og:image" content="https://github.com/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/jenkins02.png">
-<meta property="og:image" content="https://github.com/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/jenkins03.png">
-<meta property="article:published_time" content="2020-09-23T03:58:19.000Z">
-<meta property="article:modified_time" content="2020-09-24T09:48:48.191Z">
+<meta property="og:description" content="Jenkins+gitlab自动部署">
+<meta property="og:image" content="https://github.com/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins01.png">
+<meta property="og:image" content="https://github.com/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins02.png">
+<meta property="og:image" content="https://github.com/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins03.png">
+<meta property="og:image" content="https://github.com/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins04.png">
+<meta property="og:image" content="https://github.com/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins06.png">
+<meta property="og:image" content="https://github.com/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins05.png">
+<meta property="og:image" content="https://github.com/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/gitlab01.png">
+<meta property="og:image" content="https://github.com/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/linux01.png">
+<meta property="og:image" content="https://github.com/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins09.png">
+<meta property="og:image" content="https://github.com/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins10.png">
+<meta property="article:published_time" content="2020-09-27T09:43:41.000Z">
+<meta property="article:modified_time" content="2020-10-09T08:00:45.999Z">
 <meta property="article:author" content="Lucky、boy">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Jenkins">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="jenkins">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/jenkins01.png">
+<meta name="twitter:image" content="https://github.com/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins01.png">
 
 
 
@@ -133,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/Piouscc/rz168.io.git/2020/09/23/Jenkins版本升级/"/>
+  <link rel="canonical" href="https://github.com/Piouscc/rz168.io.git/2020/09/27/Jenkins-gitlab自动部署/"/>
 
 
 
 
 
-  <title>记一次Jenkins版本升级 | Lucky、boy</title>
+  <title>Jenkins+gitlab自动部署 | Lucky、boy</title>
   
 
 
@@ -301,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/Piouscc/rz168.io.git/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Piouscc/rz168.io.git/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lucky、boy">
@@ -318,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">记一次Jenkins版本升级</h1>
+          <h1 class="post-title" itemprop="name headline">Jenkins+gitlab自动部署</h1>
         
 
         <div class="post-meta">
@@ -330,8 +337,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-23T11:58:19+08:00">
-                2020-09-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-27T17:43:41+08:00">
+                2020-09-27
               </time>
             
 
@@ -367,7 +374,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  219
+                  407
                 </span>
               
 
@@ -404,21 +411,28 @@
       
 
       
-        <p>Jenkins版本升级<br> <a id="more"></a><br>1、背景<br>由于现在所用到jenkins的版本为2.248，出现以下警告发布，则需要把jenkins版本升级来解决，此警告</p>
-<img src="/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/jenkins01.png" class title="This is an jenkins image">
-
-<p>2、下载最新版本jenkins-2.257</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/jenkins/war/2.257/jenkins.war</span><br></pre></td></tr></table></figure>
-<p>3、由于用的服务器为CVM，则先登陆腾讯云创建快照，避免升级出现问题，操作回滚<br>同时也需要备份服务器上的jenkins.war包</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /opt/jenkins_bak</span><br><span class="line">cp /usr/lib/jenkins/jenkins.war /opt/jenkins_bak/</span><br></pre></td></tr></table></figure>
-<p>4、停止jenkins服务，并复制最新版jenkins到对应目录,然后启动jenkins服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop jenkins</span><br><span class="line">mv jenkins.war /usr/lib/jenkins/</span><br><span class="line">systemctl start jenkins</span><br></pre></td></tr></table></figure>
-<p>5、web查看jenkins版本，及对应项目是否正常，出现下图等一小会儿刷新浏览器页面即可</p>
-<img src="/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/jenkins02.png" class title="This is an jenkins image">
-<p>6、查看jenkins版本</p>
-<img src="/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/jenkins03.png" class title="This is an jenkins image">
-<p>7、再到插件管理，把对应的插件进行更新即可</p>
-
+        <p>Jenkins+gitlab自动部署<br> <a id="more"></a><br>1、持续集成<br>持续集成是一种软件开发实践，即团队开发成员经常集成他们的工作，通常每个成员至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译、发布、自动化测试）来验证，从而尽快地发现集成错误。许多团队发现这个过程可以大大减少集成的问题，让团队能够更快的开发内聚的软件。<br>2、安装Jenkins插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gitlab hook</span><br><span class="line">GitLab Plugin</span><br><span class="line">SSH plugin</span><br><span class="line">Git plugin</span><br></pre></td></tr></table></figure>
+<p>3、配置Jenkins，创建一个命名为：JOb的任务，选择第一个Freestyle project</p>
+<img src="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins01.png" class title="This is an jenkins image">
+<p>4、源码管理，这里我们选择我们gitlab上的地址如：<a href="mailto:git@192.168.0.143">git@192.168.0.143</a>:root/test.git，然后添加凭据</p>
+<img src="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins02.png" class title="This is an jenkins image">
+<p>5、添加凭据如下图，这里用的用户为服务器上的www用户及www用户的私钥</p>
+<img src="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins03.png" class title="This is an jenkins image">
+<p>6、添加完成凭据正确显示下图</p>
+<img src="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins04.png" class title="This is an jenkins image">
+<p>7、选择构建触发器并复制对应url地址</p>
+<img src="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins06.png" class title="This is an jenkins image">
+<p>8、添加构建步骤，这里可以是执行shell,python,linux命令等，这里就echo 1</p>
+<img src="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins05.png" class title="This is an jenkins image">
+<p>9、配置gitlab，由于已经有一个项目，则直接使用<br>点击项目，进入项目管理界面，然后点击设置————&gt;webhooks————&gt;输入上面的url地址：<a href="http://192.168.0.143:8088/project/Job，及凭据ID号" target="_blank" rel="noopener">http://192.168.0.143:8088/project/Job，及凭据ID号</a><br>如下图</p>
+<img src="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/gitlab01.png" class title="This is an jenkins image">
+<p>10、然后我们修改项目的一些文件内容，再通过git提交到gitlab</p>
+<img src="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/linux01.png" class title="This is an jenkins image">
+<p>11、通过jenkins web界面查看是否自动触发任务</p>
+<img src="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins09.png" class title="This is an jenkins image">
+<p>12、查看jenkins任务运行任务的步骤</p>
+<img src="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins10.png" class title="This is an jenkins image">
       
     </div>
     
@@ -443,12 +457,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/">记一次Jenkins版本升级</a></p>
+  <p><span>本文标题:</span><a href="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/">Jenkins+gitlab自动部署</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Lucky、boy 的个人博客">Lucky、boy</a></p>
-  <p><span>发布时间:</span>2020年09月23日 - 11:09</p>
-  <p><span>最后更新:</span>2020年09月24日 - 17:09</p>
-  <p><span>原始链接:</span><a href="/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/" title="记一次Jenkins版本升级">https://github.com/Piouscc/rz168.io.git/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2020年09月27日 - 17:09</p>
+  <p><span>最后更新:</span>2020年10月09日 - 16:10</p>
+  <p><span>原始链接:</span><a href="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/" title="Jenkins+gitlab自动部署">https://github.com/Piouscc/rz168.io.git/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -479,9 +493,9 @@
       
         <div class="post-tags">
           
-            <a href="/rz168.io/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+            <a href="/rz168.io/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
           
-            <a href="/rz168.io/tags/Jenkins/" rel="tag"><i class="fa fa-tag"></i> Jenkins</a>
+            <a href="/rz168.io/tags/jenkins/" rel="tag"><i class="fa fa-tag"></i> jenkins</a>
           
         </div>
       
@@ -494,8 +508,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/rz168.io/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/" rel="next" title="Centos_Harbor环境搭建及使用">
-                <i class="fa fa-chevron-left"></i> Centos_Harbor环境搭建及使用
+              <a href="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" rel="next" title="gitlab安装及使用">
+                <i class="fa fa-chevron-left"></i> gitlab安装及使用
               </a>
             
           </div>
@@ -503,10 +517,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" rel="prev" title="gitlab安装及使用">
-                gitlab安装及使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
