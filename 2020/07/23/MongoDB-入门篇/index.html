@@ -81,7 +81,7 @@
 
 
 
-  <link rel="alternate" href="/rz168.io/atom.xml" title="Lucky、boy" type="application/atom+xml" />
+  <link rel="alternate" href="/rz168.io/atom.xml" title="Lucky、" type="application/atom+xml" />
 
 
 
@@ -92,11 +92,11 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="MongoDB-入门篇">
 <meta property="og:url" content="https://github.com/Piouscc/rz168.io.git/2020/07/23/MongoDB-%E5%85%A5%E9%97%A8%E7%AF%87/index.html">
-<meta property="og:site_name" content="Lucky、boy">
+<meta property="og:site_name" content="Lucky、">
 <meta property="og:description" content="MongoDB-入门篇">
 <meta property="article:published_time" content="2020-07-23T12:44:14.000Z">
-<meta property="article:modified_time" content="2020-07-23T13:03:24.513Z">
-<meta property="article:author" content="Lucky、boy">
+<meta property="article:modified_time" content="2020-10-19T06:51:39.231Z">
+<meta property="article:author" content="Lucky、">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="DB">
 <meta name="twitter:card" content="summary">
@@ -135,7 +135,7 @@
 
 
 
-  <title>MongoDB-入门篇 | Lucky、boy</title>
+  <title>MongoDB-入门篇 | Lucky、</title>
   
 
 
@@ -166,7 +166,7 @@
     <div class="custom-logo-site-title">
       <a href="/rz168.io/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Lucky、boy</span>
+        <span class="site-title">Lucky、</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -300,13 +300,13 @@
     <link itemprop="mainEntityOfPage" href="https://github.com/Piouscc/rz168.io.git/rz168.io/2020/07/23/MongoDB-%E5%85%A5%E9%97%A8%E7%AF%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lucky、boy">
+      <meta itemprop="name" content="Lucky、">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/rz168.io/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lucky、boy">
+      <meta itemprop="name" content="Lucky、">
     </span>
 
     
@@ -363,7 +363,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  803
+                  1.2k
                 </span>
               
 
@@ -379,7 +379,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -412,6 +412,13 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#备份</span></span><br><span class="line">mongodump -h dbhost -d dbname -o bak_path</span><br><span class="line"></span><br><span class="line">    -h:表示登陆ip，如：127.0.0.1，加端口的方式为：127.0.0.1:27017</span><br><span class="line">    -d:需要备份的数据库</span><br><span class="line">    -o:备份的路径</span><br><span class="line"></span><br><span class="line">若不指定数据库，则命令如下：</span><br><span class="line">mongodump -h dbhost -o bak_path</span><br><span class="line"></span><br><span class="line"><span class="comment">#恢复</span></span><br><span class="line">mongodb恢复数据也比较简单，命令如下：</span><br><span class="line"><span class="comment">#指定恢复某个库</span></span><br><span class="line">mongorestore -h &lt;hostname&gt;&lt;:port&gt; -d dbname &lt;path&gt;</span><br><span class="line"><span class="comment">#恢复所有库</span></span><br><span class="line">mongorestore -h &lt;hostname&gt;&lt;:port&gt; &lt;path&gt;</span><br></pre></td></tr></table></figure>
 <p>6、对于一名运维同事来说，监控也是很重要的，因此MongoDB也自带了一定的监控</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">MongoDB中提供了mongostat 和 mongotop 两个命令来监控MongoDB的运行情况</span><br><span class="line">直接进行安装目录运行相应命令即可</span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/mongodb…/bin</span><br><span class="line">mongotop</span><br><span class="line">mongostat</span><br><span class="line">其中还能通此命令（mongotop --locks）得出每个数据库的锁的情况</span><br><span class="line">图略</span><br><span class="line">字段解释如下：</span><br><span class="line">    ns：</span><br><span class="line">        包含数据库命名空间，后者结合了数据库名称和集合。</span><br><span class="line">    db：</span><br><span class="line">        包含数据库的名称。名为 . 的数据库针对全局锁定，而非特定数据库。</span><br><span class="line">    total：</span><br><span class="line">        mongod花费的时间工作在这个命名空间提供总额。</span><br><span class="line">    <span class="built_in">read</span>：</span><br><span class="line">        提供了大量的时间，这mongod花费在执行读操作，在此命名空间。</span><br><span class="line">    write：</span><br><span class="line">        提供这个命名空间进行写操作，这mongod花了大量的时间。</span><br></pre></td></tr></table></figure>
+<p>7、如何在MongoDB中创建用户并添加角色<br>1）创建管理员用户（全局）<br>db.createUser(<br>{<br>    user: “test”,<br>    pwd: “test@passw0rd”<br>    roles:[{roles: “userAdminAnyDatabase” , db:”admin”}]<br>}<br>)</p>
+<p>上面命令说明：<br>第一步是指定创建的”username” and “password”<br>第二步是为用户分配角色。由于它需要的权限是数据库管理员，在这种情况下，我们已分配给“ userAdminAnyDatabase”角色。该角色允许用户对MongoDB中的所有数据库具有管理特权。<br>第三步指的是db参数指定admin数据库，它是MongoDB中一个特殊的元数据库，其中包含该用户的信息。</p>
+<p>2）为单个数据库创建用户<br>db.createUser(<br>    {<br>        user: “testuser”<br>        pwd: “testuser@password”<br>        roles:[{roles: “userAdmin” , db:”test”}]<br>    }<br>)</p>
+<p>上面命令说明：<br>第一步是指定需要创建的“username” 和 “password”。<br>第二步是为用户分配一个角色，在这种情况下，由于需要成为数据库管理员，因此将其分配给“ userAdmin”角色。该角色允许用户仅对db选项中指定的数据库具有管理特权。<br>db参数指定用户应对其具有管理特权的数据库。</p>
+<p>3）管理用户<br>首先了解我们需要定义的角色。MongoDB中提供了完整的角色列表。例如，有一个“read role”仅允许对数据库进行只读访问，然后有一个“ readwrite”角色提供了对数据库的读写访问，这意味着用户可以发出插入，删除和更新该数据库中集合的命令</p>
+<p>db.createUser(<br>    {<br>        user: “text”<br>        pwd: “text@password”<br>        roles:[<br>            {<br>            roles: “read” , db:”text”},<br>            roles: “read” , db:”test”}<br>            }<br>        ]<br>    }<br>)</p>
+
       
     </div>
     
@@ -437,9 +444,9 @@
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <p><span>本文标题:</span><a href="/rz168.io/2020/07/23/MongoDB-%E5%85%A5%E9%97%A8%E7%AF%87/">MongoDB-入门篇</a></p>
-  <p><span>文章作者:</span><a href="/" title="访问 Lucky、boy 的个人博客">Lucky、boy</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Lucky、 的个人博客">Lucky、</a></p>
   <p><span>发布时间:</span>2020年07月23日 - 20:07</p>
-  <p><span>最后更新:</span>2020年07月23日 - 21:07</p>
+  <p><span>最后更新:</span>2020年10月19日 - 14:10</p>
   <p><span>原始链接:</span><a href="/rz168.io/2020/07/23/MongoDB-%E5%85%A5%E9%97%A8%E7%AF%87/" title="MongoDB-入门篇">https://github.com/Piouscc/rz168.io.git/2020/07/23/MongoDB-%E5%85%A5%E9%97%A8%E7%AF%87/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2020/07/23/MongoDB-%E5%85%A5%E9%97%A8%E7%AF%87/"  aria-label="复制成功！"></i></span>
   </p>
@@ -589,7 +596,7 @@ var jiathis_config={
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">Lucky、boy</p>
+              <p class="site-author-name" itemprop="name">Lucky、</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -677,7 +684,7 @@ var jiathis_config={
   <span class="with-love">
     <i class="fa fa-heart" aria-hidden="true"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Lucky、boy</span>
+  <span class="author" itemprop="copyrightHolder">Lucky、</span>
 <!--
   
     <span class="post-meta-divider">|</span>
@@ -687,7 +694,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">21.7k</span>
+    <span title="Site words total count">22.1k</span>
   
 </div>
 
@@ -707,7 +714,7 @@ var jiathis_config={
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共21.7k字</span>
+  <span class="post-count">博客全站共22.1k字</span>
 </div>
         
 <div class="busuanzi-count">
