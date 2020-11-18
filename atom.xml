@@ -90,7 +90,7 @@
     <link href="https://github.com/Piouscc/rz168.io.git/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/"/>
     <id>https://github.com/Piouscc/rz168.io.git/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/</id>
     <published>2020-09-27T09:43:41.000Z</published>
-    <updated>2020-10-09T08:00:45.999Z</updated>
+    <updated>2020-11-18T08:45:36.847Z</updated>
     
     <content type="html"><![CDATA[<p>Jenkins+gitlab自动部署<br> <a id="more"></a><br>1、持续集成<br>持续集成是一种软件开发实践，即团队开发成员经常集成他们的工作，通常每个成员至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译、发布、自动化测试）来验证，从而尽快地发现集成错误。许多团队发现这个过程可以大大减少集成的问题，让团队能够更快的开发内聚的软件。<br>2、安装Jenkins插件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gitlab hook</span><br><span class="line">GitLab Plugin</span><br><span class="line">SSH plugin</span><br><span class="line">Git plugin</span><br></pre></td></tr></table></figure><p>3、配置Jenkins，创建一个命名为：JOb的任务，选择第一个Freestyle project</p><img src="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins01.png" class title="This is an jenkins image"><p>4、源码管理，这里我们选择我们gitlab上的地址如：<a href="mailto:git@192.168.0.143">git@192.168.0.143</a>:root/test.git，然后添加凭据</p><img src="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins02.png" class title="This is an jenkins image"><p>5、添加凭据如下图，这里用的用户为服务器上的www用户及www用户的私钥</p><img src="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins03.png" class title="This is an jenkins image"><p>6、添加完成凭据正确显示下图</p><img src="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins04.png" class title="This is an jenkins image"><p>7、选择构建触发器并复制对应url地址</p><img src="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins06.png" class title="This is an jenkins image"><p>8、添加构建步骤，这里可以是执行shell,python,linux命令等，这里就echo 1</p><img src="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins05.png" class title="This is an jenkins image"><p>9、配置gitlab，由于已经有一个项目，则直接使用<br>点击项目，进入项目管理界面，然后点击设置————&gt;webhooks————&gt;输入上面的url地址：<a href="http://192.168.0.143:8088/project/Job，及凭据ID号" target="_blank" rel="noopener">http://192.168.0.143:8088/project/Job，及凭据ID号</a><br>如下图</p><img src="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/gitlab01.png" class title="This is an jenkins image"><p>10、然后我们修改项目的一些文件内容，再通过git提交到gitlab</p><img src="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/linux01.png" class title="This is an jenkins image"><p>11、通过jenkins web界面查看是否自动触发任务</p><img src="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins09.png" class title="This is an jenkins image"><p>12、查看jenkins任务运行任务的步骤</p><img src="/rz168.io/2020/09/27/Jenkins-gitlab%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/jenkins10.png" class title="This is an jenkins image">]]></content>
     
@@ -104,7 +104,7 @@
     
       <category term="linux" scheme="https://github.com/Piouscc/rz168.io.git/tags/linux/"/>
     
-      <category term="jenkins" scheme="https://github.com/Piouscc/rz168.io.git/tags/jenkins/"/>
+      <category term="Jenkins" scheme="https://github.com/Piouscc/rz168.io.git/tags/Jenkins/"/>
     
   </entry>
   
