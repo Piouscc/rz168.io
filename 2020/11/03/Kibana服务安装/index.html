@@ -91,20 +91,20 @@
 <meta name="description" content="Kibana服务安装">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kibana服务安装">
-<meta property="og:url" content="https://github.com/Piouscc/rz168.io.git/2020/11/02/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:url" content="https://github.com/Piouscc/rz168.io.git/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/index.html">
 <meta property="og:site_name" content="Lucky、">
 <meta property="og:description" content="Kibana服务安装">
-<meta property="og:image" content="https://github.com/rz168.io/2020/11/02/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki01.png">
-<meta property="og:image" content="https://github.com/rz168.io/2020/11/02/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki02.png">
-<meta property="og:image" content="https://github.com/rz168.io/2020/11/02/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki03.png">
-<meta property="og:image" content="https://github.com/rz168.io/2020/11/02/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki04.png">
-<meta property="article:published_time" content="2020-11-02T08:55:42.000Z">
-<meta property="article:modified_time" content="2020-11-18T08:24:17.532Z">
+<meta property="og:image" content="https://github.com/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki01.png">
+<meta property="og:image" content="https://github.com/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki02.png">
+<meta property="og:image" content="https://github.com/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki03.png">
+<meta property="og:image" content="https://github.com/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki04.png">
+<meta property="article:published_time" content="2020-11-03T08:55:42.000Z">
+<meta property="article:modified_time" content="2020-11-18T08:29:36.524Z">
 <meta property="article:author" content="Lucky、">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="elk">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/rz168.io/2020/11/02/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki01.png">
+<meta name="twitter:image" content="https://github.com/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki01.png">
 
 
 
@@ -134,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="https://github.com/Piouscc/rz168.io.git/2020/11/02/Kibana服务安装/"/>
+  <link rel="canonical" href="https://github.com/Piouscc/rz168.io.git/2020/11/03/Kibana服务安装/"/>
 
 
 
@@ -302,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/Piouscc/rz168.io.git/rz168.io/2020/11/02/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Piouscc/rz168.io.git/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lucky、">
@@ -331,8 +331,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-02T16:55:42+08:00">
-                2020-11-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-03T16:55:42+08:00">
+                2020-11-03
               </time>
             
 
@@ -412,13 +412,13 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">- hosts: kibana</span><br><span class="line">  remote_user: root</span><br><span class="line"></span><br><span class="line">  tasks:</span><br><span class="line">    - name: <span class="string">"下载 kibana-7.9版本"</span></span><br><span class="line">      shell: |-</span><br><span class="line">        date ;</span><br><span class="line">        Downloads_dir=/usr/<span class="built_in">local</span>/src</span><br><span class="line">        wget -O <span class="variable">$Downloads_dir</span>/kibana-7.9.3-linux-x86_64.tar.gz https://artifacts.elastic.co/downloads/kibana/kibana-7.10.0-linux-x86_64.tar.gz &gt; /dev/null</span><br><span class="line">    - name: <span class="string">"解压kibana"</span></span><br><span class="line">      shell: <span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src &amp;&amp; tar -xf kibana-7.9.3-linux-x86_64.tar.gz &amp;&amp; mv kibana-7.9.3-linux-x86_64 ../kibana-7.9.3</span><br><span class="line">    - name: <span class="string">"复制kibana配置文件"</span></span><br><span class="line">      template: src=kibana.yml dest=/usr/<span class="built_in">local</span>/kibana-7.9.3/config/</span><br><span class="line">    - name: <span class="string">"修改目录用户及组"</span></span><br><span class="line">      shell: chown esuser.www -R /usr/<span class="built_in">local</span>/kibana-7.9.3</span><br><span class="line">    - name: <span class="string">"启动kibana"</span></span><br><span class="line">      shell: su esuser -c <span class="string">'/usr/local/kibana-7.9.3/bin/kibana &amp; '</span></span><br></pre></td></tr></table></figure>
 <p>3、执行安装命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible-playbook -v kibana.yml</span><br></pre></td></tr></table></figure>
-<img src="/rz168.io/2020/11/02/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki01.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki01.png" class title="This is an jenkins image">
 <p>4、查看kibana服务进程及端口，默认端口为5601</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@node02 config]<span class="comment"># netstat -ntlp</span></span><br><span class="line">Active Internet connections (only servers)</span><br><span class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    </span><br><span class="line">tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN      3797/node           </span><br><span class="line">tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      963/sshd            </span><br><span class="line">tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      1132/master         </span><br><span class="line">tcp6       0      0 192.168.0.17:9200       :::*                    LISTEN      1722/java           </span><br><span class="line">tcp6       0      0 192.168.0.17:9300       :::*                    LISTEN      1722/java           </span><br><span class="line">tcp6       0      0 :::22                   :::*                    LISTEN      963/sshd            </span><br><span class="line">tcp6       0      0 ::1:25                  :::*                    LISTEN      1132/master         </span><br><span class="line">[root@node02 config]<span class="comment"># ps -ef |grep kibana</span></span><br><span class="line">esuser     3797      1 87 15:26 ?        00:01:01 /usr/<span class="built_in">local</span>/kibana-7.9.3/bin/../node/bin/node /usr/<span class="built_in">local</span>/kibana-7.9.3/bin/../src/cli</span><br><span class="line">root       3868   2072  1 15:27 pts/1    00:00:00 grep --color=auto kibana</span><br><span class="line">[root@node02 config]<span class="comment">#</span></span><br></pre></td></tr></table></figure>
-<img src="/rz168.io/2020/11/02/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki02.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki02.png" class title="This is an jenkins image">
 <p>5、访问kibana web界面</p>
-<img src="/rz168.io/2020/11/02/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki03.png" class title="This is an jenkins image">
-<img src="/rz168.io/2020/11/02/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki04.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki03.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki04.png" class title="This is an jenkins image">
       
     </div>
     
@@ -443,12 +443,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/rz168.io/2020/11/02/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/">Kibana服务安装</a></p>
+  <p><span>本文标题:</span><a href="/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/">Kibana服务安装</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Lucky、 的个人博客">Lucky、</a></p>
-  <p><span>发布时间:</span>2020年11月02日 - 16:11</p>
+  <p><span>发布时间:</span>2020年11月03日 - 16:11</p>
   <p><span>最后更新:</span>2020年11月18日 - 16:11</p>
-  <p><span>原始链接:</span><a href="/rz168.io/2020/11/02/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/" title="Kibana服务安装">https://github.com/Piouscc/rz168.io.git/2020/11/02/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2020/11/02/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/"  aria-label="复制成功！"></i></span>
+  <p><span>原始链接:</span><a href="/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/" title="Kibana服务安装">https://github.com/Piouscc/rz168.io.git/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -504,7 +504,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/rz168.io/2020/11/02/Kibana%E8%AE%BE%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E9%85%8D%E7%BD%AE/" rel="prev" title="配置elasticsearch集群访问权限+Kibana设置账号密码登陆配置">
+              <a href="/rz168.io/2020/11/03/Kibana%E8%AE%BE%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E9%85%8D%E7%BD%AE/" rel="prev" title="配置elasticsearch集群访问权限+Kibana设置账号密码登陆配置">
                 配置elasticsearch集群访问权限+Kibana设置账号密码登陆配置 <i class="fa fa-chevron-right"></i>
               </a>
             
