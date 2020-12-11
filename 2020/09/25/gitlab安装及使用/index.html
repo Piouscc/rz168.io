@@ -106,7 +106,7 @@
 <meta property="og:image" content="https://github.com/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/gitlab10.png">
 <meta property="og:image" content="https://github.com/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/gitlab11.png">
 <meta property="article:published_time" content="2020-09-25T05:46:08.000Z">
-<meta property="article:modified_time" content="2020-09-29T04:11:44.351Z">
+<meta property="article:modified_time" content="2020-12-10T03:11:08.373Z">
 <meta property="article:author" content="Lucky、">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="jenkins">
@@ -432,21 +432,21 @@
 <p>10、初始化gitlab(每次修改完配置文件都要进行此命令)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ctl reconfigure</span><br></pre></td></tr></table></figure>
 <p>11、然后浏览器输入<a href="http://192.168.0.143:8888,出现下面图片，默认账号为：root，因为是首次进入需要更改密码（最少8个字符）">http://192.168.0.143:8888,出现下面图片，默认账号为：root，因为是首次进入需要更改密码（最少8个字符）</a></p>
-<img src="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/gitlab04.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/gitlab04.png" class title="This is an gitlab image">
 <p>12、若出现502 GitLab is not responding，如下图所示，则命令行输入gitlab-ctl tail查看是否端口给占用</p>
-<img src="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/gitlab05.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/gitlab05.png" class title="This is an gitlab image">
 <p>13、登陆成功看到默认界面显示为英文，不过不用怕，因为我们安装的是13.x是已经支持中文的，直接设置<br>点击用户头像setting————&gt;Preferences，如下图</p>
-<img src="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/gitlab06.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/gitlab06.png" class title="This is an gitlab image">
 <p>14、然后退出再重新登陆</p>
-<img src="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/gitlab07.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/gitlab07.png" class title="This is an gitlab image">
 <p>15、gitlab数据备份</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">DATE=`date +%Y_%m_%d`</span><br><span class="line"><span class="comment">#生成gitlab备份文件</span></span><br><span class="line">gitlab-rake gitlab:backup:create</span><br><span class="line">gitlab_bak_file=</span><br><span class="line">gitlab_bak_dir=/data/gitlab_bak</span><br><span class="line">mkdir -p <span class="variable">$&#123;gitlab_bak_dir&#125;</span>/<span class="variable">$&#123;DATE&#125;</span></span><br><span class="line">cp /etc/gitlab/gitlab.rb  </span><br><span class="line">cp /etc/gitlab/gitlab-secrets.json <span class="variable">$&#123;gitlab_bak_dir&#125;</span>/<span class="variable">$&#123;DATE&#125;</span></span><br><span class="line">mv /var/opt/gitlab/backups/* <span class="variable">$&#123;gitlab_bak_dir&#125;</span>/<span class="variable">$&#123;DATE&#125;</span></span><br><span class="line"></span><br><span class="line">crontab -l</span><br><span class="line">* 4 * * * /opt/gitlab_bak.sh</span><br></pre></td></tr></table></figure>
 <p>二、简单使用<br>1、生成服务器ssh密钥</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[www@master .ssh]$ ssh-keygen </span><br><span class="line">Generating public&#x2F;private rsa key pair.</span><br><span class="line">Enter file in which to save the key (&#x2F;home&#x2F;www&#x2F;.ssh&#x2F;id_rsa): </span><br><span class="line">Enter passphrase (empty for no passphrase): </span><br><span class="line">Enter same passphrase again: </span><br><span class="line">Your identification has been saved in &#x2F;home&#x2F;www&#x2F;.ssh&#x2F;id_rsa.</span><br><span class="line">Your public key has been saved in &#x2F;home&#x2F;www&#x2F;.ssh&#x2F;id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:h4knSLSSXOs&#x2F;+cUrkI7&#x2F;mPAyOlbL1qnFwL1HCspNBTo www@master</span><br><span class="line">The key&#39;s randomart image is:</span><br><span class="line">+---[RSA 2048]----+</span><br><span class="line">|    +            |</span><br><span class="line">| . &#x3D; +           |</span><br><span class="line">|  E + .          |</span><br><span class="line">|   * + . o       |</span><br><span class="line">|    B +.S .      |</span><br><span class="line">| . +.&#x3D;oB o       |</span><br><span class="line">|  ooo&#x3D;Oo. o      |</span><br><span class="line">|  o B++*.. .     |</span><br><span class="line">| ..+.&#x3D;&#x3D;.o..      |</span><br><span class="line">+----[SHA256]-----+</span><br><span class="line">[www@master .ssh]$ ls</span><br><span class="line">authorized_keys  id_rsa  id_rsa.pub</span><br><span class="line">[www@master .ssh]$</span><br></pre></td></tr></table></figure>
 <p>2、然后把公钥复制到gitlab用户设置里的ssh密钥处</p>
-<img src="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/gitlab08.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/gitlab08.png" class title="This is an gitlab image">
 <p>3、创建一个命名为test的项目</p>
-<img src="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/gitlab09.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/gitlab09.png" class title="This is an gitlab image">
 <p>4、查看服务器是否安装git</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@master ~]<span class="comment"># rpm -qa | grep git</span></span><br><span class="line">libglvnd-1.0.1-0.8.git5baa1e5.el7.x86_64</span><br><span class="line">crontabs-1.11-6.20121102git.el7.noarch</span><br><span class="line">net-tools-2.0-0.25.20131004git.el7.x86_64</span><br><span class="line">lm_sensors-libs-3.4.0-8.20160601gitf9185e5.el7.x86_64</span><br><span class="line">libglvnd-glx-1.0.1-0.8.git5baa1e5.el7.x86_64</span><br><span class="line">libglvnd-egl-1.0.1-0.8.git5baa1e5.el7.x86_64</span><br><span class="line">linux-firmware-20191203-76.gite8a0f4c.el7.noarch</span><br><span class="line">git-1.8.3.1-23.el7_8.x86_64</span><br></pre></td></tr></table></figure>
 <p>5、复制克隆地址，然后在服务器把项目克隆到本地</p>
@@ -454,11 +454,11 @@
 <p>因为刚才我们设置里面提供的是www用户的密钥，则以www用户去克隆</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[www@master www]$ git <span class="built_in">clone</span> git@192.168.0.143:root/test.git</span><br><span class="line">正克隆到 <span class="string">'test'</span>...</span><br><span class="line">The authenticity of host <span class="string">'192.168.0.143 (192.168.0.143)'</span> can<span class="string">'t be established.</span></span><br><span class="line"><span class="string">ECDSA key fingerprint is SHA256:aIE7r5cEABEogX0LNpMVgCqZif3K+C+jb6AaHgXWDtY.</span></span><br><span class="line"><span class="string">ECDSA key fingerprint is MD5:c9:cb:ae:bb:28:13:98:5f:6f:fc:c3:ab:16:0c:7b:22.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no)? yes</span></span><br><span class="line"><span class="string">Warning: Permanently added '</span>192.168.0.143<span class="string">' (ECDSA) to the list of known hosts.</span></span><br><span class="line"><span class="string">warning: 您似乎克隆了一个空版本库。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[www@master www]$ cd test</span></span><br><span class="line"><span class="string">[www@master test]$ ls -a</span></span><br><span class="line"><span class="string">.  ..  .git</span></span><br></pre></td></tr></table></figure>
 <p>6、创建文件夹及文件，提交到gitlab上面<br>由于我们没有设置邮箱及用户名，则提示先让我们设置</p>
-<img src="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/gitlab10.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/gitlab10.png" class title="This is an gitlab image">
 <p>7、设置邮箱地址及用户，并提交文件到gitlab</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[www@master <span class="built_in">test</span>]$ git config --global user.email <span class="string">"test@qq.com"</span></span><br><span class="line">[www@master <span class="built_in">test</span>]$ git config --global user.name <span class="string">"test"</span></span><br><span class="line">[www@master <span class="built_in">test</span>]$ git commit -m <span class="string">"提交测试文件到gitlab"</span></span><br><span class="line">[master（根提交） d8827eb] 提交测试文件到gitlab</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br><span class="line"> create mode 100644 test_2020-09-29/test.txt</span><br><span class="line">[www@master <span class="built_in">test</span>]$ git push origin master</span><br><span class="line">Counting objects: 4, <span class="keyword">done</span>.</span><br><span class="line">Writing objects: 100% (4/4), 288 bytes | 0 bytes/s, <span class="keyword">done</span>.</span><br><span class="line">Total 4 (delta 0), reused 0 (delta 0)</span><br><span class="line">To git@192.168.0.143:root/test.git</span><br><span class="line"> * [new branch]      master -&gt; master</span><br></pre></td></tr></table></figure>
 <p>8、查看gitlab web界面是否存在我们上面所提交的文件夹及文件</p>
-<img src="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/gitlab11.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/gitlab11.png" class title="This is an gitlab image">
       
     </div>
     
@@ -486,7 +486,7 @@
   <p><span>本文标题:</span><a href="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/">gitlab安装及使用</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Lucky、 的个人博客">Lucky、</a></p>
   <p><span>发布时间:</span>2020年09月25日 - 13:09</p>
-  <p><span>最后更新:</span>2020年09月29日 - 12:09</p>
+  <p><span>最后更新:</span>2020年12月10日 - 11:12</p>
   <p><span>原始链接:</span><a href="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" title="gitlab安装及使用">https://github.com/Piouscc/rz168.io.git/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"  aria-label="复制成功！"></i></span>
   </p>
@@ -647,7 +647,7 @@ var jiathis_config={
               
                 <a href="/rz168.io/archives/%7C%7C%20%E5%BD%92%E6%A1%A3">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -734,7 +734,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">24k</span>
+    <span title="Site words total count">25.4k</span>
   
 </div>
 
@@ -754,7 +754,7 @@ var jiathis_config={
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共24k字</span>
+  <span class="post-count">博客全站共25.4k字</span>
 </div>
         
 <div class="busuanzi-count">

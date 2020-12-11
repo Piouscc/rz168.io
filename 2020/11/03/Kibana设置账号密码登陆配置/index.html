@@ -99,7 +99,7 @@
 <meta property="og:image" content="https://github.com/rz168.io/2020/11/03/Kibana%E8%AE%BE%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E9%85%8D%E7%BD%AE/pass03.png">
 <meta property="og:image" content="https://github.com/rz168.io/2020/11/03/Kibana%E8%AE%BE%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E9%85%8D%E7%BD%AE/pass04.png">
 <meta property="article:published_time" content="2020-11-03T08:56:13.000Z">
-<meta property="article:modified_time" content="2020-11-18T08:41:34.284Z">
+<meta property="article:modified_time" content="2020-11-18T08:50:32.640Z">
 <meta property="article:author" content="Lucky、">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="elk">
@@ -368,7 +368,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  595
+                  584
                 </span>
               
 
@@ -408,7 +408,7 @@
         <p>配置elasticsearch集群访问权限+Kibana设置账号密码登陆配置</p>
 <a id="more"></a>
 <p>1、本文基于上两篇文章进行配置（elasticsearch集群部署和kibana服务安装）<br>2、服务器配置信息及软件版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">|  服务器IP   | hostname  | 对应软件版本  | </span><br><span class="line">|  ----  | ----  | ----  | </span><br><span class="line">|192.168.0.12|es01|es 7.9.3|</span><br><span class="line">|192.168.0.13|es02|es 7.9.3|</span><br><span class="line">|192.168.0.17|es03|es 7.9.3|</span><br><span class="line">|192.168.0.17|es03|kibana 7.9.3|</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">|192.168.0.12|es01|es 7.9.3|</span><br><span class="line">|192.168.0.13|es02|es 7.9.3|</span><br><span class="line">|192.168.0.17|es03|es 7.9.3|</span><br><span class="line">|192.168.0.17|es03|kibana 7.9.3|</span><br></pre></td></tr></table></figure>
 <p>3、停止现在运行的elk环境</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /tmp/elasticsearch_pid | xargs kill -9 </span><br><span class="line">pkill kibana</span><br></pre></td></tr></table></figure>
 <p>4、开启xpack配置<br>修改作为主节点的elasticsearch配置文件，添加如下命令开启x-pack</p>
@@ -521,6 +521,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/rz168.io/2020/11/28/gitlab%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/" rel="prev" title="gitlab备份与恢复">
+                gitlab备份与恢复 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -620,7 +624,7 @@ var jiathis_config={
               
                 <a href="/rz168.io/archives/%7C%7C%20%E5%BD%92%E6%A1%A3">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -707,7 +711,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">24k</span>
+    <span title="Site words total count">25.4k</span>
   
 </div>
 
@@ -727,7 +731,7 @@ var jiathis_config={
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共24k字</span>
+  <span class="post-count">博客全站共25.4k字</span>
 </div>
         
 <div class="busuanzi-count">
