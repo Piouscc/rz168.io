@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="Lucky、">
 <meta property="og:description" content="记一次gitlab迁移到docker容器">
 <meta property="article:published_time" content="2020-12-10T03:18:14.000Z">
-<meta property="article:modified_time" content="2020-12-10T03:43:44.696Z">
+<meta property="article:modified_time" content="2020-12-11T02:57:31.506Z">
 <meta property="article:author" content="Lucky、">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="Jenkins">
@@ -402,13 +402,13 @@
       
         <p>记一次gitlab迁移到docker容器</p>
 <a id="more"></a>
-<p>由于早两天已经把线上的gitlab版本<a href>升级13.6.1</a>，刚接到需求，需要把gitlab迁移到docker容器<br>1、修改服务器ssh22端口<br>注意：gitlab容器需要开放22端口，同时远程服务器默认为22端口，则需要提前把服务器上的端口更改</p>
+<p>由于早两天已经把线上的gitlab版本<a href="https://piouscc.github.io/rz168.io/2020/11/30/gitlab%E8%B7%A8%E5%A4%A7%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/" target="_blank" rel="noopener">升级13.6.1</a>，刚接到需求，需要把gitlab迁移到docker容器<br>1、修改服务器ssh22端口<br>注意：gitlab容器需要开放22端口，同时远程服务器默认为22端口，则需要提前把服务器上的端口更改</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/ssh/sshd_config</span><br><span class="line">Port 22    <span class="comment">#把这个改成自己想要的，然后重启服务即可</span></span><br><span class="line">systemctl restart sshd</span><br></pre></td></tr></table></figure>
 <p>2、在原gitlab备份数据，注：这里需要停止写入，即禁止同事提交代码</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gitlab-ctl stop unicorn</span><br><span class="line">gitlab-ctl stop sidekiq</span><br></pre></td></tr></table></figure>
 <p>3、执行备份命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-rake gitlab:backup:create</span><br></pre></td></tr></table></figure>
-<p>4、提前安装好docker服务，<br>有需要的请看<a href>docker服务安装</a><br>略<br>5、到docker镜像官网搜索对应版本的gitlab镜像<br>进入<a href="https://hub.docker.com/" target="_blank" rel="noopener">docker镜像官网</a>搜索gitlab<br>6、摘取gitlab镜像</p>
+<p>4、提前安装好docker服务，<br>有需要的请看<a href="https://piouscc.github.io/rz168.io/2020/05/15/docker-ce-%E5%AE%89%E8%A3%85/" target="_blank" rel="noopener">docker服务安装</a><br>略<br>5、到docker镜像官网搜索对应版本的gitlab镜像<br>进入<a href="https://hub.docker.com/" target="_blank" rel="noopener">docker镜像官网</a>搜索gitlab<br>6、摘取gitlab镜像</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull gitlab/gitlab-ce:13.6.1-ce.0</span><br></pre></td></tr></table></figure>
 <p>7、启动gitlab容器，目录不存在，则自动创建,9a53eb68aeeb这个为镜像ID（docker images获取）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name=gitlab -d --publish 22:22 --publish 1443:443 --publish 9999:80 --restart always --privileged=<span class="literal">true</span> --volume /data/gitlab/config:/etc/gitlab --volume /data/gitlab/logs:/var/<span class="built_in">log</span>/gitlab --volume /data/gitlab/data:/var/opt/gitlab 9a53eb68aeeb</span><br></pre></td></tr></table></figure>
