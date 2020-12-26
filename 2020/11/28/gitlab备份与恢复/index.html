@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="Lucky、">
 <meta property="og:description" content="gitlab备份与恢复">
 <meta property="article:published_time" content="2020-11-28T06:47:54.000Z">
-<meta property="article:modified_time" content="2020-11-30T09:52:47.537Z">
+<meta property="article:modified_time" content="2020-12-22T03:17:01.002Z">
 <meta property="article:author" content="Lucky、">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="Jenkins">
@@ -363,7 +363,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  407
+                  427
                 </span>
               
 
@@ -401,7 +401,7 @@
 
       
         <p>gitlab备份与恢复<br> <a id="more"></a><br>一、备份<br>1、gitlab的备份比较简单，直接使用自带的即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab-rake gitlab:backup:create</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GitLab 12.2或更高版本：</span><br><span class="line">sudo gitlab-backup create</span><br><span class="line">GitLab 12.1和更早版本：</span><br><span class="line">sudo gitlab-rake gitlab:backup:create</span><br></pre></td></tr></table></figure>
 <p>2、默认备份路径为：/var/opt/gitlab/backups，如果想更换备份路径可以直接修改gitlab配置文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi &#x2F;etc&#x2F;gitlab&#x2F;gitlab.rb</span><br><span class="line">gitlab_rails[&#39;backup_path&#39;] &#x3D; &quot;&#x2F;var&#x2F;opt&#x2F;gitlab&#x2F;backups&quot;</span><br></pre></td></tr></table></figure>
 <p>3、每次修改完gitlab配置文件需要重新载入配置,否则配置不会读取更新</p>
@@ -573,7 +573,7 @@ var jiathis_config={
               
                 <a href="/rz168.io/archives/%7C%7C%20%E5%BD%92%E6%A1%A3">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -660,7 +660,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">25.4k</span>
+    <span title="Site words total count">25.9k</span>
   
 </div>
 
@@ -680,7 +680,7 @@ var jiathis_config={
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共25.4k字</span>
+  <span class="post-count">博客全站共25.9k字</span>
 </div>
         
 <div class="busuanzi-count">
