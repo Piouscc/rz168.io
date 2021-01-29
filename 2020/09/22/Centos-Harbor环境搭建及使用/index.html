@@ -98,7 +98,7 @@
 <meta property="og:image" content="https://github.com/rz168.io/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/harbor02.png">
 <meta property="og:image" content="https://github.com/rz168.io/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/harbor03.png">
 <meta property="article:published_time" content="2020-09-22T08:39:54.000Z">
-<meta property="article:modified_time" content="2020-09-25T02:53:25.136Z">
+<meta property="article:modified_time" content="2021-01-26T07:51:21.642Z">
 <meta property="article:author" content="Lucky">
 <meta property="article:tag" content="docker">
 <meta property="article:tag" content="Linux">
@@ -417,8 +417,8 @@
 <p>6、查看对应容器</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@system harbor]<span class="comment"># docker ps</span></span><br><span class="line">CONTAINER ID        IMAGE                                COMMAND                  CREATED              STATUS                        PORTS                       NAMES</span><br><span class="line">8441988f22e4        goharbor/harbor-jobservice:v2.1.0    <span class="string">"/harbor/entrypoint.…"</span>   About a minute ago   Up About a minute (healthy)                               harbor-jobservice</span><br><span class="line">5223df8d89eb        goharbor/nginx-photon:v2.1.0         <span class="string">"nginx -g 'daemon of…"</span>   About a minute ago   Up About a minute (healthy)   0.0.0.0:80-&gt;8080/tcp        nginx</span><br><span class="line">13cd522bbf86        goharbor/harbor-core:v2.1.0          <span class="string">"/harbor/entrypoint.…"</span>   About a minute ago   Up About a minute (healthy)                               harbor-core</span><br><span class="line">848962ff7f6d        goharbor/harbor-db:v2.1.0            <span class="string">"/docker-entrypoint.…"</span>   About a minute ago   Up About a minute (healthy)                               harbor-db</span><br><span class="line">91dcdf76cf12        goharbor/harbor-portal:v2.1.0        <span class="string">"nginx -g 'daemon of…"</span>   About a minute ago   Up About a minute (healthy)                               harbor-portal</span><br><span class="line">bb50db31e37b        goharbor/harbor-registryctl:v2.1.0   <span class="string">"/home/harbor/start.…"</span>   About a minute ago   Up About a minute (healthy)                               registryctl</span><br><span class="line">4570444ae911        goharbor/registry-photon:v2.1.0      <span class="string">"/home/harbor/entryp…"</span>   About a minute ago   Up About a minute (healthy)                               registry</span><br><span class="line">0e169241429a        goharbor/redis-photon:v2.1.0         <span class="string">"redis-server /etc/r…"</span>   About a minute ago   Up About a minute (healthy)                               redis</span><br><span class="line">90aa91304cf5        goharbor/harbor-log:v2.1.0           <span class="string">"/bin/sh -c /usr/loc…"</span>   About a minute ago   Up About a minute (healthy)   127.0.0.1:1514-&gt;10514/tcp   harbor-log</span><br><span class="line">[root@system harbor]<span class="comment">#</span></span><br></pre></td></tr></table></figure>
 <p>7、访问Harbor web页面,浏览器输入<a href="http://192.168.0.143，默认账号密码为：admin">http://192.168.0.143，默认账号密码为：admin</a> Harbor12345</p>
-<img src="/rz168.io/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/harbor01.png" class title="This is an jenkins image">
-<img src="/rz168.io/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/harbor02.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/harbor01.png" class title="This is an harbor image">
+<img src="/rz168.io/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/harbor02.png" class title="This is an harbor image">
 <p>8、测试推送镜像到Harbor仓库<br>1)编译daemon.json文件，加入本地Harbor仓库地址：192.168.0.143</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[root@master ~]<span class="comment"># cat /etc/docker/daemon.json </span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"bip"</span>: <span class="string">"172.17.0.1/16"</span>,</span><br><span class="line">  <span class="string">"exec-opts"</span>: [<span class="string">"native.cgroupdriver=systemd"</span>],</span><br><span class="line">  <span class="string">"registry-mirrors"</span>: [</span><br><span class="line">     <span class="string">"https://bxsfpjcb.mirror.aliyuncs.com"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"insecure-registries"</span>: [<span class="string">"192.168.0.143:80"</span>],</span><br><span class="line">  <span class="string">"data-root"</span>: <span class="string">"/opt/docker"</span>,</span><br><span class="line">  <span class="string">"storage-driver"</span>: <span class="string">"overlay2"</span>,</span><br><span class="line">  <span class="string">"storage-opts"</span>: [</span><br><span class="line">    <span class="string">"overlay2.override_kernel_check=true"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"log-driver"</span>: <span class="string">"json-file"</span>,</span><br><span class="line">  <span class="string">"log-opts"</span>: &#123;</span><br><span class="line">    <span class="string">"max-size"</span>: <span class="string">"100m"</span>,</span><br><span class="line">    <span class="string">"max-file"</span>: <span class="string">"5"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"dns-search"</span>: [<span class="string">"default.svc.cluster.local"</span>, <span class="string">"svc.cluster.local"</span>, <span class="string">"localdomain"</span>],</span><br><span class="line">  <span class="string">"dns-opts"</span>: [<span class="string">"ndots:2"</span>, <span class="string">"timeout:2"</span>, <span class="string">"attempts:2"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>9、重启docker服务</p>
@@ -432,7 +432,7 @@
 <p>13、推送镜像到私有仓库Harbor</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@master ~]<span class="comment"># docker push 192.168.0.143:80/library/alpine:v1.0 </span></span><br><span class="line">The push refers to repository [192.168.0.143:80/library/alpine]</span><br><span class="line">50644c29ef5a: Pushed </span><br><span class="line">latest: digest: sha256:a15790640a6690aa1730c38cf0a440e2aa44aaca9b0e8931a9f2b0d7cc90fd65 size: 528</span><br></pre></td></tr></table></figure>
 <p>14、Harbor web界面查看，如下图所示</p>
-<img src="/rz168.io/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/harbor03.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/harbor03.png" class title="This is an harbor image">
 <p>15、配置Harbor开机自启动</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/rc.local</span><br><span class="line"><span class="comment">#harbor start</span></span><br><span class="line"><span class="built_in">cd</span> /root/harbor &amp;&amp; docker-compose up -d</span><br></pre></td></tr></table></figure>
 <p>16、备份与恢复<br>由于上面所说到data_volume: /data，也就说明Harbor镜像存放在/data目录如下可以看到上面所上传的镜像名称alpine：</p>
@@ -468,7 +468,7 @@
   <p><span>本文标题:</span><a href="/rz168.io/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/">Centos_Harbor环境搭建及使用</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Lucky 的个人博客">Lucky</a></p>
   <p><span>发布时间:</span>2020年09月22日 - 16:09</p>
-  <p><span>最后更新:</span>2020年09月25日 - 10:09</p>
+  <p><span>最后更新:</span>2021年01月26日 - 15:01</p>
   <p><span>原始链接:</span><a href="/rz168.io/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/" title="Centos_Harbor环境搭建及使用">https://github.com/Piouscc/rz168.io.git/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/"  aria-label="复制成功！"></i></span>
   </p>
@@ -629,7 +629,7 @@ var jiathis_config={
               
                 <a href="/rz168.io/archives/%7C%7C%20%E5%BD%92%E6%A1%A3">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -702,7 +702,7 @@ var jiathis_config={
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart" aria-hidden="true"></i>
   </span>
@@ -716,7 +716,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">25.9k</span>
+    <span title="Site words total count">27k</span>
   
 </div>
 
@@ -736,7 +736,7 @@ var jiathis_config={
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共25.9k字</span>
+  <span class="post-count">博客全站共27k字</span>
 </div>
         
 <div class="busuanzi-count">

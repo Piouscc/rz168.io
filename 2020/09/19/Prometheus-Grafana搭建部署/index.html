@@ -106,7 +106,7 @@
 <meta property="og:image" content="https://github.com/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_07.png">
 <meta property="og:image" content="https://github.com/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_08.png">
 <meta property="article:published_time" content="2020-09-19T03:29:33.000Z">
-<meta property="article:modified_time" content="2020-09-21T08:52:29.887Z">
+<meta property="article:modified_time" content="2021-01-26T07:55:46.317Z">
 <meta property="article:author" content="Lucky">
 <meta property="article:tag" content="K8s">
 <meta name="twitter:card" content="summary">
@@ -442,27 +442,27 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@master manifests]<span class="comment"># kubectl get -n monitoring svc</span></span><br><span class="line">NAME                    TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE</span><br><span class="line">alertmanager-main       NodePort    10.109.50.168    &lt;none&gt;        9093:30093/TCP               2d17h</span><br><span class="line">alertmanager-operated   ClusterIP   None             &lt;none&gt;        9093/TCP,9094/TCP,9094/UDP   2d17h</span><br><span class="line">grafana                 NodePort    10.108.51.131    &lt;none&gt;        3000:32000/TCP               2d17h</span><br><span class="line">kube-state-metrics      ClusterIP   None             &lt;none&gt;        8443/TCP,9443/TCP            2d17h</span><br><span class="line">node-exporter           ClusterIP   None             &lt;none&gt;        9100/TCP                     2d17h</span><br><span class="line">prometheus-adapter      ClusterIP   10.98.108.128    &lt;none&gt;        443/TCP                      2d17h</span><br><span class="line">prometheus-k8s          NodePort    10.108.163.187   &lt;none&gt;        9090:30090/TCP               2d17h</span><br><span class="line">prometheus-operated     ClusterIP   None             &lt;none&gt;        9090/TCP                     2d17h</span><br><span class="line">prometheus-operator     ClusterIP   None             &lt;none&gt;        8443/TCP                     2d18h</span><br></pre></td></tr></table></figure>
 <p>13、访问对应prometheus服务，IP+端口模式</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.0.12:30090</span><br></pre></td></tr></table></figure>
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_01.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_01.png" class title="This is an prometheus image">
 <p>14、访问对应Alertmanager服务，IP+端口模式</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.0.12:30093</span><br></pre></td></tr></table></figure>
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_02.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_02.png" class title="This is an prometheus image">
 <p>15、访问对应grafana服务，IP+端口模式，默认账号，密码为admin,首次登陆需要更改密码</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.0.12:32000</span><br></pre></td></tr></table></figure>
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_03.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_03.png" class title="This is an prometheus image">
 <p>16、登陆成功后，默认会有个prometheus数据源，若没有手动添加即可</p>
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_04.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_04.png" class title="This is an prometheus image">
 <p>17、使用Grafana可视化展示Prometheus监控数据<br>推荐模板： 也就是在grafana共享中心里面的，也就是别人写的模版上传到这里库里面的，自己也可以写，写完上传上去，<br>别人也可以访问到，下面是模版的id,只要获取这个ID，就能使用这个模版了，只要这个模版，后端提供执行promeQL,只要有数据就能帮你展示出来<br>Grafana.com<br>• 集群资源监控：3119<br>• 资源状态监控 ：6417<br>• Node监控 ：9276<br>18、下面添加监控模板<br>1）集群资源监控：3119，选择web界面+然后点击import，输入3119，点击Load,重新命名为Kubernetes资源管理，再点击Import即可</p>
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_05_3119.png" class title="This is an jenkins image">
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_05_3119_01.png" class title="This is an jenkins image">
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_05_3119_02.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_05_3119.png" class title="This is an prometheus image">
+<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_05_3119_01.png" class title="This is an prometheus image">
+<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_05_3119_02.png" class title="This is an prometheus image">
 <p>上图看到Cluster filesystem usage 没数据，则直接点击，出现Edit然后按照下面对应更改即可</p>
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_05_3119_03.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_05_3119_03.png" class title="This is an prometheus image">
 <p>2）其它就不一一添加展示，按照上面方式配置即可，下面展示对应监控图<br>集群资源监控：3119</p>
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_06.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_06.png" class title="This is an prometheus image">
 <p>资源状态监控 ：6417</p>
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_07.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_07.png" class title="This is an prometheus image">
 <p>Node监控 ：9276</p>
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_08.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_08.png" class title="This is an prometheus image">
 <p>19、小结：<br>所以有了这些监控，基本上就能了解k8s的基本资源的使用状态了</p>
 
       
@@ -492,7 +492,7 @@
   <p><span>本文标题:</span><a href="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/">Prometheus+Grafana搭建部署</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Lucky 的个人博客">Lucky</a></p>
   <p><span>发布时间:</span>2020年09月19日 - 11:09</p>
-  <p><span>最后更新:</span>2020年09月21日 - 16:09</p>
+  <p><span>最后更新:</span>2021年01月26日 - 15:01</p>
   <p><span>原始链接:</span><a href="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/" title="Prometheus+Grafana搭建部署">https://github.com/Piouscc/rz168.io.git/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/"  aria-label="复制成功！"></i></span>
   </p>
@@ -651,7 +651,7 @@ var jiathis_config={
               
                 <a href="/rz168.io/archives/%7C%7C%20%E5%BD%92%E6%A1%A3">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -724,7 +724,7 @@ var jiathis_config={
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart" aria-hidden="true"></i>
   </span>
@@ -738,7 +738,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">25.9k</span>
+    <span title="Site words total count">27k</span>
   
 </div>
 
@@ -758,7 +758,7 @@ var jiathis_config={
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共25.9k字</span>
+  <span class="post-count">博客全站共27k字</span>
 </div>
         
 <div class="busuanzi-count">

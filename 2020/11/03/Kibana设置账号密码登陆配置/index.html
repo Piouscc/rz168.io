@@ -99,7 +99,7 @@
 <meta property="og:image" content="https://github.com/rz168.io/2020/11/03/Kibana%E8%AE%BE%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E9%85%8D%E7%BD%AE/pass03.png">
 <meta property="og:image" content="https://github.com/rz168.io/2020/11/03/Kibana%E8%AE%BE%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E9%85%8D%E7%BD%AE/pass04.png">
 <meta property="article:published_time" content="2020-11-03T08:56:13.000Z">
-<meta property="article:modified_time" content="2020-11-18T08:50:32.640Z">
+<meta property="article:modified_time" content="2021-01-26T07:54:30.944Z">
 <meta property="article:author" content="Lucky">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="elk">
@@ -424,7 +424,7 @@
 <p>2）手动配置指定密码</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/elasticsearch-7.9.3/bin/elasticsearch-setup-passwords interactive</span><br></pre></td></tr></table></figure>
 <p>然后会对应生成elastic账号，谨记所设置的密码，因为下面配置会用到<br>9、验证elasticsearch，浏览器输入对应的IP:9200提示下图，则配置成功</p>
-<img src="/rz168.io/2020/11/03/Kibana%E8%AE%BE%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E9%85%8D%E7%BD%AE/pass01.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/11/03/Kibana%E8%AE%BE%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E9%85%8D%E7%BD%AE/pass01.png" class title="This is an kibana image">
 <p>10、配置剩下两台集群机器<br>这里需要把主节点生成的elastic-certificates.p12分别复制到相关节点的config下<br>同时各自的elasticsearch.yml文件新增以下配置,再执行启动命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xpack.security.enabled: true</span><br><span class="line">xpack.security.transport.ssl.enabled: true</span><br><span class="line">xpack.security.transport.ssl.verification_mode: certificate</span><br><span class="line">xpack.security.transport.ssl.keystore.path: elastic-certificates.p12</span><br><span class="line">xpack.security.transport.ssl.truststore.path: elastic-certificates.p12</span><br></pre></td></tr></table></figure>
 <p>11、配置kibana权限<br>修改Kibana配置文件</p>
@@ -432,10 +432,10 @@
 <p>12、启动kibana，并访问kibana界面，测试</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su es -c '/usr/local/kibana-7.9.3/bin/kibana &amp; '</span><br></pre></td></tr></table></figure>
 <p>浏览器键入：192.168.0.12:5601</p>
-<img src="/rz168.io/2020/11/03/Kibana%E8%AE%BE%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E9%85%8D%E7%BD%AE/pass02.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/11/03/Kibana%E8%AE%BE%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E9%85%8D%E7%BD%AE/pass02.png" class title="This is an kibana image">
 <p>13、登陆成功界面以及配置用户权限界面</p>
-<img src="/rz168.io/2020/11/03/Kibana%E8%AE%BE%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E9%85%8D%E7%BD%AE/pass03.png" class title="This is an jenkins image">
-<img src="/rz168.io/2020/11/03/Kibana%E8%AE%BE%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E9%85%8D%E7%BD%AE/pass04.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/11/03/Kibana%E8%AE%BE%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E9%85%8D%E7%BD%AE/pass03.png" class title="This is an kibana image">
+<img src="/rz168.io/2020/11/03/Kibana%E8%AE%BE%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E9%85%8D%E7%BD%AE/pass04.png" class title="This is an kibana image">
       
     </div>
     
@@ -463,7 +463,7 @@
   <p><span>本文标题:</span><a href="/rz168.io/2020/11/03/Kibana%E8%AE%BE%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E9%85%8D%E7%BD%AE/">配置elasticsearch集群访问权限+Kibana设置账号密码登陆配置</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Lucky 的个人博客">Lucky</a></p>
   <p><span>发布时间:</span>2020年11月03日 - 16:11</p>
-  <p><span>最后更新:</span>2020年11月18日 - 16:11</p>
+  <p><span>最后更新:</span>2021年01月26日 - 15:01</p>
   <p><span>原始链接:</span><a href="/rz168.io/2020/11/03/Kibana%E8%AE%BE%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E9%85%8D%E7%BD%AE/" title="配置elasticsearch集群访问权限+Kibana设置账号密码登陆配置">https://github.com/Piouscc/rz168.io.git/2020/11/03/Kibana%E8%AE%BE%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E9%85%8D%E7%BD%AE/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2020/11/03/Kibana%E8%AE%BE%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E9%85%8D%E7%BD%AE/"  aria-label="复制成功！"></i></span>
   </p>
@@ -624,7 +624,7 @@ var jiathis_config={
               
                 <a href="/rz168.io/archives/%7C%7C%20%E5%BD%92%E6%A1%A3">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -697,7 +697,7 @@ var jiathis_config={
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart" aria-hidden="true"></i>
   </span>
@@ -711,7 +711,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">25.9k</span>
+    <span title="Site words total count">27k</span>
   
 </div>
 
@@ -731,7 +731,7 @@ var jiathis_config={
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共25.9k字</span>
+  <span class="post-count">博客全站共27k字</span>
 </div>
         
 <div class="busuanzi-count">

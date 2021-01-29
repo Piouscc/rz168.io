@@ -296,6 +296,34 @@
 
       <h2 class="post-title">
         
+            <a class="post-title-link" href="/rz168.io/2021/01/27/Jenkins%E9%A1%B9%E7%9B%AE%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD/" itemprop="url">
+              
+                <span itemprop="name">Jenkins项目数据备份</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2021-01-27T16:54:06+08:00"
+              content="2021-01-27" >
+          01-27
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
             <a class="post-title-link" href="/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/" itemprop="url">
               
                 <span itemprop="name">记一次Jenkins版本升级</span>
@@ -398,7 +426,7 @@
               
                 <a href="/rz168.io/archives/%7C%7C%20%E5%BD%92%E6%A1%A3">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -471,7 +499,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart" aria-hidden="true"></i>
   </span>
@@ -485,7 +513,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">25.9k</span>
+    <span title="Site words total count">27k</span>
   
 </div>
 
@@ -505,7 +533,7 @@
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共25.9k字</span>
+  <span class="post-count">博客全站共27k字</span>
 </div>
         
 <div class="busuanzi-count">
@@ -1030,24 +1058,7 @@
 </script>
 </body>
 </html>
-  slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
+ngth){
                       end = content.length;
                     }
                     slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));

@@ -99,7 +99,7 @@
 <meta property="og:image" content="https://github.com/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki03.png">
 <meta property="og:image" content="https://github.com/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki04.png">
 <meta property="article:published_time" content="2020-11-03T08:55:42.000Z">
-<meta property="article:modified_time" content="2020-11-18T08:29:36.524Z">
+<meta property="article:modified_time" content="2021-01-26T07:54:16.193Z">
 <meta property="article:author" content="Lucky">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="elk">
@@ -415,10 +415,10 @@
 <img src="/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki01.png" class title="This is an jenkins image">
 <p>4、查看kibana服务进程及端口，默认端口为5601</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@node02 config]<span class="comment"># netstat -ntlp</span></span><br><span class="line">Active Internet connections (only servers)</span><br><span class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    </span><br><span class="line">tcp        0      0 0.0.0.0:5601            0.0.0.0:*               LISTEN      3797/node           </span><br><span class="line">tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      963/sshd            </span><br><span class="line">tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      1132/master         </span><br><span class="line">tcp6       0      0 192.168.0.17:9200       :::*                    LISTEN      1722/java           </span><br><span class="line">tcp6       0      0 192.168.0.17:9300       :::*                    LISTEN      1722/java           </span><br><span class="line">tcp6       0      0 :::22                   :::*                    LISTEN      963/sshd            </span><br><span class="line">tcp6       0      0 ::1:25                  :::*                    LISTEN      1132/master         </span><br><span class="line">[root@node02 config]<span class="comment"># ps -ef |grep kibana</span></span><br><span class="line">esuser     3797      1 87 15:26 ?        00:01:01 /usr/<span class="built_in">local</span>/kibana-7.9.3/bin/../node/bin/node /usr/<span class="built_in">local</span>/kibana-7.9.3/bin/../src/cli</span><br><span class="line">root       3868   2072  1 15:27 pts/1    00:00:00 grep --color=auto kibana</span><br><span class="line">[root@node02 config]<span class="comment">#</span></span><br></pre></td></tr></table></figure>
-<img src="/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki02.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki02.png" class title="This is an kibana image">
 <p>5、访问kibana web界面</p>
-<img src="/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki03.png" class title="This is an jenkins image">
-<img src="/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki04.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki03.png" class title="This is an kibana image">
+<img src="/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/ki04.png" class title="This is an kibana image">
       
     </div>
     
@@ -446,7 +446,7 @@
   <p><span>本文标题:</span><a href="/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/">Kibana服务安装</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Lucky 的个人博客">Lucky</a></p>
   <p><span>发布时间:</span>2020年11月03日 - 16:11</p>
-  <p><span>最后更新:</span>2020年11月18日 - 16:11</p>
+  <p><span>最后更新:</span>2021年01月26日 - 15:01</p>
   <p><span>原始链接:</span><a href="/rz168.io/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/" title="Kibana服务安装">https://github.com/Piouscc/rz168.io.git/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2020/11/03/Kibana%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/"  aria-label="复制成功！"></i></span>
   </p>
@@ -607,7 +607,7 @@ var jiathis_config={
               
                 <a href="/rz168.io/archives/%7C%7C%20%E5%BD%92%E6%A1%A3">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -680,7 +680,7 @@ var jiathis_config={
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart" aria-hidden="true"></i>
   </span>
@@ -694,7 +694,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">25.9k</span>
+    <span title="Site words total count">27k</span>
   
 </div>
 
@@ -714,7 +714,7 @@ var jiathis_config={
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共25.9k字</span>
+  <span class="post-count">博客全站共27k字</span>
 </div>
         
 <div class="busuanzi-count">

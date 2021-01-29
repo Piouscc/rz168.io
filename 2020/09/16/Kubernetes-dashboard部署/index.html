@@ -98,7 +98,7 @@
 <meta property="og:image" content="https://github.com/rz168.io/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/dashboard.png">
 <meta property="og:image" content="https://github.com/rz168.io/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/dashboard_01.png">
 <meta property="article:published_time" content="2020-09-16T09:25:32.000Z">
-<meta property="article:modified_time" content="2020-09-16T13:26:13.265Z">
+<meta property="article:modified_time" content="2021-01-26T07:54:47.486Z">
 <meta property="article:author" content="Lucky">
 <meta property="article:tag" content="K8s">
 <meta name="twitter:card" content="summary">
@@ -417,11 +417,11 @@
 <p>6、查看外网访问映射对应端口</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@master ~]<span class="comment"># kubectl -n kubernetes-dashboard get svc</span></span><br><span class="line">NAME                        TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)         AGE</span><br><span class="line">dashboard-metrics-scraper   ClusterIP   10.99.247.200   &lt;none&gt;        8000/TCP        112m</span><br><span class="line">kubernetes-dashboard        NodePort    10.109.33.119   &lt;none&gt;        443:30356/TCP   112m</span><br></pre></td></tr></table></figure>
 <p>7、获取secret中的token</p>
-<img src="/rz168.io/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/dashboard_02.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/dashboard_02.png" class title="This is an dashboard image">
 <p>8、访问dashboard，浏览器输入<a href="https://masterIP:30356，这里建议使用火狐浏览器，">https://masterIP:30356，这里建议使用火狐浏览器，</a><br>同时首次访问时，会阻拦你，所以你需要继续访问，然后选择验证方式时，会有kubeconfig和令牌两种方式</p>
-<img src="/rz168.io/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/dashboard.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/dashboard.png" class title="This is an dashboard image">
 <p>9、然后我们选择令牌（第6步获取到的token）,点击登陆，成功后的界面如下：</p>
-<img src="/rz168.io/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/dashboard_01.png" class title="This is an jenkins image">
+<img src="/rz168.io/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/dashboard_01.png" class title="This is an dashboard image">
       
     </div>
     
@@ -449,7 +449,7 @@
   <p><span>本文标题:</span><a href="/rz168.io/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/">Kubernetes-dashboard部署</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Lucky 的个人博客">Lucky</a></p>
   <p><span>发布时间:</span>2020年09月16日 - 17:09</p>
-  <p><span>最后更新:</span>2020年09月16日 - 21:09</p>
+  <p><span>最后更新:</span>2021年01月26日 - 15:01</p>
   <p><span>原始链接:</span><a href="/rz168.io/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/" title="Kubernetes-dashboard部署">https://github.com/Piouscc/rz168.io.git/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/"  aria-label="复制成功！"></i></span>
   </p>
@@ -608,7 +608,7 @@ var jiathis_config={
               
                 <a href="/rz168.io/archives/%7C%7C%20%E5%BD%92%E6%A1%A3">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -681,7 +681,7 @@ var jiathis_config={
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart" aria-hidden="true"></i>
   </span>
@@ -695,7 +695,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">25.9k</span>
+    <span title="Site words total count">27k</span>
   
 </div>
 
@@ -715,7 +715,7 @@ var jiathis_config={
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共25.9k字</span>
+  <span class="post-count">博客全站共27k字</span>
 </div>
         
 <div class="busuanzi-count">
