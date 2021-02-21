@@ -959,7 +959,6 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">进入容器：</span><br><span class="line">docker <span class="built_in">exec</span> -it gitlab /bin/bash</span><br><span class="line">gitlab-ctl reconfigure</span><br><span class="line">gitlab-ctl restart</span><br><span class="line">docker restart gitlab</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>linux</tag>
-        <tag>Jenkins</tag>
       </tags>
   </entry>
   <entry>
