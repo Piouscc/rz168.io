@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="linux," />
+  <meta name="keywords" content="linux,DB," />
 
 
 
@@ -88,16 +88,17 @@
 
 
 
-<meta name="description" content="Linux系统调优">
+<meta name="description" content="数据库备份利器之Mariabackup">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux系统调优">
-<meta property="og:url" content="https://github.com/Piouscc/rz168.io.git/2020/08/11/Linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E4%BC%98/index.html">
+<meta property="og:title" content="数据库备份利器之Mariabackup">
+<meta property="og:url" content="https://github.com/Piouscc/rz168.io.git/2021/03/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E5%88%A9%E5%99%A8%E4%B9%8BMariabackup/index.html">
 <meta property="og:site_name" content="Lucky">
-<meta property="og:description" content="Linux系统调优">
-<meta property="article:published_time" content="2020-08-11T06:18:00.000Z">
-<meta property="article:modified_time" content="2020-08-11T06:22:19.982Z">
+<meta property="og:description" content="数据库备份利器之Mariabackup">
+<meta property="article:published_time" content="2021-03-05T01:19:45.000Z">
+<meta property="article:modified_time" content="2021-03-05T04:00:36.019Z">
 <meta property="article:author" content="Lucky">
 <meta property="article:tag" content="linux">
+<meta property="article:tag" content="DB">
 <meta name="twitter:card" content="summary">
 
 
@@ -128,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/Piouscc/rz168.io.git/2020/08/11/Linux系统调优/"/>
+  <link rel="canonical" href="https://github.com/Piouscc/rz168.io.git/2021/03/05/数据库备份利器之Mariabackup/"/>
 
 
 
 
 
-  <title>Linux系统调优 | Lucky</title>
+  <title>数据库备份利器之Mariabackup | Lucky</title>
   
 
 
@@ -296,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/Piouscc/rz168.io.git/rz168.io/2020/08/11/Linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E4%BC%98/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Piouscc/rz168.io.git/rz168.io/2021/03/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E5%88%A9%E5%99%A8%E4%B9%8BMariabackup/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lucky">
@@ -313,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux系统调优</h1>
+          <h1 class="post-title" itemprop="name headline">数据库备份利器之Mariabackup</h1>
         
 
         <div class="post-meta">
@@ -325,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-11T14:18:00+08:00">
-                2020-08-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-05T09:19:45+08:00">
+                2021-03-05
               </time>
             
 
@@ -362,7 +363,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  317
+                  1.1k
                 </span>
               
 
@@ -378,7 +379,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -399,12 +400,49 @@
       
 
       
-        <p>Linux系统调优</p>
-<a id="more"></a>
-<p>在很多情况下，我们拿到的服务器，第一步肯定是调优，安装依赖等等<br>1、内核调优</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysctl.conf</span><br><span class="line"></span><br><span class="line">net.bridge.bridge-nf-call-ip6tables=1</span><br><span class="line">net.bridge.bridge-nf-call-iptables=1</span><br><span class="line">net.ipv4.ip_forward=1</span><br><span class="line">net.ipv4.conf.all.forwarding=1</span><br><span class="line">net.ipv4.neigh.default.gc_thresh1=4096</span><br><span class="line">net.ipv4.neigh.default.gc_thresh2=6144</span><br><span class="line">net.ipv4.neigh.default.gc_thresh3=8192</span><br><span class="line">net.ipv4.neigh.default.gc_interval=60</span><br><span class="line">net.ipv4.neigh.default.gc_stale_time=120</span><br><span class="line"></span><br><span class="line"><span class="comment"># 参考 https://github.com/prometheus/node_exporter#disabled-by-default</span></span><br><span class="line">kernel.perf_event_paranoid=-1</span><br><span class="line"></span><br><span class="line"><span class="comment">#sysctls for k8s node config</span></span><br><span class="line">net.ipv4.tcp_slow_start_after_idle=0</span><br><span class="line">net.core.rmem_max=16777216</span><br><span class="line">fs.inotify.max_user_watches=524288</span><br><span class="line">kernel.softlockup_all_cpu_backtrace=1</span><br><span class="line"></span><br><span class="line">kernel.softlockup_panic=0</span><br><span class="line"></span><br><span class="line">kernel.watchdog_thresh=30</span><br><span class="line">fs.file-max=2097152</span><br><span class="line">fs.inotify.max_user_instances=8192</span><br><span class="line">fs.inotify.max_queued_events=16384</span><br><span class="line">vm.max_map_count=262144</span><br><span class="line">fs.may_detach_mounts=1</span><br><span class="line">net.core.netdev_max_backlog=16384</span><br><span class="line">net.ipv4.tcp_wmem=4096 12582912 16777216</span><br><span class="line">net.core.wmem_max=16777216</span><br><span class="line">net.core.somaxconn=32768</span><br><span class="line">net.ipv4.ip_forward=1</span><br><span class="line">net.ipv4.tcp_max_syn_backlog=8096</span><br><span class="line">net.ipv4.tcp_rmem=4096 12582912 16777216</span><br><span class="line"></span><br><span class="line">net.ipv6.conf.all.disable_ipv6=1</span><br><span class="line">net.ipv6.conf.default.disable_ipv6=1</span><br><span class="line">net.ipv6.conf.lo.disable_ipv6=1</span><br><span class="line"></span><br><span class="line">kernel.yama.ptrace_scope=0</span><br><span class="line">vm.swappiness=0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以控制core文件的文件名中是否添加pid作为扩展。</span></span><br><span class="line">kernel.core_uses_pid=1</span><br><span class="line"></span><br><span class="line"><span class="comment"># Do not accept source routing</span></span><br><span class="line">net.ipv4.conf.default.accept_source_route=0</span><br><span class="line">net.ipv4.conf.all.accept_source_route=0</span><br><span class="line"></span><br><span class="line"><span class="comment"># Promote secondary addresses when the primary address is removed</span></span><br><span class="line">net.ipv4.conf.default.promote_secondaries=1</span><br><span class="line">net.ipv4.conf.all.promote_secondaries=1</span><br><span class="line"></span><br><span class="line"><span class="comment"># Enable hard and soft link protection</span></span><br><span class="line">fs.protected_hardlinks=1</span><br><span class="line">fs.protected_symlinks=1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 源路由验证</span></span><br><span class="line"><span class="comment"># see details in https://help.aliyun.com/knowledge_detail/39428.html</span></span><br><span class="line">net.ipv4.conf.all.rp_filter=0</span><br><span class="line">net.ipv4.conf.default.rp_filter=0</span><br><span class="line">net.ipv4.conf.default.arp_announce = 2</span><br><span class="line">net.ipv4.conf.lo.arp_announce=2</span><br><span class="line">net.ipv4.conf.all.arp_announce=2</span><br><span class="line"></span><br><span class="line"><span class="comment"># see details in https://help.aliyun.com/knowledge_detail/41334.html</span></span><br><span class="line">net.ipv4.tcp_max_tw_buckets=5000</span><br><span class="line">net.ipv4.tcp_syncookies=1</span><br><span class="line">net.ipv4.tcp_fin_timeout=30</span><br><span class="line">net.ipv4.tcp_synack_retries=2</span><br><span class="line">kernel.sysrq=1</span><br></pre></td></tr></table></figure>
-<p>2、nofile</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* soft nofile 65535</span><br><span class="line">* hard nofile 65536</span><br></pre></td></tr></table></figure>
+        <p>数据库备份利器之Mariabackup<br> <a id="more"></a><br>背景：由于数据过于庞大，如果用mysqldump直接就拉高服务器的负载，本想用Percona XtraBackup ，但是官网宣称“在MariaDB 10.3中，不支持Percona XtraBackup ”<br>因此使用mariabackup</p>
+<p>1、Mariabackup简介<br>Mariabackup是MariaDB提供的一个开源工具，用于对InnoDB，Aria和MyISAM表进行物理在线备份。这个工具是基于Percona的XtraBackup（版本2.3.8）的解决方案。<br>这里有一点需要注意，在MariaDB10.3.x及以上的版本用Percona XtraBackup工具会有问题。原因可能是MariaDB10.3以上版本的redo日志格式和之前不同了。<br><a href="https://mariadb.com/kb/en/mariabackup/" target="_blank" rel="noopener">Mariabackup官网介绍</a></p>
+<p>2、语法格式<br>$PATH/mysql/bin/mariabackup [–defaults-file=#] [–backup | –prepare | –copy-back | –move-back] [OPTIONS]<br>常用选项解释：<a href="https://mariadb.com/kb/en/mariabackup-options/" target="_blank" rel="noopener">官网介绍</a></p>
+<ul>
+<li>–backup<br>备份数据库。<br>使用此命令选项，Mariabackup对您的一个或多个数据库执行备份操作。备份将写入该–target-dir选项设置的目标目录。</li>
+<li>–databases<br>定义要备份的数据库和表。</li>
+<li>-databases=”example.table1 example.table2”</li>
+<li>–databases-exclude<br>定义您不想备份的数据库。</li>
+<li>-databases-exclude =“ example.table1 example.table2”</li>
+<li>-H, –host<br>定义要备份的MariaDB服务器的主机。</li>
+<li>-host =name</li>
+<li>-P, –port<br>定义要连接的服务器端口。</li>
+<li>–incremental-basedir<br>定义是否要基于另一个备份进行增量备份。</li>
+<li><ul>
+<li>-incremental-dir<br>定义是否要增加准备好的备份<br>将此选项与- -prepare命令选项一起使用会导致Mariabackup增加准备好的备份，而不是从头开始复制。增量将.delta文件和日志文件应用到目标目录中。</li>
+</ul>
+</li>
+<li>–copy-back或–move-back</li>
+<li>-copy-back选项使您可以保留原始备份文件。</li>
+<li>-move-back选项实际上将备份文件移到datadir，因此原始备份文件会丢失。<br>3、完全备份</li>
+<li>用户名为root</li>
+<li>密码为空</li>
+<li>进行完全备份时，目标目录必须为空或不存在<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/opt/67_serv/mysql/bin/mariabackup --backup --target-dir=/data/mariabackup/$(date <span class="string">'+%y-%m-%d'</span>) --user=root --password=</span><br><span class="line">出现……completed OK!……，则备份完成</span><br></pre></td></tr></table></figure>
+4、恢复数据</li>
+<li>停止mariadb服务</li>
+<li>确保datadir目录为空<br>1）准备还原的备份<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/67_serv/mysql/bin/mariabackup --prepare --target-dir=/data/21-03-03</span><br></pre></td></tr></table></figure>
+2)恢复还原</li>
+<li>–datadir=/data/mysql/data 恢复指定目录，不然恢复到默认位置“/var/lib/mysql”<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/opt/67_serv/mysql/bin/mariabackup --copy-back --target-dir=/data/21-03-03 --datadir=/data/mysql/data</span><br><span class="line">出现……completed OK!……，则恢复备份完成</span><br></pre></td></tr></table></figure>
+5、恢复数据完成后，进行用户及用户组配置<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R mysql:mysql /data/mysql/data</span><br></pre></td></tr></table></figure>
+6、启动数据库服务mariadb<br>略<br>7、增量备份，前提要做一次全量备份</li>
+<li>用户名为root</li>
+<li>密码为空</li>
+<li>进行完全备份时，目标目录必须为空或不存在<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mariabackup --backup \ </span><br><span class="line">   --target-dir =/var/mariadb/backup/\ </span><br><span class="line">   --user = mariabackup --password = mypassword</span><br></pre></td></tr></table></figure>
+8、进行增量备份<br>在系统上创建完整备份后，您还可以根据需要多次备份增量更改。<br>为了执行增量备份，您需要运行Mariabackup，该–backup选项带有告诉其执行备份的–target-dir选项，并带有告诉其将增量更改放置在何处的选项。目标目录必须为空。您还需要运行该–incremental-basedir选项，并带有选项以告知其进行上述完整备份的路径。例如：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mariabackup --backup \ </span><br><span class="line">   --target-dir = /var/mariadb/inc1/ \ </span><br><span class="line">   --incremental-basedir = /var/mariadb/backup/\ </span><br><span class="line">   --user = mariabackup --password = mypassword</span><br></pre></td></tr></table></figure>
+要执行其他增量备份，您可以将上一个增量备份的目标目录用作下一个增量备份的增量基本目录。例如：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mariabackup --backup \ </span><br><span class="line">   --target-dir = /var/mariadb/inc2/\ </span><br><span class="line">   --incremental-basedir =/var/mariadb/inc1/\ </span><br><span class="line">   --user = mariabackup --password = mypassword</span><br></pre></td></tr></table></figure>
+9、准备备份(即增量备份与全量备份合并)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mariabackup --prepare\ </span><br><span class="line">   --target-dir =/var/mariadb/backup</span><br></pre></td></tr></table></figure>
+运行此命令可使基本完全备份（即）/var/mariadb/backup与进行备份时收集的InnoDB重做日志中包含的更改同步。<br>然后，将增量更改应用于基本完整备份：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mariabackup --prepare \</span><br><span class="line">   --target-dir=/var/mariadb/backup \</span><br><span class="line">   --incremental-dir=/var/mariadb/inc1</span><br></pre></td></tr></table></figure>
+10、数据恢复还原</li>
+<li>–datadir=/data/mysql/data 恢复指定目录，不然恢复到默认位置“/var/lib/mysql”<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/opt/67_serv/mysql/bin/mariabackup --copy-back --target-dir=/data/21-03-03 --datadir=/data/mysql/data</span><br><span class="line">出现……completed OK!……，则恢复备份完成</span><br></pre></td></tr></table></figure>
+11、恢复数据完成后，进行用户及用户组配置<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R mysql:mysql /data/mysql/data</span><br></pre></td></tr></table></figure>
+12、启动数据库服务mariadb<br>略</li>
+</ul>
+
       
     </div>
     
@@ -423,35 +461,6 @@
     <div>
       
         
-<div class="my_post_copyright">
-  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-  
-  <!-- JS库 sweetalert 可修改路径 -->
-  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/rz168.io/2020/08/11/Linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E4%BC%98/">Linux系统调优</a></p>
-  <p><span>文章作者:</span><a href="/" title="访问 Lucky 的个人博客">Lucky</a></p>
-  <p><span>发布时间:</span>2020年08月11日 - 14:08</p>
-  <p><span>最后更新:</span>2020年08月11日 - 14:08</p>
-  <p><span>原始链接:</span><a href="/rz168.io/2020/08/11/Linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E4%BC%98/" title="Linux系统调优">https://github.com/Piouscc/rz168.io.git/2020/08/11/Linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E4%BC%98/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2020/08/11/Linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E4%BC%98/"  aria-label="复制成功！"></i></span>
-  </p>
-  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
-</div>
-<script> 
-    var clipboard = new Clipboard('.fa-clipboard');
-    $(".fa-clipboard").click(function(){
-      clipboard.on('success', function(){
-        swal({   
-          title: "",   
-          text: '复制成功',
-          icon: "success", 
-          showConfirmButton: true
-          });
-    });
-    });  
-</script>
-
       
     </div>
 
@@ -467,6 +476,8 @@
           
             <a href="/rz168.io/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
           
+            <a href="/rz168.io/tags/DB/" rel="tag"><i class="fa fa-tag"></i> DB</a>
+          
         </div>
       
 
@@ -478,8 +489,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/rz168.io/2020/07/29/Docker-network%E9%97%AE%E9%A2%98/" rel="next" title="Docker-network问题">
-                <i class="fa fa-chevron-left"></i> Docker-network问题
+              <a href="/rz168.io/2021/03/02/php-8-0-2%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" rel="next" title="php_8.0.2编译安装">
+                <i class="fa fa-chevron-left"></i> php_8.0.2编译安装
               </a>
             
           </div>
@@ -487,10 +498,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/rz168.io/2020/08/11/svn%E8%BF%81%E7%A7%BB/" rel="prev" title="svn迁移">
-                svn迁移 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
