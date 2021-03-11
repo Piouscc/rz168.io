@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="Lucky">
 <meta property="og:description" content="数据库备份利器之Mariabackup">
 <meta property="article:published_time" content="2021-03-05T01:19:45.000Z">
-<meta property="article:modified_time" content="2021-03-05T04:00:36.019Z">
+<meta property="article:modified_time" content="2021-03-05T04:02:28.768Z">
 <meta property="article:author" content="Lucky">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="DB">
@@ -400,8 +400,8 @@
       
 
       
-        <p>数据库备份利器之Mariabackup<br> <a id="more"></a><br>背景：由于数据过于庞大，如果用mysqldump直接就拉高服务器的负载，本想用Percona XtraBackup ，但是官网宣称“在MariaDB 10.3中，不支持Percona XtraBackup ”<br>因此使用mariabackup</p>
-<p>1、Mariabackup简介<br>Mariabackup是MariaDB提供的一个开源工具，用于对InnoDB，Aria和MyISAM表进行物理在线备份。这个工具是基于Percona的XtraBackup（版本2.3.8）的解决方案。<br>这里有一点需要注意，在MariaDB10.3.x及以上的版本用Percona XtraBackup工具会有问题。原因可能是MariaDB10.3以上版本的redo日志格式和之前不同了。<br><a href="https://mariadb.com/kb/en/mariabackup/" target="_blank" rel="noopener">Mariabackup官网介绍</a></p>
+        <p>数据库备份利器之Mariabackup<br> <a id="more"></a><br>背景：由于数据过于庞大，如果用mysqldump直接就拉高服务器的负载，本想用Percona XtraBackup ，但是官网宣称“在MariaDB 10.3中，不支持Percona XtraBackup ”，因此使用mariabackup</p>
+<p>1、Mariabackup简介<br>Mariabackup是MariaDB提供的一个开源工具，用于对InnoDB，Aria和MyISAM表进行物理在线备份。这个工具是基于Percona的XtraBackup（版本2.3.8）的解决方案。<br>这里有一点需要注意，在MariaDB10.3.x及以上的版本用Percona XtraBackup工具会有问题。原因可能是MariaDB10.3以上版本的redo日志格式和之前不同了。<a href="https://mariadb.com/kb/en/mariabackup/" target="_blank" rel="noopener">Mariabackup官网介绍</a></p>
 <p>2、语法格式<br>$PATH/mysql/bin/mariabackup [–defaults-file=#] [–backup | –prepare | –copy-back | –move-back] [OPTIONS]<br>常用选项解释：<a href="https://mariadb.com/kb/en/mariabackup-options/" target="_blank" rel="noopener">官网介绍</a></p>
 <ul>
 <li>–backup<br>备份数据库。<br>使用此命令选项，Mariabackup对您的一个或多个数据库执行备份操作。备份将写入该–target-dir选项设置的目标目录。</li>
@@ -498,6 +498,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/rz168.io/2021/03/11/Nginx%E6%B7%BB%E5%8A%A0%E8%AE%BF%E9%97%AE%E5%AF%86%E7%A0%81/" rel="prev" title="Nginx添加访问密码">
+                Nginx添加访问密码 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -598,7 +602,7 @@ var jiathis_config={
               
                 <a href="/rz168.io/archives/%7C%7C%20%E5%BD%92%E6%A1%A3">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -685,7 +689,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">30.7k</span>
+    <span title="Site words total count">31.4k</span>
   
 </div>
 
@@ -705,7 +709,7 @@ var jiathis_config={
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共30.7k字</span>
+  <span class="post-count">博客全站共31.4k字</span>
 </div>
         
 <div class="busuanzi-count">

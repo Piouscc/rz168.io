@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="K8s," />
+  <meta name="keywords" content="linux," />
 
 
 
@@ -88,29 +88,19 @@
 
 
 
-<meta name="description" content="Prometheus+Grafana搭建部署">
+<meta name="description" content="Nginx添加访问密码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Prometheus+Grafana搭建部署">
-<meta property="og:url" content="https://github.com/Piouscc/rz168.io.git/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/index.html">
+<meta property="og:title" content="Nginx添加访问密码">
+<meta property="og:url" content="https://github.com/Piouscc/rz168.io.git/2021/03/11/Nginx%E6%B7%BB%E5%8A%A0%E8%AE%BF%E9%97%AE%E5%AF%86%E7%A0%81/index.html">
 <meta property="og:site_name" content="Lucky">
-<meta property="og:description" content="Prometheus+Grafana搭建部署">
-<meta property="og:image" content="https://github.com/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_01.png">
-<meta property="og:image" content="https://github.com/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_02.png">
-<meta property="og:image" content="https://github.com/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_03.png">
-<meta property="og:image" content="https://github.com/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_04.png">
-<meta property="og:image" content="https://github.com/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_05_3119.png">
-<meta property="og:image" content="https://github.com/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_05_3119_01.png">
-<meta property="og:image" content="https://github.com/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_05_3119_02.png">
-<meta property="og:image" content="https://github.com/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_05_3119_03.png">
-<meta property="og:image" content="https://github.com/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_06.png">
-<meta property="og:image" content="https://github.com/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_07.png">
-<meta property="og:image" content="https://github.com/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_08.png">
-<meta property="article:published_time" content="2020-09-19T03:29:33.000Z">
-<meta property="article:modified_time" content="2021-01-26T07:55:46.317Z">
+<meta property="og:description" content="Nginx添加访问密码">
+<meta property="og:image" content="https://github.com/rz168.io/2021/03/11/Nginx%E6%B7%BB%E5%8A%A0%E8%AE%BF%E9%97%AE%E5%AF%86%E7%A0%81/nginx.png">
+<meta property="article:published_time" content="2021-03-11T06:22:27.000Z">
+<meta property="article:modified_time" content="2021-03-11T07:26:01.140Z">
 <meta property="article:author" content="Lucky">
-<meta property="article:tag" content="K8s">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_01.png">
+<meta name="twitter:image" content="https://github.com/rz168.io/2021/03/11/Nginx%E6%B7%BB%E5%8A%A0%E8%AE%BF%E9%97%AE%E5%AF%86%E7%A0%81/nginx.png">
 
 
 
@@ -140,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/Piouscc/rz168.io.git/2020/09/19/Prometheus-Grafana搭建部署/"/>
+  <link rel="canonical" href="https://github.com/Piouscc/rz168.io.git/2021/03/11/Nginx添加访问密码/"/>
 
 
 
 
 
-  <title>Prometheus+Grafana搭建部署 | Lucky</title>
+  <title>Nginx添加访问密码 | Lucky</title>
   
 
 
@@ -308,7 +298,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/Piouscc/rz168.io.git/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Piouscc/rz168.io.git/rz168.io/2021/03/11/Nginx%E6%B7%BB%E5%8A%A0%E8%AE%BF%E9%97%AE%E5%AF%86%E7%A0%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lucky">
@@ -325,7 +315,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Prometheus+Grafana搭建部署</h1>
+          <h1 class="post-title" itemprop="name headline">Nginx添加访问密码</h1>
         
 
         <div class="post-meta">
@@ -337,8 +327,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-19T11:29:33+08:00">
-                2020-09-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-11T14:22:27+08:00">
+                2021-03-11
               </time>
             
 
@@ -374,7 +364,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.3k
+                  634
                 </span>
               
 
@@ -390,7 +380,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  2
                 </span>
               
             </div>
@@ -411,60 +401,16 @@
       
 
       
-        <p>Prometheus+Grafana搭建部署</p>
-<a id="more"></a>
-<hr>
-<p>1、Prometheus简介<br>Prometheus受启发于Google的Brogmon监控系统（相似的Kubernetes是从Google的Brog系统演变而来），从2012年开始由前Google工程师在Soundcloud以开源软件的形式进行研发，并且于2015年早期对外发布早期版本。<br>2016年5月继Kubernetes之后成为第二个正式加入CNCF基金会的项目，同年6月正式发布1.0版本。2017年底发布了基于全新存储层的2.0版本，能更好地与容器平台、云平台配合。<br>2、由于有集成的，那我这边就直接使用集成开源的kube-prometheus<br>kube-prometheus是coreos的一个开源项目，用于监控kubernetes集群,开源链接如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;prometheus-operator&#x2F;kube-prometheus</span><br></pre></td></tr></table></figure>
-<p>3、安装git，用于克隆kube-prometheus相关项目到本地</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y git</span><br></pre></td></tr></table></figure>
-<p>4、克隆kube-prometheus项目到本地</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/coreos/kube-prometheus</span><br></pre></td></tr></table></figure>
-<p>5、由于默认源为国外，则修改国内源</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">'s/quay.io/quay.mirrors.ustc.edu.cn/g'</span> setup/prometheus-operator-deployment.yaml</span><br><span class="line">sed -i <span class="string">'s/quay.io/quay.mirrors.ustc.edu.cn/g'</span> prometheus-prometheus.yaml </span><br><span class="line">sed -i <span class="string">'s/quay.io/quay.mirrors.ustc.edu.cn/g'</span> alertmanager-alertmanager.yaml</span><br><span class="line">sed -i <span class="string">'s/quay.io/quay.mirrors.ustc.edu.cn/g'</span> kube-state-metrics-deployment.yaml</span><br><span class="line">sed -i <span class="string">'s/quay.io/quay.mirrors.ustc.edu.cn/g'</span> node-exporter-daemonset.yaml</span><br><span class="line">sed -i <span class="string">'s/quay.io/quay.mirrors.ustc.edu.cn/g'</span> prometheus-adapter-deployment.yaml</span><br></pre></td></tr></table></figure>
-<p>6、修改alertmanager-service.yaml文件，对应添加nodePort: 30093放通外网访问，如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@master manifests]<span class="comment"># vi alertmanager-service.yaml </span></span><br><span class="line"></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Service</span><br><span class="line">metadata:</span><br><span class="line">  labels:</span><br><span class="line">    alertmanager: main</span><br><span class="line">  name: alertmanager-main</span><br><span class="line">  namespace: monitoring</span><br><span class="line">spec:</span><br><span class="line">  <span class="built_in">type</span>: NodePort</span><br><span class="line">  ports:</span><br><span class="line">  - name: web</span><br><span class="line">    port: 9093</span><br><span class="line">    targetPort: web</span><br><span class="line">    nodePort: 30093</span><br><span class="line">  selector:</span><br><span class="line">    alertmanager: main</span><br><span class="line">    app: alertmanager</span><br><span class="line">  sessionAffinity: ClientIP</span><br></pre></td></tr></table></figure>
-<p>7、修改grafana-service.yaml文件，对应添加nodeport 32000放通外网访问，如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[root@master manifests]<span class="comment"># vi grafana-service.yaml </span></span><br><span class="line"></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Service</span><br><span class="line">metadata:</span><br><span class="line">  labels:</span><br><span class="line">    app: grafana</span><br><span class="line">  name: grafana</span><br><span class="line">  namespace: monitoring</span><br><span class="line">spec:</span><br><span class="line">  <span class="built_in">type</span>: NodePort</span><br><span class="line">  ports:</span><br><span class="line">  - name: http</span><br><span class="line">    port: 3000</span><br><span class="line">    targetPort: http</span><br><span class="line">    nodePort: 32000</span><br><span class="line">  selector:</span><br><span class="line">    app: grafana</span><br></pre></td></tr></table></figure>
-<p>8、修改prometheus-service.yaml文件，对应添加nodeport 30090放通外网访问，如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@master manifests]<span class="comment"># vi prometheus-service.yaml </span></span><br><span class="line"></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Service</span><br><span class="line">metadata:</span><br><span class="line">  labels:</span><br><span class="line">    prometheus: k8s</span><br><span class="line">  name: prometheus-k8s</span><br><span class="line">  namespace: monitoring</span><br><span class="line">spec:</span><br><span class="line">  <span class="built_in">type</span>: NodePort</span><br><span class="line">  ports:</span><br><span class="line">  - name: web</span><br><span class="line">    port: 9090</span><br><span class="line">    targetPort: web</span><br><span class="line">    nodePort: 30090</span><br><span class="line">  selector:</span><br><span class="line">    app: prometheus</span><br><span class="line">    prometheus: k8s</span><br><span class="line">  sessionAffinity: ClientIP</span><br></pre></td></tr></table></figure>
-<p>9、安装CRD和prometheus-operator</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@master manifests]<span class="comment"># kubectl apply -f setup/</span></span><br></pre></td></tr></table></figure>
-<p>10、安装prometheus, alertmanager, grafana, kube-state-metrics, node-exporter等资源,注意最后有个.表示当前目录（即：/root/kube-prometheus/manifests）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@master manifests]<span class="comment"># kubectl apply -f .</span></span><br></pre></td></tr></table></figure>
-<p>11、由于执行安装时间比较久，需要拉取镜像，然后查看对应命名空间的pod</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@master manifests]<span class="comment"># kubectl get pod -n monitoring </span></span><br><span class="line">NAME                                   READY   STATUS    RESTARTS   AGE</span><br><span class="line">alertmanager-main-0                    2/2     Running   0          2d17h</span><br><span class="line">alertmanager-main-1                    2/2     Running   0          2d17h</span><br><span class="line">alertmanager-main-2                    2/2     Running   0          2d17h</span><br><span class="line">grafana-86445dccbb-6gtsd               1/1     Running   0          2d17h</span><br><span class="line">kube-state-metrics-6cdc84dbd9-v9nqv    3/3     Running   0          2d17h</span><br><span class="line">node-exporter-7sx5t                    2/2     Running   0          2d17h</span><br><span class="line">node-exporter-9pgzj                    2/2     Running   0          2d17h</span><br><span class="line">node-exporter-wk6t8                    2/2     Running   0          2d17h</span><br><span class="line">prometheus-adapter-66b855f564-m94zn    1/1     Running   0          2d17h</span><br><span class="line">prometheus-k8s-0                       3/3     Running   1          2d17h</span><br><span class="line">prometheus-k8s-1                       3/3     Running   1          2d17h</span><br><span class="line">prometheus-operator-788d4c7c74-fbjn4   2/2     Running   0          2d18h</span><br></pre></td></tr></table></figure>
-<p>若查看状态status有显示ERR字眼，则需要执行下面查看对应错误</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl describe prometheus-k8s-0 -n monitoring</span><br></pre></td></tr></table></figure>
-<p>或者直接执行删除，然后再执行上面apply命令进行安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete -f .</span><br></pre></td></tr></table></figure>
-<p>12、查看prometheus、grafana服务端口，正常为上面修改的nodeport</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@master manifests]<span class="comment"># kubectl get -n monitoring svc</span></span><br><span class="line">NAME                    TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE</span><br><span class="line">alertmanager-main       NodePort    10.109.50.168    &lt;none&gt;        9093:30093/TCP               2d17h</span><br><span class="line">alertmanager-operated   ClusterIP   None             &lt;none&gt;        9093/TCP,9094/TCP,9094/UDP   2d17h</span><br><span class="line">grafana                 NodePort    10.108.51.131    &lt;none&gt;        3000:32000/TCP               2d17h</span><br><span class="line">kube-state-metrics      ClusterIP   None             &lt;none&gt;        8443/TCP,9443/TCP            2d17h</span><br><span class="line">node-exporter           ClusterIP   None             &lt;none&gt;        9100/TCP                     2d17h</span><br><span class="line">prometheus-adapter      ClusterIP   10.98.108.128    &lt;none&gt;        443/TCP                      2d17h</span><br><span class="line">prometheus-k8s          NodePort    10.108.163.187   &lt;none&gt;        9090:30090/TCP               2d17h</span><br><span class="line">prometheus-operated     ClusterIP   None             &lt;none&gt;        9090/TCP                     2d17h</span><br><span class="line">prometheus-operator     ClusterIP   None             &lt;none&gt;        8443/TCP                     2d18h</span><br></pre></td></tr></table></figure>
-<p>13、访问对应prometheus服务，IP+端口模式</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.0.12:30090</span><br></pre></td></tr></table></figure>
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_01.png" class title="This is an prometheus image">
-<p>14、访问对应Alertmanager服务，IP+端口模式</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.0.12:30093</span><br></pre></td></tr></table></figure>
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_02.png" class title="This is an prometheus image">
-<p>15、访问对应grafana服务，IP+端口模式，默认账号，密码为admin,首次登陆需要更改密码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.0.12:32000</span><br></pre></td></tr></table></figure>
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_03.png" class title="This is an prometheus image">
-<p>16、登陆成功后，默认会有个prometheus数据源，若没有手动添加即可</p>
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_04.png" class title="This is an prometheus image">
-<p>17、使用Grafana可视化展示Prometheus监控数据<br>推荐模板： 也就是在grafana共享中心里面的，也就是别人写的模版上传到这里库里面的，自己也可以写，写完上传上去，<br>别人也可以访问到，下面是模版的id,只要获取这个ID，就能使用这个模版了，只要这个模版，后端提供执行promeQL,只要有数据就能帮你展示出来<br>Grafana.com<br>• 集群资源监控：3119<br>• 资源状态监控 ：6417<br>• Node监控 ：9276<br>18、下面添加监控模板<br>1）集群资源监控：3119，选择web界面+然后点击import，输入3119，点击Load,重新命名为Kubernetes资源管理，再点击Import即可</p>
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_05_3119.png" class title="This is an prometheus image">
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_05_3119_01.png" class title="This is an prometheus image">
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_05_3119_02.png" class title="This is an prometheus image">
-<p>上图看到Cluster filesystem usage 没数据，则直接点击，出现Edit然后按照下面对应更改即可</p>
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_05_3119_03.png" class title="This is an prometheus image">
-<p>2）其它就不一一添加展示，按照上面方式配置即可，下面展示对应监控图<br>集群资源监控：3119</p>
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_06.png" class title="This is an prometheus image">
-<p>资源状态监控 ：6417</p>
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_07.png" class title="This is an prometheus image">
-<p>Node监控 ：9276</p>
-<img src="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/prometheus_08.png" class title="This is an prometheus image">
-<p>19、小结：<br>所以有了这些监控，基本上就能了解k8s的基本资源的使用状态了</p>
-
+        <p>Nginx添加访问密码<br> <a id="more"></a><br>为了安全起见，有些网站是不想让别人直接就能访问到的，则需要在nginx层级增加一层用户密码登陆，例图如下：</p>
+<img src="/rz168.io/2021/03/11/Nginx%E6%B7%BB%E5%8A%A0%E8%AE%BF%E9%97%AE%E5%AF%86%E7%A0%81/nginx.png" class title="This is an nginx image">
+<p>1、Nginx模块添加<br>ngx_http_auth_basic_module 模块实现让用户只有输入正确的用户名密码才允许访问web内容。默认情况下，nginx 已经安装了该模块。<br>2、用第三方工具生成账号密码文件，以htpasswd为例<br>1）安装htpasswd软件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y httpd-tools</span><br></pre></td></tr></table></figure>
+<p>2)生成账号密码文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">例：</span><br><span class="line">	htpasswd -c $&#123;存放路径&#125;&#x2F;passwd $&#123;账号&#125;</span><br><span class="line">	htpasswd -c &#x2F;etc&#x2F;nginx&#x2F;conf&#x2F;passwd test</span><br></pre></td></tr></table></figure>
+<p>3)修改nginx配置，如果有配置https，也要在https中添加auth_basic两条配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        #添加以下两行,第一行为提示内容，第二行为密码文件路径</span><br><span class="line">        auth_basic &quot;Please input password&quot;; </span><br><span class="line">        auth_basic_user_file &#x2F;etc&#x2F;nginx&#x2F;conf&#x2F;passwd; </span><br><span class="line">        location &#x2F;PilotArea &#123;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">        location &#x2F; &#123;</span><br><span class="line">          &#125;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<p>4)重启nginx，尝试访问，确认是否正常弹窗<br>3、关于htpasswd命令解释</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">htpasswd选项参数    </span><br><span class="line">    htpasswd [-cmdpsD] passwordfile username</span><br><span class="line">    htpasswd -b[cmdpsD] passwordfile username password</span><br><span class="line">    htpasswd -n[mdps] username</span><br><span class="line">    htpasswd -nb[mdps] username password</span><br><span class="line">htpasswd命令选项参数说明</span><br><span class="line">    -c 创建一个加密文件</span><br><span class="line">    -n 不更新加密文件，只将htpasswd命令加密后的用户名密码显示在屏幕上</span><br><span class="line">    -m 默认htpassswd命令采用MD5算法对密码进行加密</span><br><span class="line">    -d htpassswd命令采用CRYPT算法对密码进行加密</span><br><span class="line">    -p htpassswd命令不对密码进行进行加密，即明文密码</span><br><span class="line">    -s htpassswd命令采用SHA算法对密码进行加密</span><br><span class="line">    -b htpassswd命令行中一并输入用户名和密码而不是根据提示输入密码</span><br><span class="line">    -D 删除指定的用户</span><br><span class="line">htpasswd例子</span><br><span class="line">a、如何利用htpasswd命令添加用户？    </span><br><span class="line">htpasswd -bc .&#x2F;.passwd feiyu pass</span><br><span class="line">在当前目录下生成一个.passwd文件，用户名feiyu，密码：pass，默认采用MD5加密方式</span><br><span class="line">b、如何在原有密码文件中增加下一个用户？</span><br><span class="line">htpasswd -b .&#x2F;.passwd feiyu1 pass</span><br><span class="line">去掉c选项，即可在第一个用户之后添加第二个用户，依此类推</span><br><span class="line">c、如何不更新密码文件，只显示加密后的用户名和密码？</span><br><span class="line">htpasswd -nb feiyu pass</span><br><span class="line">不更新.passwd文件，只在屏幕上输出用户名和经过加密后的密码</span><br><span class="line">d、如何利用htpasswd命令删除用户名和密码？</span><br><span class="line">htpasswd -D .passwd feiyu1</span><br><span class="line">e、如何利用 htpasswd 命令修改密码？</span><br><span class="line">htpasswd -D .passwd feiyu1</span><br><span class="line">htpasswd -b .passwd feiyu1 pass</span><br><span class="line">2.5不使用 htpasswd也可以使用openssl</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -483,35 +429,6 @@
     <div>
       
         
-<div class="my_post_copyright">
-  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-  
-  <!-- JS库 sweetalert 可修改路径 -->
-  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/">Prometheus+Grafana搭建部署</a></p>
-  <p><span>文章作者:</span><a href="/" title="访问 Lucky 的个人博客">Lucky</a></p>
-  <p><span>发布时间:</span>2020年09月19日 - 11:09</p>
-  <p><span>最后更新:</span>2021年01月26日 - 15:01</p>
-  <p><span>原始链接:</span><a href="/rz168.io/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/" title="Prometheus+Grafana搭建部署">https://github.com/Piouscc/rz168.io.git/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2020/09/19/Prometheus-Grafana%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/"  aria-label="复制成功！"></i></span>
-  </p>
-  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
-</div>
-<script> 
-    var clipboard = new Clipboard('.fa-clipboard');
-    $(".fa-clipboard").click(function(){
-      clipboard.on('success', function(){
-        swal({   
-          title: "",   
-          text: '复制成功',
-          icon: "success", 
-          showConfirmButton: true
-          });
-    });
-    });  
-</script>
-
       
     </div>
 
@@ -525,7 +442,7 @@
       
         <div class="post-tags">
           
-            <a href="/rz168.io/tags/K8s/" rel="tag"><i class="fa fa-tag"></i> K8s</a>
+            <a href="/rz168.io/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
           
         </div>
       
@@ -538,8 +455,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/rz168.io/2020/09/16/Kubernetes-dashboard%E9%83%A8%E7%BD%B2/" rel="next" title="Kubernetes-dashboard部署">
-                <i class="fa fa-chevron-left"></i> Kubernetes-dashboard部署
+              <a href="/rz168.io/2021/03/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E5%88%A9%E5%99%A8%E4%B9%8BMariabackup/" rel="next" title="数据库备份利器之Mariabackup">
+                <i class="fa fa-chevron-left"></i> 数据库备份利器之Mariabackup
               </a>
             
           </div>
@@ -547,10 +464,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/rz168.io/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/" rel="prev" title="Centos_Harbor环境搭建及使用">
-                Centos_Harbor环境搭建及使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
