@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Linux,Jenkins," />
+  <meta name="keywords" content="linux,shell," />
 
 
 
@@ -88,22 +88,18 @@
 
 
 
-<meta name="description" content="Jenkins版本升级">
+<meta name="description" content="利用shell脚本实现批量操作">
 <meta property="og:type" content="article">
-<meta property="og:title" content="记一次Jenkins版本升级">
-<meta property="og:url" content="https://github.com/Piouscc/rz168.io.git/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/index.html">
+<meta property="og:title" content="利用shell脚本实现批量操作">
+<meta property="og:url" content="https://github.com/Piouscc/rz168.io.git/2021/04/10/%E5%88%A9%E7%94%A8shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="Lucky">
-<meta property="og:description" content="Jenkins版本升级">
-<meta property="og:image" content="https://github.com/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/jenkins01.png">
-<meta property="og:image" content="https://github.com/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/jenkins02.png">
-<meta property="og:image" content="https://github.com/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/jenkins03.png">
-<meta property="article:published_time" content="2020-09-23T03:58:19.000Z">
-<meta property="article:modified_time" content="2020-09-24T09:48:48.191Z">
+<meta property="og:description" content="利用shell脚本实现批量操作">
+<meta property="article:published_time" content="2021-04-10T06:33:59.000Z">
+<meta property="article:modified_time" content="2021-04-10T08:13:45.821Z">
 <meta property="article:author" content="Lucky">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Jenkins">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="shell">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/jenkins01.png">
 
 
 
@@ -133,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/Piouscc/rz168.io.git/2020/09/23/Jenkins版本升级/"/>
+  <link rel="canonical" href="https://github.com/Piouscc/rz168.io.git/2021/04/10/利用shell脚本实现批量操作/"/>
 
 
 
 
 
-  <title>记一次Jenkins版本升级 | Lucky</title>
+  <title>利用shell脚本实现批量操作 | Lucky</title>
   
 
 
@@ -301,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/Piouscc/rz168.io.git/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Piouscc/rz168.io.git/rz168.io/2021/04/10/%E5%88%A9%E7%94%A8shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lucky">
@@ -318,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">记一次Jenkins版本升级</h1>
+          <h1 class="post-title" itemprop="name headline">利用shell脚本实现批量操作</h1>
         
 
         <div class="post-meta">
@@ -330,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-23T11:58:19+08:00">
-                2020-09-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-10T14:33:59+08:00">
+                2021-04-10
               </time>
             
 
@@ -367,7 +363,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  219
+                  281
                 </span>
               
 
@@ -404,21 +400,14 @@
       
 
       
-        <p>Jenkins版本升级<br> <a id="more"></a><br>1、背景<br>由于现在所用到jenkins的版本为2.248，出现以下警告发布，则需要把jenkins版本升级来解决，此警告</p>
-<img src="/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/jenkins01.png" class title="This is an jenkins image">
-
-<p>2、下载最新版本jenkins-2.257</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/jenkins/war/2.257/jenkins.war</span><br></pre></td></tr></table></figure>
-<p>3、由于用的服务器为CVM，则先登陆腾讯云创建快照，避免升级出现问题，操作回滚<br>同时也需要备份服务器上的jenkins.war包</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /opt/jenkins_bak</span><br><span class="line">cp /usr/lib/jenkins/jenkins.war /opt/jenkins_bak/</span><br></pre></td></tr></table></figure>
-<p>4、停止jenkins服务，并复制最新版jenkins到对应目录,然后启动jenkins服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop jenkins</span><br><span class="line">mv jenkins.war /usr/lib/jenkins/</span><br><span class="line">systemctl start jenkins</span><br></pre></td></tr></table></figure>
-<p>5、web查看jenkins版本，及对应项目是否正常，出现下图等一小会儿刷新浏览器页面即可</p>
-<img src="/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/jenkins02.png" class title="This is an jenkins image">
-<p>6、查看jenkins版本</p>
-<img src="/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/jenkins03.png" class title="This is an jenkins image">
-<p>7、再到插件管理，把对应的插件进行更新即可</p>
-
+        <p>利用shell脚本实现批量操作<br> <a id="more"></a><br> 每个运维人员都向往着批量管理，批量部署，常见的批量管理软件有ansible、saltstack等，但shell脚本也能实现，如下：<br>1、先创建一个目录用作存放IP，port,脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /opt/script/ssh</span><br><span class="line">touch /opt/script/ssh/&#123;ip,ssh_port,ssh.sh&#125;</span><br></pre></td></tr></table></figure>
+<p>2、往文件ip及ip_port填入对应的真实IP及ssh端口，及对ssh免密登陆配置好公钥<br>3、编写脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">/bin/bash</span></span><br><span class="line"></span><br><span class="line">servers=`cat /opt/script/ip`</span><br><span class="line">port=`cat /opt/script/ssh_port`</span><br><span class="line">prefix="ssh -p $port"</span><br><span class="line"></span><br><span class="line">if [ "$1" == 'cmd' ] &amp;&amp; [ ! -z "$2" ] ; then</span><br><span class="line">    </span><br><span class="line">    fail=0</span><br><span class="line">    for ip in $&#123;servers[@]&#125;; do</span><br><span class="line">        echo "###$ip"</span><br><span class="line">        $prefix root@$ip "$2"</span><br><span class="line">        [ $? -ne 0 ] &amp;&amp; fail=$(($fail +1))</span><br><span class="line">    done</span><br><span class="line">    [ $fail -ne 0 ] &amp;&amp; exit $fail || exit 0</span><br><span class="line">elif [ "$1" == 'rsync' ]; then</span><br><span class="line">    </span><br><span class="line">    if [ -z "$2" ] || [ -z "$3" ]; then</span><br><span class="line">       echo 'src and dest required'</span><br><span class="line">       exit</span><br><span class="line">    fi</span><br><span class="line">    </span><br><span class="line">    mode='-avzP'</span><br><span class="line">    if [ "$4" == 'debug' ]; then</span><br><span class="line">       mode="$&#123;mode&#125;n"</span><br><span class="line">    fi</span><br><span class="line">    </span><br><span class="line">    for ip in $&#123;servers[@]&#125;; do</span><br><span class="line">       rsync $mode -e "$prefix" $2 root@$ip:$3</span><br><span class="line">    done</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>4、用法<br>1)在别名里面添加以下两行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alias lvscmd&#x3D;&#39;sh &#x2F;opt&#x2F;script&#x2F;web&#x2F;ssh.sh cmd &#39;</span><br><span class="line">alias lvsrsync&#x3D;&#39;sh &#x2F;opt&#x2F;script&#x2F;web&#x2F;ssh.sh rsync &#39;</span><br></pre></td></tr></table></figure>
+<p>2)真正用法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@<span class="built_in">test</span> ~]<span class="comment">#lvscmd "df -h"</span></span><br><span class="line">[root@<span class="built_in">test</span> ~]<span class="comment">#lvsrsync "/tmp/1.txt" "/tmp/2.txt"</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -443,12 +432,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/">记一次Jenkins版本升级</a></p>
+  <p><span>本文标题:</span><a href="/rz168.io/2021/04/10/%E5%88%A9%E7%94%A8shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C/">利用shell脚本实现批量操作</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Lucky 的个人博客">Lucky</a></p>
-  <p><span>发布时间:</span>2020年09月23日 - 11:09</p>
-  <p><span>最后更新:</span>2020年09月24日 - 17:09</p>
-  <p><span>原始链接:</span><a href="/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/" title="记一次Jenkins版本升级">https://github.com/Piouscc/rz168.io.git/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2021年04月10日 - 14:04</p>
+  <p><span>最后更新:</span>2021年04月10日 - 16:04</p>
+  <p><span>原始链接:</span><a href="/rz168.io/2021/04/10/%E5%88%A9%E7%94%A8shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C/" title="利用shell脚本实现批量操作">https://github.com/Piouscc/rz168.io.git/2021/04/10/%E5%88%A9%E7%94%A8shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://github.com/Piouscc/rz168.io.git/2021/04/10/%E5%88%A9%E7%94%A8shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -479,9 +468,9 @@
       
         <div class="post-tags">
           
-            <a href="/rz168.io/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+            <a href="/rz168.io/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
           
-            <a href="/rz168.io/tags/Jenkins/" rel="tag"><i class="fa fa-tag"></i> Jenkins</a>
+            <a href="/rz168.io/tags/shell/" rel="tag"><i class="fa fa-tag"></i> shell</a>
           
         </div>
       
@@ -494,8 +483,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/rz168.io/2020/09/22/Centos-Harbor%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8/" rel="next" title="Centos_Harbor环境搭建及使用">
-                <i class="fa fa-chevron-left"></i> Centos_Harbor环境搭建及使用
+              <a href="/rz168.io/2021/04/10/%E6%97%A5%E5%B8%B8%E6%97%A5%E5%BF%97%E5%A4%87%E4%BB%BD%E4%B9%8Bnginx-php/" rel="next" title="日常日志备份之nginx_php">
+                <i class="fa fa-chevron-left"></i> 日常日志备份之nginx_php
               </a>
             
           </div>
@@ -503,10 +492,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/rz168.io/2020/09/25/gitlab%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" rel="prev" title="gitlab安装及使用">
-                gitlab安装及使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

@@ -1212,4 +1212,20 @@
         <tag>Jenkins</tag>
       </tags>
   </entry>
+  <entry>
+    <title>利用shell脚本实现批量操作</title>
+    <url>/rz168.io/2021/04/10/%E5%88%A9%E7%94%A8shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<p>利用shell脚本实现批量操作<br> <a id="more"></a><br> 每个运维人员都向往着批量管理，批量部署，常见的批量管理软件有ansible、saltstack等，但shell脚本也能实现，如下：<br>1、先创建一个目录用作存放IP，port,脚本</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir -p /opt/script/ssh</span><br><span class="line">touch /opt/script/ssh/&#123;ip,ssh_port,ssh.sh&#125;</span><br></pre></td></tr></table></figure>
+<p>2、往文件ip及ip_port填入对应的真实IP及ssh端口，及对ssh免密登陆配置好公钥<br>3、编写脚本</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">/bin/bash</span></span><br><span class="line"></span><br><span class="line">servers=`cat /opt/script/ip`</span><br><span class="line">port=`cat /opt/script/ssh_port`</span><br><span class="line">prefix="ssh -p $port"</span><br><span class="line"></span><br><span class="line">if [ "$1" == 'cmd' ] &amp;&amp; [ ! -z "$2" ] ; then</span><br><span class="line">    </span><br><span class="line">    fail=0</span><br><span class="line">    for ip in $&#123;servers[@]&#125;; do</span><br><span class="line">        echo "###$ip"</span><br><span class="line">        $prefix root@$ip "$2"</span><br><span class="line">        [ $? -ne 0 ] &amp;&amp; fail=$(($fail +1))</span><br><span class="line">    done</span><br><span class="line">    [ $fail -ne 0 ] &amp;&amp; exit $fail || exit 0</span><br><span class="line">elif [ "$1" == 'rsync' ]; then</span><br><span class="line">    </span><br><span class="line">    if [ -z "$2" ] || [ -z "$3" ]; then</span><br><span class="line">       echo 'src and dest required'</span><br><span class="line">       exit</span><br><span class="line">    fi</span><br><span class="line">    </span><br><span class="line">    mode='-avzP'</span><br><span class="line">    if [ "$4" == 'debug' ]; then</span><br><span class="line">       mode="$&#123;mode&#125;n"</span><br><span class="line">    fi</span><br><span class="line">    </span><br><span class="line">    for ip in $&#123;servers[@]&#125;; do</span><br><span class="line">       rsync $mode -e "$prefix" $2 root@$ip:$3</span><br><span class="line">    done</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>4、用法<br>1)在别名里面添加以下两行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">alias lvscmd&#x3D;&#39;sh &#x2F;opt&#x2F;script&#x2F;web&#x2F;ssh.sh cmd &#39;</span><br><span class="line">alias lvsrsync&#x3D;&#39;sh &#x2F;opt&#x2F;script&#x2F;web&#x2F;ssh.sh rsync &#39;</span><br></pre></td></tr></table></figure>
+<p>2)真正用法</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@<span class="built_in">test</span> ~]<span class="comment">#lvscmd "df -h"</span></span><br><span class="line">[root@<span class="built_in">test</span> ~]<span class="comment">#lvsrsync "/tmp/1.txt" "/tmp/2.txt"</span></span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>linux</tag>
+        <tag>shell</tag>
+      </tags>
+  </entry>
 </search>
