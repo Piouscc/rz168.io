@@ -6,7 +6,7 @@
   <link href="/rz168.io/atom.xml" rel="self"/>
   
   <link href="https://github.com/Piouscc/rz168.io.git/"/>
-  <updated>2021-04-10T08:13:45.821Z</updated>
+  <updated>2021-05-13T03:57:36.241Z</updated>
   <id>https://github.com/Piouscc/rz168.io.git/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从VMware迁移系统到Esxi</title>
+    <link href="https://github.com/Piouscc/rz168.io.git/2021/05/13/%E4%BB%8EVMware%E8%BF%81%E7%A7%BB%E7%B3%BB%E7%BB%9F%E5%88%B0Esxi/"/>
+    <id>https://github.com/Piouscc/rz168.io.git/2021/05/13/%E4%BB%8EVMware%E8%BF%81%E7%A7%BB%E7%B3%BB%E7%BB%9F%E5%88%B0Esxi/</id>
+    <published>2021-05-13T02:39:53.000Z</published>
+    <updated>2021-05-13T03:57:36.241Z</updated>
+    
+    <content type="html"><![CDATA[<p>从VMware迁移系统到Esxi<br> <a id="more"></a><br>1、介绍<br>快速将本地和远程物理机转换为虚拟机，而无需停机。同时转换可实现大规模虚拟化实施。提供对源物理机。<br>Converter Standalone简化了以下产品之间的虚拟机交换：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1）VMware托管产品既可以是转换源，也可以是转换目标。</span><br><span class="line">2）在vCenter Server管理的ESXi实例  上运行的虚拟机可以是转换源，而相应的ESXi和vCenter Server实例可以是转换目标。</span><br><span class="line">3）在非托管ESXi主机上运行的虚拟机可以是转换源，而相应的ESXi主机可以是转换目标。</span><br></pre></td></tr></table></figure><p>2、下载VMware-converter,安装过程略</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;softpedia-secure-download.com&#x2F;dl&#x2F;1a7ab68c2e003ce4541ccee642778c7f&#x2F;5cdfb2d9&#x2F;100064445&#x2F;software&#x2F;system&#x2F;VMware-converter-en-6.2.0-8466193.exe</span><br></pre></td></tr></table></figure><p>3、因为本地已经安装好ubuntu20.04.1虚拟机，则直接使用这台服务器进行迁移操作<br>首先，开启root用户密码登陆</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install -y openssh-server</span><br></pre></td></tr></table></figure><p>4、修改ssh配置文件，及设置root密码</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/ssh/sshd_config</span><br><span class="line"></span><br><span class="line">LoginGraceTime 2m</span><br><span class="line"><span class="comment">#PermitRootLogin prohibit-password</span></span><br><span class="line">PermitRootLogin yes</span><br><span class="line">StrictModes yes</span><br><span class="line">MaxAuthTries 6</span><br><span class="line">MaxSessions 10</span><br><span class="line"></span><br><span class="line"><span class="built_in">test</span>@<span class="built_in">test</span>-virtual-machine:~<span class="variable">$su</span> root</span><br><span class="line">root@<span class="built_in">test</span>-virtual-machine:~<span class="comment"># passwd </span></span><br><span class="line">新的 密码：</span><br><span class="line"></span><br><span class="line">重启ssh任务：</span><br><span class="line">systemctl restart sshd</span><br></pre></td></tr></table></figure><p>5、由于ubuntu 20.04.1不支持crt远程连接，则用xshell代替，测试root是否正常远程连接</p><img src="/rz168.io/2021/05/13/%E4%BB%8EVMware%E8%BF%81%E7%A7%BB%E7%B3%BB%E7%BB%9F%E5%88%B0Esxi/vm01.png" class title="This is an vm image"><p>6、VMware vCenter Converter Standalone，是一种用于将虚拟机和物理机转换为 VMware 虚拟机的可扩展解决方案。此外，还可以在 vCenter Server 环境中配置现有虚拟机，是P2V的重要工具，可以迁移Windows,Linux等操作系统，但是经常会出现一些细节问题造成无法成功，现整理如下：<br>打开VMware Converter Standalone工具</p><img src="/rz168.io/2021/05/13/%E4%BB%8EVMware%E8%BF%81%E7%A7%BB%E7%B3%BB%E7%BB%9F%E5%88%B0Esxi/vm02.png" class title="This is an vm image"><p>7、选择我们所用到的模式，这边用的是VMware迁移到exsi如下，注意这里迁移虚拟机需要提前关机，否则会报“Unable to obtain the lock on virtual disks.”,如果从物理机迁移到exsi，则省略：</p><img src="/rz168.io/2021/05/13/%E4%BB%8EVMware%E8%BF%81%E7%A7%BB%E7%B3%BB%E7%BB%9F%E5%88%B0Esxi/vm03.png" class title="This is an vm image"><p>8、输入我们vmware esxi server的ip及账号密码，然后点击“Next”</p><img src="/rz168.io/2021/05/13/%E4%BB%8EVMware%E8%BF%81%E7%A7%BB%E7%B3%BB%E7%BB%9F%E5%88%B0Esxi/vm04.png" class title="This is an vm image"><p>9、确认我们的虚拟在esxi中的命名，这些默认ubuntu</p><img src="/rz168.io/2021/05/13/%E4%BB%8EVMware%E8%BF%81%E7%A7%BB%E7%B3%BB%E7%BB%9F%E5%88%B0Esxi/vm05.png" class title="This is an vm image"><p>10、确认磁盘空间</p><img src="/rz168.io/2021/05/13/%E4%BB%8EVMware%E8%BF%81%E7%A7%BB%E7%B3%BB%E7%BB%9F%E5%88%B0Esxi/vm06.png" class title="This is an vm image"><p>11、确认虚拟机其它配置</p><img src="/rz168.io/2021/05/13/%E4%BB%8EVMware%E8%BF%81%E7%A7%BB%E7%B3%BB%E7%BB%9F%E5%88%B0Esxi/vm07.png" class title="This is an vm image"><p>12、点击finish</p><img src="/rz168.io/2021/05/13/%E4%BB%8EVMware%E8%BF%81%E7%A7%BB%E7%B3%BB%E7%BB%9F%E5%88%B0Esxi/vm08.png" class title="This is an vm image"><p>13、显示正在迁移，进度等等信息</p><img src="/rz168.io/2021/05/13/%E4%BB%8EVMware%E8%BF%81%E7%A7%BB%E7%B3%BB%E7%BB%9F%E5%88%B0Esxi/vm09.png" class title="This is an vm image"><p>14、等待迁移的过程可以到vmware esxi web查看</p><img src="/rz168.io/2021/05/13/%E4%BB%8EVMware%E8%BF%81%E7%A7%BB%E7%B3%BB%E7%BB%9F%E5%88%B0Esxi/vm10.png" class title="This is an vm image"><p>15、查看迁移状态是否完成 </p><img src="/rz168.io/2021/05/13/%E4%BB%8EVMware%E8%BF%81%E7%A7%BB%E7%B3%BB%E7%BB%9F%E5%88%B0Esxi/vm11.png" class title="This is an vm image"><p>16、web登陆VMware Esxi打开对应迁移的虚拟机电源，查如下，则表示迁移成功</p><img src="/rz168.io/2021/05/13/%E4%BB%8EVMware%E8%BF%81%E7%A7%BB%E7%B3%BB%E7%BB%9F%E5%88%B0Esxi/vm12.png" class title="This is an vm image"><p>17、至此VMware 虚拟机迁移到esxi就完成了，若想从物理机迁移到esxi，则在第七步中选择“Powered on”，然后选择系统类型，输入Ip及账号密码，如下以linux为例，其它步骤则一样</p><img src="/rz168.io/2021/05/13/%E4%BB%8EVMware%E8%BF%81%E7%A7%BB%E7%B3%BB%E7%BB%9F%E5%88%B0Esxi/vm13.png" class title="This is an vm image">]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;从VMware迁移系统到Esxi&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="Linux" scheme="https://github.com/Piouscc/rz168.io.git/tags/Linux/"/>
+    
+      <category term="VMware" scheme="https://github.com/Piouscc/rz168.io.git/tags/VMware/"/>
+    
+  </entry>
   
   <entry>
     <title>利用shell脚本实现批量操作</title>
@@ -442,29 +465,6 @@
       <category term="linux" scheme="https://github.com/Piouscc/rz168.io.git/tags/linux/"/>
     
       <category term="jenkins" scheme="https://github.com/Piouscc/rz168.io.git/tags/jenkins/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>记一次Jenkins版本升级</title>
-    <link href="https://github.com/Piouscc/rz168.io.git/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/"/>
-    <id>https://github.com/Piouscc/rz168.io.git/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/</id>
-    <published>2020-09-23T03:58:19.000Z</published>
-    <updated>2020-09-24T09:48:48.191Z</updated>
-    
-    <content type="html"><![CDATA[<p>Jenkins版本升级<br> <a id="more"></a><br>1、背景<br>由于现在所用到jenkins的版本为2.248，出现以下警告发布，则需要把jenkins版本升级来解决，此警告</p><img src="/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/jenkins01.png" class title="This is an jenkins image"><p>2、下载最新版本jenkins-2.257</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/jenkins/war/2.257/jenkins.war</span><br></pre></td></tr></table></figure><p>3、由于用的服务器为CVM，则先登陆腾讯云创建快照，避免升级出现问题，操作回滚<br>同时也需要备份服务器上的jenkins.war包</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /opt/jenkins_bak</span><br><span class="line">cp /usr/lib/jenkins/jenkins.war /opt/jenkins_bak/</span><br></pre></td></tr></table></figure><p>4、停止jenkins服务，并复制最新版jenkins到对应目录,然后启动jenkins服务</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop jenkins</span><br><span class="line">mv jenkins.war /usr/lib/jenkins/</span><br><span class="line">systemctl start jenkins</span><br></pre></td></tr></table></figure><p>5、web查看jenkins版本，及对应项目是否正常，出现下图等一小会儿刷新浏览器页面即可</p><img src="/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/jenkins02.png" class title="This is an jenkins image"><p>6、查看jenkins版本</p><img src="/rz168.io/2020/09/23/Jenkins%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/jenkins03.png" class title="This is an jenkins image"><p>7、再到插件管理，把对应的插件进行更新即可</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Jenkins版本升级&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="Linux" scheme="https://github.com/Piouscc/rz168.io.git/tags/Linux/"/>
-    
-      <category term="Jenkins" scheme="https://github.com/Piouscc/rz168.io.git/tags/Jenkins/"/>
     
   </entry>
   
