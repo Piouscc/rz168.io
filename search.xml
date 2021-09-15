@@ -1346,4 +1346,28 @@
         <tag>gitlab</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Clickhouse-server服务版本升级</title>
+    <url>/rz168.io/2021/09/15/Clickhouse-server%E6%9C%8D%E5%8A%A1%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/</url>
+    <content><![CDATA[<p>Clickhouse-server服务版本升级</p>
+<a id="more"></a>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在很多时候每个版本的软件都存在不少的bug，则需要进行来解决这些bug，<br>下面这个升级版本的方法对于单机部署及集群部署都适用。<br>测试环境有以下两项：</p>
+<ul>
+<li>单机部署</li>
+<li>分片部署</li>
+</ul>
+<h3 id="版本更新说明"><a href="#版本更新说明" class="headerlink" title="版本更新说明"></a>版本更新说明</h3><ul>
+<li>查看官网版本更新文档，确定具体那些更新及更新的当前是否有在使用的函数等等<a href="https://clickhouse.tech/docs/en/whats-new/changelog/" target="_blank" rel="noopener">官网文档地址</a></li>
+</ul>
+<h3 id="下载对应版本软件包"><a href="#下载对应版本软件包" class="headerlink" title="下载对应版本软件包"></a>下载对应版本软件包</h3><p>  <a href="https://repo.yandex.ru/clickhouse/rpm/stable/x86_64/" target="_blank" rel="noopener">官网下载地址</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://repo.yandex.ru/clickhouse/rpm/stable/x86_64/clickhouse-server-21.7.2.7-2.noarch.rpm</span><br><span class="line">wget https://repo.yandex.ru/clickhouse/rpm/stable/x86_64/clickhouse-client-20.1.7.38-2.noarch.rpm</span><br><span class="line">wget https://repo.yandex.ru/clickhouse/rpm/stable/x86_64/clickhouse-common-static-21.7.2.7-2.x86_64.rpm</span><br></pre></td></tr></table></figure>
+<h3 id="停止clickhouse-server服务"><a href="#停止clickhouse-server服务" class="headerlink" title="停止clickhouse-server服务"></a>停止clickhouse-server服务</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl stop clickhouse-server.service </span><br><span class="line">ps -ef |grep clickhouse</span><br></pre></td></tr></table></figure>
+<h3 id="执行升级安装"><a href="#执行升级安装" class="headerlink" title="执行升级安装"></a>执行升级安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src/ &amp;&amp; yum upgrade *.rpm -y</span><br></pre></td></tr></table></figure>
+<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start clickhouse-server.service</span><br><span class="line">查看对应是否生成错误日志</span><br><span class="line">tail -f /var/<span class="built_in">log</span>/clickhouse-server/clickhouse-server.err.log</span><br><span class="line">查看是否存在服务进程</span><br><span class="line">ps -ef |grep clickhouse</span><br></pre></td></tr></table></figure>
+<h3 id="查看服务版本"><a href="#查看服务版本" class="headerlink" title="查看服务版本"></a>查看服务版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">clickhouse-server -V</span><br><span class="line"></span><br><span class="line">select version();</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>linux</tag>
+        <tag>DB</tag>
+      </tags>
+  </entry>
 </search>
